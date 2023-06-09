@@ -27,7 +27,7 @@ const certificate = () => {
             </div>
             <div data-aos='fade-up' data-aos-delay='100' data-aos-once='false' className='m-2 border-2 border-slate-300 text-slate-300 hover:border-[#E79418] rounded-md p-2'>
               <img className='hover:border-2 hover:border-[#E79418] rounded-md border-[#1D1D1F] border-2' src={sqlcert} alt="react certificate" />
-              <h1 className='font-semibold tracking-[1px] text-center text-2xl my-5 border-y-2 p-1 border-slate-300 hover:border-[#E79418]'>MySQL</h1>
+              <h1 className='font-semibold tracking-[1px] text-center text-2xl my-5 border-y-2 p-1 border-slate-300 text-[#E79418] hover:border-[#E79418]'>MySQL</h1>
               <p className='text-center font-medium tracking-[1px]'>Finally! I completed the MySQL course from Udemy, I'm looking forward to use it in development.</p>
             </div>
             <div data-aos='fade-up' data-aos-delay='100' data-aos-once='false' className='m-2 border-2 border-slate-300 text-slate-300 hover:border-[#E79418] rounded-md p-2'>
