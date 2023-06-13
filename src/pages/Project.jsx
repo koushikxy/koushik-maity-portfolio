@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 
 
 
-import apnafashion from '../projects_img/apnafashion.png'
 import portfolio from '../projects_img/Potfolio website.png'
 import pdftoword from '../projects_img/pdf to word converter.png'
 import wordandcharcounter from '../projects_img/word and character counter.png'
