@@ -24,7 +24,7 @@ const project = () => {
               <div className='lg:h-[50vh] md:h-[40vh] h-[55vh]'>
                 <img className='hover:border-2 hover:border-[#E79418] rounded-md' src={apnafashion} alt="apnafashion.in" />
                 <h1 className='font-semibold tracking-[1px] text-center text-2xl my-4 border-y-2 p-1 text-[#E79418] hover:border-[#E79418]'>ApnaFashion.in</h1>
-                <p className='text-center font-medium tracking-[1px]'>Ongoing Project</p>
+                <p className='text-center font-medium tracking-[1px]'>Ongoing Project using Figma, React.js and Tailwind CSS</p>
               </div>
               <div className='flex justify-around mb-2'>
                 <button className='text-slate-300 border-2 p-2  rounded-md font-medium text-sm tracking-[1px] hover:text-black hover:bg-white'><Link target='_blank' to='https://github.com/koushikxy/apnafashion.in'>SOURCE CODE</Link></button>
