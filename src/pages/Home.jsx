@@ -26,7 +26,7 @@ const Home = () => {
           <div data-aos='fade-up' data-aos-delay='100' data-aos-once='false' className='flex items-center justify-center'><h1 className='text-white font-semibold md:text-5xl text-2xl tracking-[2px] mr-2'><span className=' hover:text-purple-500'>I'M</span> <span className='hover:text-[#0F0FD0]'>A </span></h1>
             <h1 data-aos='fade-up' data-aos-delay='100' data-aos-once='false' className='text-[#E79418] font-semibold md:text-5xl text-2xl tracking-[2px]'><Typewriter
               options={{
-                strings: ['WEB DEVELOPER', 'UI & UX DESIGNER', 'YOUTUBER'],
+                strings: ['WEB DEVELOPER', 'UI & UX DESIGNER', 'DATA ANALYST'],
                 autoStart: true,
                 loop: true,
                 cursor: '>'
@@ -37,7 +37,7 @@ const Home = () => {
           </div>
           <p data-aos='fade-up' data-aos-delay='100' data-aos-once='false' className='text-slate-300 md:text-base text-sm tracking-[1px] md:pt-8 mt-2'>At XIM University, I'm now pursuing a Bachelor degree in Computer Science and Engineering. As a computer enthusiast, I've always been interested in the limitless opportunities that technology may provide to improve the world.</p>
           <div data-aos='fade-up' data-aos-delay='100' data-aos-once='false' className='md:mt-14 mt-8 flex justify-center'>
-            <button className='border-2 md:text-base text-[10px] border-white rounded-md p-3 text-white font-medium tracking-[1.5px] hover:bg-white hover:text-black mr-2 '><Link target='_blank' to='https://drive.google.com/file/d/14LYi-6hBtQasRnf9gjLhTEAxag2C8p_7/view?usp=sharing'>DOWNLOAD RESUME</Link></button>
+            <button className='border-2 md:text-base text-[10px] border-white rounded-md p-3 text-white font-medium tracking-[1.5px] hover:bg-white hover:text-black mr-2 '><Link target='_blank' to='https://drive.google.com/file/d/1Gx2J29XwALpWlcKkCaq7At1QltQd_jlH/view?usp=sharing'>DOWNLOAD RESUME</Link></button>
             <button className='border-2 md:text-base text-[10px] border-white rounded-md py-3 px-8 text-white font-medium tracking-[1.5px] hover:bg-white hover:text-black ml-2'><Link target='_blank' to='mailto:ksmaity21@gmail.com'>CONTACT ME</Link></button>
           </div>
           <img data-aos='fade-up' data-aos-delay='100' data-aos-once='false' className=' md:mt-14 mt-8 rounded-lg border-white border-2 hover:border-[#E79418] ' src={koushik} alt="koushik" />
