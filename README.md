@@ -1,31 +1,51 @@
-🌟I'm thrilled to announce that I've built and launched my very own portfolio website🚀🎉 using :-
+# Koushik Maity | Portfolio
 
-1) Figma
+![Preview](preview.png)
 
-2) ReactJS
+A modern, highly-responsive, and premium portfolio website built for a Data and Business Analyst. Engineered with React and Tailwind CSS, this portfolio features a flawless dark/light mode, custom glassmorphism components, and subtle CSS animations to deliver an elite user experience.
 
-3)Tailwind CSS!
+## ✨ Features
 
+- **Premium UI/UX:** Sleek typography (Outfit font), glassmorphism cards, and high-contrast glowing accents.
+- **Flawless Dark/Light Mode:** Seamlessly toggles between an Apple-style Light Mode (`#F5F5F7`) and a deep, low-eye-strain Dark Mode (`#1D1D1F`).
+- **Data Analyst Focused:** Dedicated pages for Projects (auto-sorted for Analytics), Technical Skills (Bento-grid style), and Google Certifications.
+- **Custom Animations:** Hand-coded CSS keyframes for floating elements, infinite marquee tickers, and ambient text gradients.
+- **Fully Responsive:** "Mobile-first" design ensures the site adapts perfectly to iPhones, iPads, and Ultra-wide monitors.
+- **Polished Details:** Custom mouse cursors, glowing text selection, and dynamic scrollbars.
 
+## 🛠️ Tech Stack
 
-🌐💼 It's been an incredible journey, and I'm proud to share this accomplishment with all of you.
+- **Framework:** React.js (Create React App)
+- **Styling:** Tailwind CSS (v3)
+- **Routing:** React Router v6
+- **Animations:** AOS (Animate On Scroll) & Custom CSS Keyframes
+- **Icons:** React Icons (FontAwesome)
 
+## 🚀 Getting Started
 
+To run this project locally on your machine:
 
-One of my primary goals was to create a sleek and modern design that showcases my work and skills effectively. By leveraging the power of ReactJS, I was able to develop a highly interactive and dynamic website that offers a seamless user experience. 💻✨
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/koushikxy/koushikMaity.git
+   ```
+2. **Navigate into the directory:**
+   ```bash
+   cd koushikMaity
+   ```
+3. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+4. **Start the development server:**
+   ```bash
+   npm start
+   ```
 
+## 📬 Contact
+- **Email:** ksmaity21@gmail.com
+- **LinkedIn:** [Koushik Maity](https://linkedin.com/in/koushik-maity)
+- **GitHub:** [@koushikxy](https://github.com/koushikxy)
 
-
-But that's not all! I'm delighted to inform you that my portfolio website is fully responsive across all devices. Whether you're browsing on a desktop computer, laptop, tablet, or smartphone, the website will adapt and provide an optimal viewing experience. 📱🖥️
-
-
-
-Feel free to visit my portfolio website at : https://koushikmaity.netlify.app/
-
-
-![Potfolio website](https://github.com/koushikxy/koushikMaity/assets/120478621/cd60c766-5cba-4545-9460-2741b02dc20c)
-
-
-https://github.com/koushikxy/koushikMaity/assets/120478621/1a5c5644-6985-4f5a-baa0-ea4b40f13af4
-
-
+---
+*Designed & Developed with ❤️ by Koushik Maity.*
