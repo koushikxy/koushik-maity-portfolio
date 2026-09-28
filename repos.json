@@ -1,0 +1,242 @@
+[
+  {
+    "title": "apnafashion.in",
+    "description": "Ongoing Shopping Website",
+    "image": "null",
+    "category": "JavaScript",
+    "github": "https://github.com/koushikxy/apnafashion.in",
+    "live": "https://apnafashion.netlify.app"
+  },
+  {
+    "title": "Binary-Tree-and-Binary-Search-Tree-in-Python",
+    "description": "Python Project",
+    "image": "null",
+    "category": "Python",
+    "github": "https://github.com/koushikxy/Binary-Tree-and-Binary-Search-Tree-in-Python",
+    "live": "null"
+  },
+  {
+    "title": "Bloodstock-Depot-Blood-Bank-",
+    "description": "A blood bank repository is a critical resource for individuals who require blood transfusions for medical reasons. These repositories are responsible for collecting, processing, and storing blood and blood products for use in medical procedures.",
+    "image": "null",
+    "category": "Other",
+    "github": "https://github.com/koushikxy/Bloodstock-Depot-Blood-Bank-",
+    "live": "null"
+  },
+  {
+    "title": "CodeClause-PDF-to-WORD-Converter",
+    "description": "The PDF to Word converter is a web-based tool designed to convert PDF documents into editable Word files. The user interface of the converter is built using HTML, CSS and PHP. ",
+    "image": "null",
+    "category": "Web Development",
+    "github": "https://github.com/koushikxy/CodeClause-PDF-to-WORD-Converter",
+    "live": "null"
+  },
+  {
+    "title": "Credit-Card-Financial-Dashboard",
+    "description": "This project develops a comprehensive Credit Card Financial Dashboard using Power BI. It provides real-time insights into revenue, transactions, and customer data from an SQL database, enabling stakeholders to monitor performance metrics and trends for effective decision-making.",
+    "image": "null",
+    "category": "Other",
+    "github": "https://github.com/koushikxy/Credit-Card-Financial-Dashboard",
+    "live": "null"
+  },
+  {
+    "title": "CVIP-Assignment",
+    "description": "Computer Vision and Image Processing Assignment in semester 6th",
+    "image": "null",
+    "category": "Other",
+    "github": "https://github.com/koushikxy/CVIP-Assignment",
+    "live": "null"
+  },
+  {
+    "title": "Flight-Ticket-Sell-Analysis",
+    "description": "Make the analysis of Flight Ticket Sell using Excel",
+    "image": "null",
+    "category": "Other",
+    "github": "https://github.com/koushikxy/Flight-Ticket-Sell-Analysis",
+    "live": "null"
+  },
+  {
+    "title": "hero-cycles-pricing",
+    "description": "Cycle pricing tool for Hero Cycles — select parts, pick a date, get the total price broken down by component.",
+    "image": "null",
+    "category": "Python",
+    "github": "https://github.com/koushikxy/hero-cycles-pricing",
+    "live": "null"
+  },
+  {
+    "title": "Hospital-Management-System-using-MySQL",
+    "description": "This is a Hospital Management System using MySQL in terminal.",
+    "image": "null",
+    "category": "Other",
+    "github": "https://github.com/koushikxy/Hospital-Management-System-using-MySQL",
+    "live": "null"
+  },
+  {
+    "title": "IPL_Analysis",
+    "description": "This project analyzes Indian Premier League (IPL) data from 2008 to 2020. The analysis is performed using Python libraries such as Pandas, NumPy, Matplotlib, and Seaborn.",
+    "image": "null",
+    "category": "Data Analytics",
+    "github": "https://github.com/koushikxy/IPL_Analysis",
+    "live": "null"
+  },
+  {
+    "title": "koushikMaity",
+    "description": "Personal Portfolio website",
+    "image": "null",
+    "category": "JavaScript",
+    "github": "https://github.com/koushikxy/koushikMaity",
+    "live": "https://koushikmaity.netlify.app"
+  },
+  {
+    "title": "koushikxy",
+    "description": "GitHub Repository",
+    "image": "null",
+    "category": "Other",
+    "github": "https://github.com/koushikxy/koushikxy",
+    "live": "null"
+  },
+  {
+    "title": "Login-and-Signup-using-php-and-mysql",
+    "description": "This is a login and signup page for website that saved data in database using mysql.",
+    "image": "null",
+    "category": "PHP",
+    "github": "https://github.com/koushikxy/Login-and-Signup-using-php-and-mysql",
+    "live": "null"
+  },
+  {
+    "title": "Messaging_app",
+    "description": "Capstone project",
+    "image": "null",
+    "category": "Other",
+    "github": "https://github.com/koushikxy/Messaging_app",
+    "live": "null"
+  },
+  {
+    "title": "Milestone-Based-Crowdfunding-using-solidity",
+    "description": "GitHub Repository",
+    "image": "null",
+    "category": "Other",
+    "github": "https://github.com/koushikxy/Milestone-Based-Crowdfunding-using-solidity",
+    "live": "null"
+  },
+  {
+    "title": "ML-Assignment",
+    "description": "ML Assignment in 6th Semester",
+    "image": "null",
+    "category": "Data Analytics",
+    "github": "https://github.com/koushikxy/ML-Assignment",
+    "live": "null"
+  },
+  {
+    "title": "Project_Management_Dashboard",
+    "description": "The Project Management Dashboard is an Excel-based tool designed to help teams manage and track the progress of multiple projects efficiently. It offers task tracking, resource management, timeline visualization, and automated reporting, making it a powerful asset for project managers and teams aiming to keep their work organized and on track.",
+    "image": "null",
+    "category": "Other",
+    "github": "https://github.com/koushikxy/Project_Management_Dashboard",
+    "live": "null"
+  },
+  {
+    "title": "QR-Code-Generator",
+    "description": "This is a QR Code Generator that Generate QR Code with any kind of link and text.",
+    "image": "null",
+    "category": "CSS",
+    "github": "https://github.com/koushikxy/QR-Code-Generator",
+    "live": "null"
+  },
+  {
+    "title": "QR-Code-Scanner-Reader",
+    "description": "This is a QR Code Scanner/Reader that Scan/Read QR Code.",
+    "image": "null",
+    "category": "CSS",
+    "github": "https://github.com/koushikxy/QR-Code-Scanner-Reader",
+    "live": "null"
+  },
+  {
+    "title": "Radar_Detection",
+    "description": "The radar has been implemented in the 3D Map which helps to detect the random points passing through the radars and gives information about the data points and even uses AI which helps in suggesting better radar positions near the mountains .",
+    "image": "null",
+    "category": "Other",
+    "github": "https://github.com/koushikxy/Radar_Detection",
+    "live": "null"
+  },
+  {
+    "title": "Resume-Analyzer",
+    "description": "Automated Resume Analyzer using Python & NLP. Extracts skills, experience & education info for recruiters. Streamline hiring process efficiently",
+    "image": "null",
+    "category": "Python",
+    "github": "https://github.com/koushikxy/Resume-Analyzer",
+    "live": "null"
+  },
+  {
+    "title": "Ridex",
+    "description": "Car rental website",
+    "image": "null",
+    "category": "Web Development",
+    "github": "https://github.com/koushikxy/Ridex",
+    "live": "null"
+  },
+  {
+    "title": "Sales_Dashbaord",
+    "description": "This repository contains an analysis and visualization of sales data, with a focus on displaying key sales figures through a bar chart created using the data from the SALES.xlsx file. The project includes Excel data processing and visualization improvements to make the chart more readable.",
+    "image": "null",
+    "category": "Other",
+    "github": "https://github.com/koushikxy/Sales_Dashbaord",
+    "live": "null"
+  },
+  {
+    "title": "SNA-Assignment",
+    "description": "SNA Assignment in Semester 6th",
+    "image": "null",
+    "category": "Other",
+    "github": "https://github.com/koushikxy/SNA-Assignment",
+    "live": "null"
+  },
+  {
+    "title": "SynChronize-XIM",
+    "description": "website made for XIM University's Testfest event. I contribute in Exhibition Page, Workshop Page, Guest Lecture Page and Cultural Event Page.",
+    "image": "null",
+    "category": "CSS",
+    "github": "https://github.com/koushikxy/SynChronize-XIM",
+    "live": "null"
+  },
+  {
+    "title": "voting_system",
+    "description": "GitHub Repository",
+    "image": "null",
+    "category": "JavaScript",
+    "github": "https://github.com/koushikxy/voting_system",
+    "live": "null"
+  },
+  {
+    "title": "Words-and-Characters-counter",
+    "description": "Words and Characters counter is use for counter number of words and characters in paragraph using HTML, CSS and JavaScript.",
+    "image": "null",
+    "category": "CSS",
+    "github": "https://github.com/koushikxy/Words-and-Characters-counter",
+    "live": "null"
+  },
+  {
+    "title": "Youtube_Analysis",
+    "description": "This repository contains a comprehensive Python script for analyzing YouTube comments. The script performs several key tasks including reading and processing comments, sentiment analysis, word cloud generation, emoji frequency analysis, and data aggregation from multiple sources.",
+    "image": "null",
+    "category": "Data Analytics",
+    "github": "https://github.com/koushikxy/Youtube_Analysis",
+    "live": "null"
+  },
+  {
+    "title": "zamp-invoice-processor",
+    "description": "GitHub Repository",
+    "image": "null",
+    "category": "Other",
+    "github": "https://github.com/koushikxy/zamp-invoice-processor",
+    "live": "null"
+  },
+  {
+    "title": "Zomato_Analysis",
+    "description": "This project analyzes Zomato restaurant data from Bengaluru using Python libraries like Pandas, NumPy, Matplotlib, and SQLite. It explores the relationship between restaurant ratings, online ordering options, and customer preferences.",
+    "image": "null",
+    "category": "Data Analytics",
+    "github": "https://github.com/koushikxy/Zomato_Analysis",
+    "live": "null"
+  }
+]

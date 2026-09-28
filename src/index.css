@@ -1,24 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-    font-family: 'Barlow', sans-serif;
-}
-
-::-webkit-scrollbar {
-    width: 5px;
-
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: #1D1D1F;
-}
-
-::-webkit-scrollbar-thumb:hover {
+@layer base {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    font-family: 'Outfit', sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  /* Global Text Selection styling */
+  ::selection {
     background-color: #E79418;
+    color: #ffffff;
+  }
+  ::-moz-selection {
+    background-color: #E79418;
+    color: #ffffff;
+  }
 }
 
-::-webkit-scrollbar-track {
-    background-color: white;
+/* Custom Premium Scrollbar - Light Mode Default */
+::-webkit-scrollbar {
+  width: 8px;
 }
+::-webkit-scrollbar-track {
+  background-color: #E2E8F0;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #94A3B8;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #E79418;
+}
+
+/* Custom Premium Scrollbar - Dark Mode */
+.dark ::-webkit-scrollbar-track {
+  background-color: #111111;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background-color: #333333;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: #E79418;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera where needed */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes gradient-x {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 4s ease infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
