@@ -14,7 +14,7 @@ const projects = [
   {
     title: 'Credit Card Financial Dashboard',
     description: 'Comprehensive dashboard using Power BI & SQL providing real-time insights into revenue and customer transactions.',
-    image: null,
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
     category: 'Data Analytics',
     github: 'https://github.com/koushikxy/Credit-Card-Financial-Dashboard',
     live: null
@@ -22,7 +22,7 @@ const projects = [
   {
     title: 'Flight Ticket Sell Analysis',
     description: 'In-depth analysis of flight ticket sales data to uncover purchasing trends and metrics using Excel.',
-    image: null,
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
     category: 'Data Analytics',
     github: 'https://github.com/koushikxy/Flight-Ticket-Sell-Analysis',
     live: null
@@ -38,7 +38,7 @@ const projects = [
   {
     title: 'Hero Cycles Pricing Tool',
     description: 'Cycle pricing tool for Hero Cycles — select parts, pick a date, get the total price broken down by component.',
-    image: null,
+    image: 'https://images.unsplash.com/photo-1547658719-da2b51159128?auto=format&fit=crop&q=80&w=800',
     category: 'Web Development',
     github: 'https://github.com/koushikxy/hero-cycles-pricing',
     live: null
@@ -54,7 +54,7 @@ const projects = [
   {
     title: 'Blood Bank System',
     description: 'Blood bank repository responsible for collecting, processing, and storing blood products.',
-    image: null,
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
     category: 'Other',
     github: 'https://github.com/koushikxy/Bloodstock-Depot-Blood-Bank-',
   },
@@ -85,7 +85,7 @@ const projects = [
   {
     title: `Hospital-Management-System`,
     description: `This is a Hospital Management System using MySQL in terminal.`,
-    image: null,
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800',
     category: 'Other',
     github: 'https://github.com/koushikxy/Hospital-Management-System-using-MySQL',
     live: null
@@ -93,7 +93,7 @@ const projects = [
   {
     title: `IPL Analysis`,
     description: `This project analyzes Indian Premier League (IPL) data from 2008 to 2020 using Pandas, NumPy, Matplotlib, and Seaborn.`,
-    image: null,
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
     category: 'Data Analytics',
     github: 'https://github.com/koushikxy/IPL_Analysis',
     live: null
@@ -101,7 +101,7 @@ const projects = [
   {
     title: `Messaging App`,
     description: `Capstone project for a messaging application.`,
-    image: null,
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800',
     category: 'Other',
     github: 'https://github.com/koushikxy/Messaging_app',
     live: null
@@ -109,7 +109,7 @@ const projects = [
   {
     title: `Milestone-Based Crowdfunding`,
     description: `Crowdfunding smart contract using Solidity.`,
-    image: null,
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
     category: 'Other',
     github: 'https://github.com/koushikxy/Milestone-Based-Crowdfunding-using-solidity',
     live: null
@@ -117,7 +117,7 @@ const projects = [
   {
     title: `Project Management Dashboard`,
     description: `An Excel-based tool designed to help teams manage and track the progress of multiple projects efficiently.`,
-    image: null,
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
     category: 'Data Analytics',
     github: 'https://github.com/koushikxy/Project_Management_Dashboard',
     live: null
@@ -125,7 +125,7 @@ const projects = [
   {
     title: `Resume Analyzer`,
     description: `Automated Resume Analyzer using Python & NLP. Extracts skills, experience & education info for recruiters.`,
-    image: null,
+    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800',
     category: 'Python',
     github: 'https://github.com/koushikxy/Resume-Analyzer',
     live: null
@@ -133,7 +133,7 @@ const projects = [
   {
     title: `Sales Dashboard`,
     description: `Analysis and visualization of sales data, with a focus on displaying key sales figures through Excel charts.`,
-    image: null,
+    image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=800',
     category: 'Data Analytics',
     github: 'https://github.com/koushikxy/Sales_Dashbaord',
     live: null
@@ -141,7 +141,7 @@ const projects = [
   {
     title: `SynChronize-XIM`,
     description: `Website made for XIM University's Testfest event.`,
-    image: null,
+    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800',
     category: 'Web Development',
     github: 'https://github.com/koushikxy/SynChronize-XIM',
     live: null
@@ -149,7 +149,7 @@ const projects = [
   {
     title: `Voting System`,
     description: `A digital voting system application.`,
-    image: null,
+    image: 'https://images.unsplash.com/photo-1547658719-da2b51159128?auto=format&fit=crop&q=80&w=800',
     category: 'Web Development',
     github: 'https://github.com/koushikxy/voting_system',
     live: null
@@ -157,7 +157,7 @@ const projects = [
   {
     title: `YouTube Analysis`,
     description: `Python script for analyzing YouTube comments, sentiment analysis, word clouds, and emoji frequencies.`,
-    image: null,
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
     category: 'Data Analytics',
     github: 'https://github.com/koushikxy/Youtube_Analysis',
     live: null
@@ -165,7 +165,7 @@ const projects = [
   {
     title: `Zamp Invoice Processor`,
     description: `Invoice processing tool.`,
-    image: null,
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800',
     category: 'Other',
     github: 'https://github.com/koushikxy/zamp-invoice-processor',
     live: null
@@ -173,7 +173,7 @@ const projects = [
   {
     title: `Zomato Analysis`,
     description: `Analyzes Zomato restaurant data from Bengaluru using Pandas, NumPy, Matplotlib, and SQLite.`,
-    image: null,
+    image: 'https://images.unsplash.com/photo-1543286386-2e659306cd6c?auto=format&fit=crop&q=80&w=800',
     category: 'Data Analytics',
     github: 'https://github.com/koushikxy/Zomato_Analysis',
     live: null
