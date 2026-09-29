@@ -24,6 +24,13 @@ const Home = () => {
         {/* HERO SECTION */}
         <div className='relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 md:px-16 lg:px-40 max-w-[1920px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-16'>
           
+          {/* Ambient Background Orbs */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+            <div className="absolute top-[0%] left-[10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] rounded-full bg-[#E79418]/20 dark:bg-[#E79418]/10 blur-[80px] md:blur-[120px] mix-blend-multiply dark:mix-blend-screen animate-blob"></div>
+            <div className="absolute top-[20%] right-[10%] w-[250px] md:w-[400px] h-[250px] md:h-[400px] rounded-full bg-yellow-500/20 dark:bg-yellow-500/10 blur-[80px] md:blur-[120px] mix-blend-multiply dark:mix-blend-screen animate-blob animation-delay-2000"></div>
+            <div className="absolute bottom-[0%] left-[30%] w-[350px] md:w-[600px] h-[350px] md:h-[600px] rounded-full bg-[#E79418]/20 dark:bg-[#E79418]/10 blur-[80px] md:blur-[120px] mix-blend-multiply dark:mix-blend-screen animate-blob animation-delay-4000"></div>
+          </div>
+
           {/* Left Content */}
           <div className='flex-1 z-10 w-full'>
             <div data-aos='fade-up' className='inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-[#151515] border border-slate-200 dark:border-gray-800 shadow-sm mb-6'>
