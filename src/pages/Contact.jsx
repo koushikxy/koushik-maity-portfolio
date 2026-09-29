@@ -36,7 +36,7 @@ const Contact = () => {
   };
 
   return (
-    <div className='bg-[#F5F5F7] dark:bg-[#1D1D1F] min-h-screen font-sans selection:bg-[#E79418] selection:text-white flex flex-col'>
+    <div className='bg-[#F5F5F7] dark:bg-[#1D1D1F] min-h-screen transition-colors duration-300 duration-700 font-sans selection:bg-[#E79418] selection:text-white flex flex-col'>
       <Navbar />
       
       <main className='flex-grow pt-32 pb-20 px-6 md:px-16 lg:px-40 max-w-[1920px] mx-auto w-full'>
@@ -52,7 +52,7 @@ const Contact = () => {
               Contact <span className='text-transparent bg-clip-text bg-gradient-to-r from-[#E79418] via-yellow-400 to-[#E79418] animate-gradient-x'>Me.</span>
             </h1>
           </div>
-          <Link to='/' data-aos='fade-left' data-aos-delay='200' className='text-slate-500 dark:text-slate-400 hover:text-[#E79418] dark:hover:text-[#E79418] flex items-center gap-2 font-bold tracking-[2px] transition-colors uppercase text-sm'>
+          <Link to='/' data-aos='fade-left' data-aos-delay='200' className='text-slate-500 dark:text-slate-400 hover:text-[#E79418] dark:hover:text-[#E79418] flex items-center gap-2 font-bold tracking-[2px] transition-colors duration-300 uppercase text-sm'>
             <FaArrowLeft /> BACK TO HOME
           </Link>
         </div>
@@ -70,32 +70,32 @@ const Contact = () => {
 
             <div className='flex flex-col gap-6 mt-4'>
               <a href='mailto:ksmaity21@gmail.com' className='group flex items-center gap-6 p-4 rounded-2xl hover:bg-white dark:hover:bg-[#151515] border border-transparent hover:border-slate-200 dark:hover:border-gray-800 transition-all duration-300'>
-                <div className='w-14 h-14 shrink-0 rounded-xl bg-[#E79418]/10 flex items-center justify-center group-hover:bg-[#E79418] transition-colors duration-300'>
+                <div className='w-14 h-14 shrink-0 rounded-xl bg-[#E79418]/10 flex items-center justify-center group-hover:bg-[#E79418] transition-colors duration-300 duration-300'>
                   <FaEnvelope className='text-2xl text-[#E79418] group-hover:text-white' />
                 </div>
                 <div>
                   <p className='text-xs font-bold tracking-[2px] text-slate-500 mb-1 uppercase'>Email</p>
-                  <p className='text-lg font-bold text-slate-900 dark:text-white group-hover:text-[#E79418] transition-colors'>ksmaity21@gmail.com</p>
+                  <p className='text-lg font-bold text-slate-900 dark:text-white group-hover:text-[#E79418] transition-colors duration-300'>ksmaity21@gmail.com</p>
                 </div>
               </a>
 
               <a href='https://linkedin.com/in/koushik-maity' target='_blank' rel='noreferrer' className='group flex items-center gap-6 p-4 rounded-2xl hover:bg-white dark:hover:bg-[#151515] border border-transparent hover:border-slate-200 dark:hover:border-gray-800 transition-all duration-300'>
-                <div className='w-14 h-14 shrink-0 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500 transition-colors duration-300'>
+                <div className='w-14 h-14 shrink-0 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500 transition-colors duration-300 duration-300'>
                   <FaLinkedin className='text-2xl text-blue-500 group-hover:text-white' />
                 </div>
                 <div>
                   <p className='text-xs font-bold tracking-[2px] text-slate-500 mb-1 uppercase'>Network</p>
-                  <p className='text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-500 transition-colors'>LinkedIn</p>
+                  <p className='text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-500 transition-colors duration-300'>LinkedIn</p>
                 </div>
               </a>
 
               <a href='https://github.com/koushikxy' target='_blank' rel='noreferrer' className='group flex items-center gap-6 p-4 rounded-2xl hover:bg-white dark:hover:bg-[#151515] border border-transparent hover:border-slate-200 dark:hover:border-gray-800 transition-all duration-300'>
-                <div className='w-14 h-14 shrink-0 rounded-xl bg-slate-200 dark:bg-slate-800 flex items-center justify-center group-hover:bg-slate-900 dark:group-hover:bg-white transition-colors duration-300'>
+                <div className='w-14 h-14 shrink-0 rounded-xl bg-slate-200 dark:bg-slate-800 flex items-center justify-center group-hover:bg-slate-900 dark:group-hover:bg-white transition-colors duration-300 duration-300'>
                   <FaGithub className='text-2xl text-slate-700 dark:text-slate-300 group-hover:text-white dark:group-hover:text-slate-900' />
                 </div>
                 <div>
                   <p className='text-xs font-bold tracking-[2px] text-slate-500 mb-1 uppercase'>Code</p>
-                  <p className='text-lg font-bold text-slate-900 dark:text-white group-hover:text-slate-900 dark:group-hover:text-slate-300 transition-colors'>GitHub</p>
+                  <p className='text-lg font-bold text-slate-900 dark:text-white group-hover:text-slate-900 dark:group-hover:text-slate-300 transition-colors duration-300'>GitHub</p>
                 </div>
               </a>
             </div>
@@ -114,17 +114,17 @@ const Contact = () => {
                 <div className='flex flex-col md:flex-row gap-8'>
                   <div className='flex flex-col gap-3 flex-1'>
                     <label className='text-xs font-bold tracking-[2px] text-slate-500 uppercase'>Your Name</label>
-                    <input type='text' name='name' required className='bg-slate-50 dark:bg-[#1a1a1c] border-b-2 border-slate-200 dark:border-gray-800 p-4 text-slate-900 dark:text-white focus:outline-none focus:border-[#E79418] dark:focus:border-[#E79418] transition-colors rounded-t-xl font-medium placeholder-slate-400 dark:placeholder-slate-600' placeholder='John Doe' />
+                    <input type='text' name='name' required className='bg-slate-50 dark:bg-[#1a1a1c] border-b-2 border-slate-200 dark:border-gray-800 p-4 text-slate-900 dark:text-white focus:outline-none focus:border-[#E79418] dark:focus:border-[#E79418] transition-colors duration-300 rounded-t-xl font-medium placeholder-slate-400 dark:placeholder-slate-600' placeholder='John Doe' />
                   </div>
                   <div className='flex flex-col gap-3 flex-1'>
                     <label className='text-xs font-bold tracking-[2px] text-slate-500 uppercase'>Your Email</label>
-                    <input type='email' name='email' required className='bg-slate-50 dark:bg-[#1a1a1c] border-b-2 border-slate-200 dark:border-gray-800 p-4 text-slate-900 dark:text-white focus:outline-none focus:border-[#E79418] dark:focus:border-[#E79418] transition-colors rounded-t-xl font-medium placeholder-slate-400 dark:placeholder-slate-600' placeholder='john@company.com' />
+                    <input type='email' name='email' required className='bg-slate-50 dark:bg-[#1a1a1c] border-b-2 border-slate-200 dark:border-gray-800 p-4 text-slate-900 dark:text-white focus:outline-none focus:border-[#E79418] dark:focus:border-[#E79418] transition-colors duration-300 rounded-t-xl font-medium placeholder-slate-400 dark:placeholder-slate-600' placeholder='john@company.com' />
                   </div>
                 </div>
 
                 <div className='flex flex-col gap-3'>
                   <label className='text-xs font-bold tracking-[2px] text-slate-500 uppercase'>Your Message</label>
-                  <textarea name='message' required rows='6' className='bg-slate-50 dark:bg-[#1a1a1c] border-b-2 border-slate-200 dark:border-gray-800 p-4 text-slate-900 dark:text-white focus:outline-none focus:border-[#E79418] dark:focus:border-[#E79418] transition-colors rounded-t-xl font-medium resize-none placeholder-slate-400 dark:placeholder-slate-600' placeholder="Tell me about your project..."></textarea>
+                  <textarea name='message' required rows='6' className='bg-slate-50 dark:bg-[#1a1a1c] border-b-2 border-slate-200 dark:border-gray-800 p-4 text-slate-900 dark:text-white focus:outline-none focus:border-[#E79418] dark:focus:border-[#E79418] transition-colors duration-300 rounded-t-xl font-medium resize-none placeholder-slate-400 dark:placeholder-slate-600' placeholder="Tell me about your project..."></textarea>
                 </div>
                 
                 <button type='submit' disabled={status === 'sending'} className='group mt-4 bg-[#E79418] text-white font-bold tracking-[2px] py-5 rounded-xl hover:shadow-[0_0_30px_rgba(231,148,24,0.4)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed'>

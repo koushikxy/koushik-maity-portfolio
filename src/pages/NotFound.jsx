@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 
 const NotFound = () => {
   return (
-    <div className='bg-[#F5F5F7] dark:bg-[#1D1D1F] min-h-screen font-sans selection:bg-[#E79418] selection:text-white flex flex-col'>
+    <div className='bg-[#F5F5F7] dark:bg-[#1D1D1F] min-h-screen transition-colors duration-700 font-sans selection:bg-[#E79418] selection:text-white flex flex-col'>
       <Navbar />
       
       <main className='flex-grow flex flex-col items-center justify-center px-6 text-center pt-32 pb-20'>

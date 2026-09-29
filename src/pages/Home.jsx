@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className='bg-[#F5F5F7] dark:bg-[#1D1D1F] min-h-screen w-full font-sans overflow-x-hidden'>
+      <div className='bg-[#F5F5F7] dark:bg-[#1D1D1F] min-h-screen transition-colors duration-700 w-full font-sans overflow-x-hidden'>
         
         {/* HERO SECTION */}
         <div className='relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 md:px-16 lg:px-40 max-w-[1920px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-16'>

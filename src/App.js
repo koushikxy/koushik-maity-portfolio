@@ -18,7 +18,12 @@ import ScrollToTop from './components/ScrollToTop'
 
 const App = () => {
   useEffect(() => {
-    AOS.init();
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 50,
+    });
   }, []);
   return (
     <>

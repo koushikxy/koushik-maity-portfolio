@@ -6,7 +6,7 @@ import { FaArrowLeft, FaBriefcase, FaCalendarAlt } from 'react-icons/fa'
 
 const Experience = () => {
   return (
-    <div className='bg-[#F5F5F7] dark:bg-[#1D1D1F] min-h-screen font-sans selection:bg-[#E79418] selection:text-white flex flex-col'>
+    <div className='bg-[#F5F5F7] dark:bg-[#1D1D1F] min-h-screen transition-colors duration-700 font-sans selection:bg-[#E79418] selection:text-white flex flex-col'>
       <Navbar />
       
       <main className='flex-grow pt-32 pb-20 px-6 md:px-16 lg:px-40 max-w-[1920px] mx-auto w-full'>
