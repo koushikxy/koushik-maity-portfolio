@@ -25,7 +25,7 @@ const Skill = () => {
           </Link>
         </div>
 
-        <div className='flex flex-col gap-12 mt-8 max-w-5xl relative z-10'>
+        <div className='flex flex-col gap-12 mt-8 relative z-10'>
           
           <div data-aos='fade-up' data-aos-delay='100' className='border-b border-slate-200 dark:border-slate-800 pb-10 relative'>
             <h1 className='text-slate-900 dark:text-white font-extrabold text-2xl tracking-[2px] mb-8 uppercase flex items-center gap-4'>
