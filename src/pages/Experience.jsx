@@ -11,7 +11,6 @@ const Experience = () => {
       
       <main className='flex-grow pt-32 pb-20 px-6 md:px-16 lg:px-40 max-w-[1920px] mx-auto w-full'>
         
-        {/* Header Section */}
         <div className='flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20'>
           <div>
             <div data-aos='fade-up' className='inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-[#151515] border border-slate-200 dark:border-gray-800 shadow-sm mb-6'>
@@ -27,34 +26,27 @@ const Experience = () => {
           </Link>
         </div>
 
-        {/* Timeline Container */}
         <div className='relative max-w-5xl mx-auto'>
           
-          {/* Glowing Vertical Line (Hidden on Mobile, Center on Desktop) */}
           <div className='hidden md:block absolute left-[50%] top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-[#E79418]/30 to-transparent -translate-x-1/2'></div>
 
-          {/* Job 1: Turing */}
           <div data-aos='fade-up' className='relative flex flex-col md:flex-row justify-between items-center w-full mb-12 md:mb-24 group'>
-            {/* Timeline Node (Desktop) */}
             <div className='hidden md:flex absolute left-[50%] w-12 h-12 rounded-full bg-[#111111] border-4 border-[#E79418] -translate-x-1/2 items-center justify-center shadow-[0_0_20px_rgba(231,148,24,0.4)] group-hover:scale-125 group-hover:bg-[#E79418] transition-all duration-300 z-10'>
               <FaBriefcase className='text-[#E79418] group-hover:text-white text-lg transition-colors' />
             </div>
 
-            {/* Content Left (Date on Desktop) */}
             <div className='hidden md:block w-5/12 text-right pr-14'>
               <div className='inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#E79418]/10 text-[#E79418] border border-[#E79418]/30 font-bold tracking-[2px] text-xs uppercase shadow-[0_0_15px_rgba(231,148,24,0.15)] hover:bg-[#E79418]/20 transition-colors'>
                 <FaCalendarAlt /> Mar 2026 - Aug 2026
               </div>
             </div>
 
-            {/* Content Right (Card) */}
             <div className='w-full md:w-5/12 md:pl-14'>
               <div className='md:hidden inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E79418]/10 text-[#E79418] border border-[#E79418]/30 font-bold tracking-[2px] text-xs uppercase mb-6 shadow-[0_0_15px_rgba(231,148,24,0.1)]'>
                 <FaCalendarAlt /> Mar 2026 - Aug 2026
               </div>
               
               <div className='bg-white dark:bg-[#151515] p-8 md:p-10 rounded-[2.5rem] border border-slate-200 dark:border-gray-800 shadow-xl group-hover:border-[#E79418]/50 group-hover:shadow-[0_0_40px_rgba(231,148,24,0.15)] transition-all duration-300 relative overflow-hidden'>
-                {/* Accent line on card */}
                 <div className='absolute left-0 top-0 bottom-0 w-1 bg-[#E79418]'></div>
                 
                 <h3 className='text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white mb-2'>Business Analyst</h3>
@@ -75,7 +67,6 @@ const Experience = () => {
                   </li>
                 </ul>
                 
-                {/* Tech Pills */}
                 <div className='flex flex-wrap gap-2 mt-8 pt-6 border-t border-slate-200 dark:border-gray-800'>
                   {['Data Quality', 'AI Evaluation', 'Metrics'].map(tech => (
                     <span key={tech} className='px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-[#1a1a1c] text-slate-600 dark:text-slate-400 text-[10px] font-bold tracking-widest uppercase'>{tech}</span>
@@ -85,28 +76,23 @@ const Experience = () => {
             </div>
           </div>
 
-          {/* Job 2: Distil Ventures */}
           <div data-aos='fade-up' className='relative flex flex-col md:flex-row-reverse justify-between items-center w-full group'>
-            {/* Timeline Node (Desktop) */}
             <div className='hidden md:flex absolute left-[50%] w-10 h-10 rounded-full bg-[#111111] border-4 border-slate-700 -translate-x-1/2 items-center justify-center group-hover:border-[#E79418] group-hover:shadow-[0_0_20px_rgba(231,148,24,0.4)] group-hover:scale-125 transition-all duration-300 z-10'>
               <FaBriefcase className='text-slate-500 group-hover:text-[#E79418] text-sm transition-colors' />
             </div>
 
-            {/* Content Left (Date on Desktop) */}
             <div className='hidden md:block w-5/12 text-left pl-14'>
               <div className='inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-200 dark:bg-[#1a1a1c] text-slate-600 dark:text-slate-400 border border-slate-300 dark:border-gray-700 font-bold tracking-[2px] text-xs uppercase hover:bg-slate-300 dark:hover:bg-gray-800 transition-colors'>
                 <FaCalendarAlt /> Apr 2024 - Jul 2024
               </div>
             </div>
 
-            {/* Content Right (Card) */}
             <div className='w-full md:w-5/12 md:pr-14'>
               <div className='md:hidden inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-200 dark:bg-[#1a1a1c] text-slate-600 dark:text-slate-400 border border-slate-300 dark:border-gray-700 font-bold tracking-[2px] text-xs uppercase mb-6'>
                 <FaCalendarAlt /> Apr 2024 - Jul 2024
               </div>
               
               <div className='bg-white dark:bg-[#151515] p-8 md:p-10 rounded-[2.5rem] border border-slate-200 dark:border-gray-800 shadow-xl group-hover:border-slate-400 dark:group-hover:border-slate-600 transition-all duration-300 relative overflow-hidden md:text-right'>
-                {/* Accent line on card */}
                 <div className='hidden md:block absolute right-0 top-0 bottom-0 w-1 bg-slate-400 dark:bg-slate-600'></div>
                 <div className='md:hidden absolute left-0 top-0 bottom-0 w-1 bg-slate-400 dark:bg-slate-600'></div>
                 
@@ -124,7 +110,6 @@ const Experience = () => {
                   </li>
                 </ul>
                 
-                {/* Tech Pills */}
                 <div className='flex flex-wrap md:justify-end gap-2 mt-8 pt-6 border-t border-slate-200 dark:border-gray-800'>
                   {['React', 'MERN', 'Leadership'].map(tech => (
                     <span key={tech} className='px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-[#1a1a1c] text-slate-600 dark:text-slate-400 text-[10px] font-bold tracking-widest uppercase'>{tech}</span>

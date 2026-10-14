@@ -10,7 +10,6 @@ const Skill = () => {
       <Navbar />
       
       <main className='flex-grow pt-32 pb-20 px-6 md:px-16 lg:px-40 max-w-[1920px] mx-auto w-full'>
-        {/* Header Section */}
         <div className='flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20'>
           <div>
             <div data-aos='fade-up' className='inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-[#151515] border border-slate-200 dark:border-gray-800 shadow-sm mb-6'>
@@ -26,10 +25,8 @@ const Skill = () => {
           </Link>
         </div>
 
-        {/* Skills Vertical List */}
         <div className='flex flex-col gap-12 mt-8 max-w-5xl relative z-10'>
           
-          {/* Analytics */}
           <div data-aos='fade-up' data-aos-delay='100' className='border-b border-slate-200 dark:border-slate-800 pb-10 relative'>
             <h1 className='text-slate-900 dark:text-white font-extrabold text-2xl tracking-[2px] mb-8 uppercase flex items-center gap-4'>
               <span className='w-3 h-3 rounded-full bg-[#E79418] shadow-[0_0_10px_rgba(231,148,24,0.6)]'></span>
@@ -44,7 +41,6 @@ const Skill = () => {
             </div>
           </div>
 
-          {/* Software & Tools */}
           <div data-aos='fade-up' data-aos-delay='150' className='border-b border-slate-200 dark:border-slate-800 pb-10 relative'>
             <h1 className='text-slate-900 dark:text-white font-extrabold text-2xl tracking-[2px] mb-8 uppercase flex items-center gap-4'>
               <span className='w-3 h-3 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.6)]'></span>
@@ -59,7 +55,6 @@ const Skill = () => {
             </div>
           </div>
 
-          {/* Programming */}
           <div data-aos='fade-up' data-aos-delay='200' className='border-b border-slate-200 dark:border-slate-800 pb-10 relative'>
             <h1 className='text-slate-900 dark:text-white font-extrabold text-2xl tracking-[2px] mb-8 uppercase flex items-center gap-4'>
               <span className='w-3 h-3 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.6)]'></span>
@@ -74,7 +69,6 @@ const Skill = () => {
             </div>
           </div>
 
-          {/* Web Tech */}
           <div data-aos='fade-up' data-aos-delay='250' className='pb-10 relative'>
             <h1 className='text-slate-900 dark:text-white font-extrabold text-2xl tracking-[2px] mb-8 uppercase flex items-center gap-4'>
               <span className='w-3 h-3 rounded-full bg-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.6)]'></span>

@@ -41,7 +41,6 @@ const Contact = () => {
       
       <main className='flex-grow pt-32 pb-20 px-6 md:px-16 lg:px-40 max-w-[1920px] mx-auto w-full'>
         
-        {/* Header Section */}
         <div className='flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20'>
           <div>
             <div data-aos='fade-up' className='inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-[#151515] border border-slate-200 dark:border-gray-800 shadow-sm mb-6'>
@@ -59,7 +58,6 @@ const Contact = () => {
 
         <div className='flex flex-col lg:flex-row gap-16 lg:gap-24 relative z-10 max-w-6xl mx-auto'>
           
-          {/* Contact Info (Left Side) */}
           <div data-aos='fade-right' data-aos-delay='100' className='lg:w-5/12 flex flex-col gap-10'>
             <div>
               <h2 className='text-slate-900 dark:text-white text-3xl md:text-4xl font-extrabold tracking-wide mb-6'>Let's build something <span className='text-[#E79418]'>great.</span></h2>
@@ -101,10 +99,8 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Form (Right Side) */}
           <div data-aos='fade-up' data-aos-delay='200' className='lg:w-7/12'>
             <div className='relative bg-white dark:bg-[#151515] p-8 md:p-12 rounded-[2.5rem] border border-slate-200 dark:border-gray-800 shadow-xl overflow-hidden group'>
-              {/* Background ambient glow */}
               <div className='absolute right-0 top-0 w-64 h-64 bg-[#E79418]/5 blur-[80px] rounded-full pointer-events-none'></div>
 
               <form className='flex flex-col gap-8 relative z-10' onSubmit={handleSubmit}>

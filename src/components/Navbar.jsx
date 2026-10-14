@@ -6,7 +6,6 @@ const Navbar = () => {
     const [click, setClick] = useState(false);
     const location = useLocation();
     
-    // Use localStorage to persist theme across page navigation
     const [isDark, setIsDark] = useState(() => {
         const saved = localStorage.getItem('theme');
         if (saved !== null) {
@@ -25,7 +24,6 @@ const Navbar = () => {
         }
     }, [isDark]);
 
-    // Prevent background scrolling when mobile menu is open
     useEffect(() => {
         if (click) {
             document.body.style.overflow = 'hidden';
@@ -40,16 +38,14 @@ const Navbar = () => {
     return (
         <nav className='flex justify-between items-center py-5 px-6 lg:px-16 bg-[#F5F5F7] dark:bg-[#1D1D1F] fixed w-full z-50 border-b border-slate-300 dark:border-gray-700 shadow-sm transition-colors duration-300'>
             
-            {/* Left: Logo */}
             <div>
                 <Link to='/' onClick={() => setClick(false)}>
                     <h1 className='font-bold text-slate-900 dark:text-white text-3xl tracking-[3px] hover:scale-105 transition-transform'>
-                        KOUSHIK<span className='text-[#E79418]'>.io</span>
+                        KOUSHIK<span className='text-[#E79418]'>.</span>
                     </h1>
                 </Link>
             </div>
 
-            {/* Right: Nav Links & Controls (Desktop) */}
             <div className='hidden lg:flex items-center gap-10'>
                 <ul className='flex gap-10 items-center text-slate-900 dark:text-white text-lg font-semibold tracking-[2px]'>
                     <Link to='/' onClick={() => setClick(false)}>
@@ -72,10 +68,8 @@ const Navbar = () => {
                     </Link>
                 </ul>
                 
-                {/* Vertical Divider */}
                 <div className='w-px h-8 bg-slate-300 dark:bg-slate-700'></div>
 
-                {/* Desktop Theme Toggle */}
                 <button 
                     onClick={toggleTheme} 
                     className='relative flex items-center justify-center w-12 h-12 rounded-full bg-slate-200 dark:bg-[#252528] text-slate-600 dark:text-slate-300 hover:text-[#E79418] dark:hover:text-[#E79418] border border-slate-300 dark:border-slate-700 hover:border-[#E79418] dark:hover:border-[#E79418] transition-all duration-300 shadow-sm hover:scale-110 hover:shadow-[0_0_10px_rgba(231,148,24,0.2)] overflow-hidden'
@@ -90,7 +84,6 @@ const Navbar = () => {
                 </button>
             </div>
 
-            {/* Mobile Controls */}
             <div className='flex items-center gap-4 lg:hidden'>
                 <button 
                     onClick={toggleTheme} 
@@ -108,7 +101,6 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* Mobile Nav Menu */}
             <ul className={`fixed top-[80px] left-0 w-full h-[calc(100vh-80px)] pt-16 pb-10 overflow-y-auto z-20 flex flex-col items-center gap-10 text-2xl font-bold tracking-[3px] bg-[#F5F5F7]/95 dark:bg-[#1D1D1F]/95 backdrop-blur-lg text-slate-900 dark:text-white transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] lg:hidden ${click ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}>
                 <Link to='/' onClick={() => setClick(false)}>
                     <li className={`hover:scale-110 transition-all duration-200 ${location.pathname === '/' ? 'text-[#E79418]' : 'hover:text-[#E79418]'}`}>HOME</li>
