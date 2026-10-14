@@ -57,7 +57,7 @@ const Home = () => {
                   <span className='text-[#E79418]'>
                     <Typewriter
                       options={{
-                        strings: ['BUSINESS_ANALYST', 'DATA_ANALYST'],
+                        strings: ['DATA_ANALYST'],
                         autoStart: true,
                         loop: true,
                         cursor: '█',
@@ -72,11 +72,11 @@ const Home = () => {
             </div>
 
             <p data-aos='fade-up' data-aos-delay='300' className='text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed mb-10 font-medium'>
-              I’m a Business Analyst with a deep technical root in Computer Science. While I have the coding chops Python, my true expertise lies in analytics, SQL, Power BI, and Tableau. At Turing, I specialize in ensuring AI data quality and architecting business intelligence models. Beyond the screen, I’m a natural leader who enjoys collaborating with teams to turn complex numbers into simple, strategic decisions.
+              I’m a data analyst with a B.Tech in Computer Science. I work mostly in SQL, Python, Power BI and Excel, and I like taking messy real-world data and turning it into clear answers someone can act on. Most recently I was a freelance Business Analyst at Turing, evaluating AI model responses and tracking quality metrics.
             </p>
 
             <div data-aos='fade-up' data-aos-delay='400' className='flex flex-wrap items-center gap-6'>
-              <a href='https://drive.google.com/file/d/13kx61CnCnyX0Nulokdjsgtx21eV50PH4/view?usp=sharing' target='_blank' rel='noreferrer' className='flex items-center gap-3 bg-[#E79418] text-white px-8 py-4 rounded-full font-bold tracking-[1.5px] hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(231,148,24,0.3)] hover:shadow-[0_0_30px_rgba(231,148,24,0.6)]'>
+              <a href='/Koushik_Maity_Data_Analyst_CV.pdf' target='_blank' rel='noreferrer' className='flex items-center gap-3 bg-[#E79418] text-white px-8 py-4 rounded-full font-bold tracking-[1.5px] hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(231,148,24,0.3)] hover:shadow-[0_0_30px_rgba(231,148,24,0.6)]'>
                 <FaFileDownload /> RESUME
               </a>
               <Link to='/Project' className='flex items-center gap-3 bg-white dark:bg-[#151515] text-slate-900 dark:text-white border-2 border-slate-200 dark:border-gray-800 px-8 py-4 rounded-full font-bold tracking-[1.5px] hover:border-[#E79418] dark:hover:border-[#E79418] hover:text-[#E79418] dark:hover:text-[#E79418] transition-all duration-300'>
@@ -111,8 +111,8 @@ const Home = () => {
           <div data-aos='fade-up' data-aos-delay='600' className='grid grid-cols-2 md:grid-cols-4 gap-0 bg-white dark:bg-[#151515] rounded-3xl border border-slate-200 dark:border-gray-800 shadow-2xl overflow-hidden'>
             
             <div className='flex flex-col items-center justify-center p-8 border-b md:border-b-0 border-r border-slate-200 dark:border-gray-800 hover:bg-slate-50 dark:hover:bg-[#111111] transition-colors group'>
-              <h3 className='text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-2 group-hover:scale-110 transition-transform'>20<span className='text-[#E79418]'>+</span></h3>
-              <p className='text-[10px] md:text-xs font-bold tracking-[2px] text-slate-500 uppercase text-center'>Projects Completed</p>
+              <h3 className='text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-2 group-hover:scale-110 transition-transform'>4</h3>
+              <p className='text-[10px] md:text-xs font-bold tracking-[2px] text-slate-500 uppercase text-center'>Data Projects</p>
             </div>
             
             <div className='flex flex-col items-center justify-center p-8 border-b md:border-b-0 md:border-r border-slate-200 dark:border-gray-800 hover:bg-slate-50 dark:hover:bg-[#111111] transition-colors group'>
@@ -121,13 +121,13 @@ const Home = () => {
             </div>
             
             <div className='flex flex-col items-center justify-center p-8 border-r border-slate-200 dark:border-gray-800 hover:bg-slate-50 dark:hover:bg-[#111111] transition-colors group'>
-              <h3 className='text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-2 group-hover:scale-110 transition-transform'>1<span className='text-[#E79418]'>M+</span></h3>
+              <h3 className='text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-2 group-hover:scale-110 transition-transform'>34<span className='text-[#E79418]'>M+</span></h3>
               <p className='text-[10px] md:text-xs font-bold tracking-[2px] text-slate-500 uppercase text-center'>Rows Analyzed</p>
             </div>
             
             <div className='flex flex-col items-center justify-center p-8 hover:bg-slate-50 dark:hover:bg-[#111111] transition-colors group'>
-              <h3 className='text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-2 group-hover:scale-110 transition-transform'>∞</h3>
-              <p className='text-[10px] md:text-xs font-bold tracking-[2px] text-slate-500 uppercase text-center'>Lines of Code</p>
+              <h3 className='text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-2 group-hover:scale-110 transition-transform'>2</h3>
+              <p className='text-[10px] md:text-xs font-bold tracking-[2px] text-slate-500 uppercase text-center'>Work Experiences</p>
             </div>
 
           </div>
@@ -152,15 +152,15 @@ const Home = () => {
             <span className='opacity-50'>•</span>
             <span>POWER BI</span>
             <span className='opacity-50'>•</span>
-            <span>TABLEAU</span>
+            <span>DAX</span>
             <span className='opacity-50'>•</span>
             <span>SQL</span>
             <span className='opacity-50'>•</span>
             <span>EXCEL</span>
             <span className='opacity-50'>•</span>
-            <span>DATA STRATEGY</span>
+            <span>POWER QUERY</span>
             <span className='opacity-50'>•</span>
-            <span>PREDICTIVE MODELING</span>
+            <span>PANDAS</span>
             <span className='opacity-50'>•</span>
             
             {/* Duplicated for infinite loop effect */}
@@ -168,15 +168,15 @@ const Home = () => {
             <span className='opacity-50'>•</span>
             <span>POWER BI</span>
             <span className='opacity-50'>•</span>
-            <span>TABLEAU</span>
+            <span>DAX</span>
             <span className='opacity-50'>•</span>
             <span>SQL</span>
             <span className='opacity-50'>•</span>
             <span>EXCEL</span>
             <span className='opacity-50'>•</span>
-            <span>DATA STRATEGY</span>
+            <span>POWER QUERY</span>
             <span className='opacity-50'>•</span>
-            <span>PREDICTIVE MODELING</span>
+            <span>PANDAS</span>
             <span className='opacity-50'>•</span>
 
             {/* Duplicated again for large screens */}
@@ -188,9 +188,9 @@ const Home = () => {
             <span className='opacity-50'>•</span>
             <span>EXCEL</span>
             <span className='opacity-50'>•</span>
-            <span>DATA STRATEGY</span>
+            <span>POWER QUERY</span>
             <span className='opacity-50'>•</span>
-            <span>PREDICTIVE MODELING</span>
+            <span>PANDAS</span>
             <span className='opacity-50'>•</span>
           </div>
         </div>
@@ -256,7 +256,7 @@ const Home = () => {
               </div>
               <h4 className='text-xl font-bold text-slate-900 dark:text-white mb-4 tracking-wide group-hover:text-[#E79418] transition-colors'>Business Intelligence</h4>
               <p className='text-slate-600 dark:text-slate-400 font-medium leading-relaxed'>
-                Data is only as valuable as the decisions it drives. I design dynamic, interactive Power BI and Tableau dashboards that highlight key performance indicators, enabling stakeholders to visualize trends and make strategic choices.
+                Data is only as valuable as the decisions it drives. I design dynamic, interactive Power BI and Excel dashboards that highlight key performance indicators, enabling stakeholders to visualize trends and make strategic choices.
               </p>
             </div>
 
@@ -267,7 +267,7 @@ const Home = () => {
               </div>
               <h4 className='text-xl font-bold text-slate-900 dark:text-white mb-4 tracking-wide group-hover:text-[#E79418] transition-colors'>Quality & Evaluation</h4>
               <p className='text-slate-600 dark:text-slate-400 font-medium leading-relaxed'>
-                Currently at Turing, I rigorously evaluate AI-generated outputs for data quality and accuracy. I ensure that analytical models meet the highest standards, bridging the gap between raw information and reliable intelligence.
+                At Turing, I evaluated AI-generated responses against quality rubrics and tracked quality metrics every week. It taught me to check data carefully before trusting what it says.
               </p>
             </div>
 

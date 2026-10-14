@@ -43,14 +43,14 @@ const Experience = () => {
             {/* Content Left (Date on Desktop) */}
             <div className='hidden md:block w-5/12 text-right pr-14'>
               <div className='inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#E79418]/10 text-[#E79418] border border-[#E79418]/30 font-bold tracking-[2px] text-xs uppercase shadow-[0_0_15px_rgba(231,148,24,0.15)] hover:bg-[#E79418]/20 transition-colors'>
-                <FaCalendarAlt /> Mar 2026 - Present
+                <FaCalendarAlt /> Mar 2026 - Aug 2026
               </div>
             </div>
 
             {/* Content Right (Card) */}
             <div className='w-full md:w-5/12 md:pl-14'>
               <div className='md:hidden inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E79418]/10 text-[#E79418] border border-[#E79418]/30 font-bold tracking-[2px] text-xs uppercase mb-6 shadow-[0_0_15px_rgba(231,148,24,0.1)]'>
-                <FaCalendarAlt /> Mar 2026 - Present
+                <FaCalendarAlt /> Mar 2026 - Aug 2026
               </div>
               
               <div className='bg-white dark:bg-[#151515] p-8 md:p-10 rounded-[2.5rem] border border-slate-200 dark:border-gray-800 shadow-xl group-hover:border-[#E79418]/50 group-hover:shadow-[0_0_40px_rgba(231,148,24,0.15)] transition-all duration-300 relative overflow-hidden'>

@@ -79,7 +79,7 @@ const Contact = () => {
                 </div>
               </a>
 
-              <a href='https://linkedin.com/in/koushik-maity' target='_blank' rel='noreferrer' className='group flex items-center gap-6 p-4 rounded-2xl hover:bg-white dark:hover:bg-[#151515] border border-transparent hover:border-slate-200 dark:hover:border-gray-800 transition-all duration-300'>
+              <a href='https://www.linkedin.com/in/ksmaity/' target='_blank' rel='noreferrer' className='group flex items-center gap-6 p-4 rounded-2xl hover:bg-white dark:hover:bg-[#151515] border border-transparent hover:border-slate-200 dark:hover:border-gray-800 transition-all duration-300'>
                 <div className='w-14 h-14 shrink-0 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500 transition-colors duration-300 duration-300'>
                   <FaLinkedin className='text-2xl text-blue-500 group-hover:text-white' />
                 </div>
