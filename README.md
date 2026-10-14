@@ -9,8 +9,8 @@ Built with React, Tailwind CSS and React Router, with AOS for scroll animations.
 ## Run it locally
 
 ```
-git clone https://github.com/koushikxy/koushikMaity.git
-cd koushikMaity
+git clone https://github.com/koushikxy/koushik-maity-portfolio.git
+cd koushik-maity-portfolio
 npm install
 npm start
 ```
