@@ -21,17 +21,14 @@ const Home = () => {
       <Navbar />
       <div className='bg-[#F5F5F7] dark:bg-[#1D1D1F] min-h-screen transition-colors duration-700 w-full font-sans overflow-x-hidden'>
         
-        {/* HERO SECTION */}
         <div className='relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 md:px-16 lg:px-40 max-w-[1920px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-16'>
           
-          {/* Ambient Background Orbs */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
             <div className="absolute top-[0%] left-[10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] rounded-full bg-[#E79418]/20 dark:bg-[#E79418]/10 blur-[80px] md:blur-[120px] mix-blend-multiply dark:mix-blend-screen animate-blob"></div>
             <div className="absolute top-[20%] right-[10%] w-[250px] md:w-[400px] h-[250px] md:h-[400px] rounded-full bg-yellow-500/20 dark:bg-yellow-500/10 blur-[80px] md:blur-[120px] mix-blend-multiply dark:mix-blend-screen animate-blob animation-delay-2000"></div>
             <div className="absolute bottom-[0%] left-[30%] w-[350px] md:w-[600px] h-[350px] md:h-[600px] rounded-full bg-[#E79418]/20 dark:bg-[#E79418]/10 blur-[80px] md:blur-[120px] mix-blend-multiply dark:mix-blend-screen animate-blob animation-delay-4000"></div>
           </div>
 
-          {/* Left Content */}
           <div className='flex-1 z-10 w-full'>
             <div data-aos='fade-up' className='inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-[#151515] border border-slate-200 dark:border-gray-800 shadow-sm mb-6'>
               <span className='w-2 h-2 rounded-full bg-[#E79418] animate-pulse'></span>
@@ -45,13 +42,11 @@ const Home = () => {
             <div data-aos='fade-up' data-aos-delay='200' className='mb-10'>
               <div className='inline-flex items-center gap-3 md:gap-4 px-6 md:px-8 py-3 md:py-4 rounded-2xl bg-white dark:bg-[#111111] border border-slate-200 dark:border-gray-800 shadow-xl relative overflow-hidden group hover:border-[#E79418]/50 transition-colors duration-300'>
                 
-                {/* Blinking radar dot */}
                 <div className='relative flex h-4 w-4 md:h-5 md:w-5 shrink-0'>
                   <span className='animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E79418] opacity-75'></span>
                   <span className='relative inline-flex rounded-full h-4 w-4 md:h-5 md:w-5 bg-[#E79418] shadow-[0_0_10px_rgba(231,148,24,0.8)]'></span>
                 </div>
                 
-                {/* Terminal Text */}
                 <div className='font-mono text-[13px] md:text-lg font-bold tracking-[2px] md:tracking-[4px] text-slate-900 dark:text-white flex items-center gap-2 md:gap-3 relative z-10 uppercase whitespace-nowrap'>
                   <span className='text-slate-400 dark:text-slate-600 hidden sm:inline-block'>SYS.ROLE //</span>
                   <span className='text-[#E79418]'>
@@ -85,16 +80,12 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Right Content / Image */}
           <div data-aos='fade-left' data-aos-delay='300' className='flex-1 relative w-full max-w-md lg:max-w-none flex justify-center lg:justify-end'>
-            {/* Ambient Background Glow */}
             <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#E79418] blur-[120px] opacity-20 dark:opacity-30 rounded-full pointer-events-none'></div>
             
-            {/* Image Container */}
             <div className='relative z-10 p-2 rounded-[3rem] bg-white dark:bg-[#151515] border border-slate-200 dark:border-gray-800 shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500 overflow-hidden'>
               <img src={koushik} alt="Koushik Maity" className='w-full max-w-[350px] lg:max-w-[420px] rounded-[2.5rem] object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-500' />
               
-              {/* Floating Stat Badge */}
               <div className='absolute -bottom-4 md:-bottom-6 -left-4 md:-left-6 bg-white dark:bg-[#1a1a1c] border border-slate-200 dark:border-gray-800 p-4 md:p-5 rounded-2xl shadow-xl flex items-center gap-4 animate-bounce' style={{animationDuration: '3s'}}>
                 <div className='w-4 h-4 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.6)]'></div>
                 <div>
@@ -106,7 +97,6 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Quick Stats Bar */}
         <div className='max-w-[1920px] mx-auto px-6 md:px-16 lg:px-40 -mt-10 mb-16 relative z-20'>
           <div data-aos='fade-up' data-aos-delay='600' className='grid grid-cols-2 md:grid-cols-4 gap-0 bg-white dark:bg-[#151515] rounded-3xl border border-slate-200 dark:border-gray-800 shadow-2xl overflow-hidden'>
             
@@ -133,7 +123,6 @@ const Home = () => {
           </div>
         </div>
 
-        {/* INFINITE SCROLLING TECH TICKER */}
         <div className='py-6 bg-[#E79418] border-y border-[#E79418] overflow-hidden relative flex w-full shadow-inner'>
           <style>{`
             @keyframes marquee {
@@ -163,7 +152,6 @@ const Home = () => {
             <span>PANDAS</span>
             <span className='opacity-50'>•</span>
             
-            {/* Duplicated for infinite loop effect */}
             <span>PYTHON</span>
             <span className='opacity-50'>•</span>
             <span>POWER BI</span>
@@ -179,7 +167,6 @@ const Home = () => {
             <span>PANDAS</span>
             <span className='opacity-50'>•</span>
 
-            {/* Duplicated again for large screens */}
             <span>PYTHON</span>
             <span className='opacity-50'>•</span>
             <span>POWER BI</span>
@@ -195,11 +182,9 @@ const Home = () => {
           </div>
         </div>
 
-        {/* FEATURED CERTIFICATE BANNER */}
         <div className='px-6 md:px-16 lg:px-40 max-w-[1920px] mx-auto mt-10 md:mt-20'>
           <div data-aos='fade-up' className='relative w-full rounded-[2.5rem] bg-gradient-to-r from-blue-700 to-blue-900 overflow-hidden shadow-[0_20px_50px_rgba(29,78,216,0.3)] p-10 md:p-14 flex flex-col lg:flex-row items-center justify-between gap-10 group'>
              
-             {/* Google Background Accent */}
              <div className='absolute -right-20 -top-20 opacity-10 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none'>
                 <FaGoogle className='text-[300px] text-white' />
              </div>
@@ -222,10 +207,8 @@ const Home = () => {
           </div>
         </div>
 
-        {/* BEYOND THE DATA - 3 Column Grid */}
         <div className='py-24 lg:py-32 px-6 md:px-16 lg:px-40 max-w-[1920px] mx-auto relative'>
           
-          {/* Header */}
           <div className='text-center mb-16 md:mb-24'>
             <h2 data-aos='fade-up' className='text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-[2px] mb-6'>
               Beyond the <span className='text-transparent bg-clip-text bg-gradient-to-r from-[#E79418] via-yellow-400 to-[#E79418] animate-gradient-x'>Data.</span>
@@ -235,10 +218,8 @@ const Home = () => {
             </p>
           </div>
 
-          {/* 3-Column Grid */}
           <div className='grid md:grid-cols-3 gap-8 relative z-10'>
             
-            {/* Block 1 */}
             <div data-aos='fade-up' data-aos-delay='100' className='bg-white dark:bg-[#151515] p-10 rounded-[2rem] border border-slate-200 dark:border-gray-800 shadow-sm hover:shadow-[0_0_40px_rgba(231,148,24,0.05)] hover:-translate-y-2 transition-all duration-500 group'>
               <div className='w-14 h-14 rounded-2xl bg-slate-50 dark:bg-[#1a1a1c] border border-slate-200 dark:border-gray-800 flex items-center justify-center group-hover:border-[#E79418]/50 group-hover:shadow-[0_0_20px_rgba(231,148,24,0.2)] transition-all duration-300 mb-8'>
                 <FaDatabase className='text-2xl text-slate-400 dark:text-slate-500 group-hover:text-[#E79418] transition-colors' />
@@ -249,7 +230,6 @@ const Home = () => {
               </p>
             </div>
 
-            {/* Block 2 */}
             <div data-aos='fade-up' data-aos-delay='200' className='bg-white dark:bg-[#151515] p-10 rounded-[2rem] border border-slate-200 dark:border-gray-800 shadow-sm hover:shadow-[0_0_40px_rgba(231,148,24,0.05)] hover:-translate-y-2 transition-all duration-500 group'>
               <div className='w-14 h-14 rounded-2xl bg-slate-50 dark:bg-[#1a1a1c] border border-slate-200 dark:border-gray-800 flex items-center justify-center group-hover:border-[#E79418]/50 group-hover:shadow-[0_0_20px_rgba(231,148,24,0.2)] transition-all duration-300 mb-8'>
                 <FaChartPie className='text-2xl text-slate-400 dark:text-slate-500 group-hover:text-[#E79418] transition-colors' />
@@ -260,7 +240,6 @@ const Home = () => {
               </p>
             </div>
 
-            {/* Block 3 */}
             <div data-aos='fade-up' data-aos-delay='300' className='bg-white dark:bg-[#151515] p-10 rounded-[2rem] border border-slate-200 dark:border-gray-800 shadow-sm hover:shadow-[0_0_40px_rgba(231,148,24,0.05)] hover:-translate-y-2 transition-all duration-500 group'>
               <div className='w-14 h-14 rounded-2xl bg-slate-50 dark:bg-[#1a1a1c] border border-slate-200 dark:border-gray-800 flex items-center justify-center group-hover:border-[#E79418]/50 group-hover:shadow-[0_0_20px_rgba(231,148,24,0.2)] transition-all duration-300 mb-8'>
                 <FaCheckCircle className='text-2xl text-slate-400 dark:text-slate-500 group-hover:text-[#E79418] transition-colors' />
@@ -273,9 +252,7 @@ const Home = () => {
 
           </div>
 
-          {/* Creative Copy Email Banner */}
           <div className='mt-24 max-w-4xl mx-auto relative group cursor-pointer' data-aos='fade-up' onClick={handleCopyEmail}>
-             {/* Glowing border effect */}
              <div className='absolute -inset-1 bg-gradient-to-r from-[#E79418] via-yellow-500 to-[#E79418] rounded-[2.5rem] blur opacity-25 group-hover:opacity-50 transition duration-500'></div>
              
              <div className='relative w-full bg-white dark:bg-[#111111] p-3 rounded-[2.5rem] flex flex-col md:flex-row items-center justify-between border border-slate-200 dark:border-gray-800'>

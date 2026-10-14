@@ -10,8 +10,7 @@
     scroll-behavior: smooth;
   }
   
-  /* Global Text Selection styling */
-  ::selection {
+    ::selection {
     background-color: #E79418;
     color: #ffffff;
   }
@@ -21,7 +20,6 @@
   }
 }
 
-/* Custom Premium Scrollbar - Light Mode Default */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -36,7 +34,6 @@
   background-color: #E79418;
 }
 
-/* Custom Premium Scrollbar - Dark Mode */
 .dark ::-webkit-scrollbar-track {
   background-color: #111111;
 }
@@ -47,11 +44,9 @@
   background-color: #E79418;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera where needed */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
-/* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -75,7 +70,6 @@
 .animate-float {
     animation: float 6s ease-in-out infinite;
 }
-
 
 @keyframes blob {
   0% { transform: translate(0px, 0px) scale(1); }

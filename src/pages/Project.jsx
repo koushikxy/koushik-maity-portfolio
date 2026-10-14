@@ -97,7 +97,6 @@ const Project = () => {
       
       <main className='flex-grow pt-32 pb-20 px-6 md:px-16 lg:px-40 max-w-[1920px] mx-auto w-full'>
         
-        {/* Header Section */}
         <div className='flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16'>
           <div>
             <div data-aos='fade-up' className='inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-[#151515] border border-slate-200 dark:border-gray-800 shadow-sm mb-6'>
@@ -113,7 +112,6 @@ const Project = () => {
           </Link>
         </div>
 
-          {/* Category Filters */}
           <div data-aos='fade-up' data-aos-delay='200' className='flex flex-wrap items-center gap-4 mb-16'>
             {categories.map((cat) => (
               <button 
@@ -130,7 +128,6 @@ const Project = () => {
             ))}
           </div>
 
-          {/* Projects Grid */}
           <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10'>
             {filteredProjects.map((project, index) => (
               <div 
@@ -140,7 +137,6 @@ const Project = () => {
                 data-aos-once='false'
                 className='group relative bg-white dark:bg-[#151515] rounded-3xl overflow-hidden border border-slate-200 dark:border-gray-800 hover:border-[#E79418] dark:hover:border-[#E79418] shadow-sm hover:shadow-[0_0_30px_rgba(231,148,24,0.15)] transition-all duration-500 hover:-translate-y-3 flex flex-col'
               >
-                {/* Image / Fallback container */}
                 <div className='w-full h-52 bg-slate-100 dark:bg-[#111111] overflow-hidden relative border-b border-slate-200 dark:border-gray-800'>
                   {project.image ? (
                     <img src={project.image} alt={project.title} className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100' />
@@ -149,13 +145,11 @@ const Project = () => {
                       {getCategoryIcon(project.category)}
                     </div>
                   )}
-                  {/* Category Badge */}
                   <div className='absolute top-4 left-4 bg-slate-900/80 dark:bg-black/60 backdrop-blur-md border border-[#E79418]/50 text-[#E79418] text-[10px] font-bold px-4 py-1.5 rounded-full tracking-[2px] shadow-lg'>
                     {project.category.toUpperCase()}
                   </div>
                 </div>
                 
-                {/* Content container */}
                 <div className='p-8 flex flex-col flex-grow'>
                   <h2 className='text-xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-[#E79418] transition-colors leading-tight'>
                     {project.title}
@@ -165,7 +159,6 @@ const Project = () => {
                   </p>
                   <p className='text-xs font-bold tracking-[1px] text-[#E79418] mb-8'>{project.tools}</p>
                   
-                  {/* Action Buttons */}
                   <div className='flex items-center gap-4 mt-auto'>
                     {project.github && (
                       <a href={project.github} target='_blank' rel='noopener noreferrer' className='flex-1 flex justify-center items-center gap-2 text-xs font-bold bg-slate-100 dark:bg-[#1a1a1a] text-slate-700 dark:text-slate-300 hover:bg-[#E79418] hover:text-white dark:hover:bg-[#E79418] dark:hover:text-white py-3 rounded-xl transition-all duration-300 shadow-sm relative z-20'>

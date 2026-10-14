@@ -4,8 +4,6 @@ import { Routes, Route } from 'react-router-dom'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-import CustomCursor from './components/CustomCursor'
-
 import Home from './pages/Home'
 import Skill from './pages/Skill'
 import Project from './pages/Project'
@@ -28,7 +26,6 @@ const App = () => {
   return (
     <>
       <ScrollToTop />
-      <CustomCursor />
       <Routes>
         <Route exact path='/' element={<Home />} />
         <Route exact path='/Skill' element={<Skill />} />
