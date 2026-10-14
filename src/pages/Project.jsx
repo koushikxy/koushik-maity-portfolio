@@ -5,31 +5,52 @@ import { Link } from 'react-router-dom'
 import { FaArrowLeft, FaGithub, FaExternalLinkAlt, FaChartBar, FaCode, FaPython, FaCubes } from 'react-icons/fa'
 
 import apnafashion from '../projects_img/apnafashion.png'
-import pdftoword from '../projects_img/pdf to word converter.png'
-import wordandcharcounter from '../projects_img/word and character counter.png'
-import qrcodescanner from '../projects_img/QR code Scanner.png'
-import qrcodegenerator from '../projects_img/QR code Generator.png'
+import upiDashboard from '../projects_img/upi-dashboard.jpg'
+import groceryReorder from '../projects_img/grocery-reorder.jpg'
+import flightFares from '../projects_img/flight-fares.jpg'
+import cardPayments from '../projects_img/card-payments-excel.jpg'
 
 const projects = [
   {
-    title: 'Credit Card Financial Dashboard',
-    description: 'Comprehensive dashboard using Power BI & SQL providing real-time insights into revenue and customer transactions.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
+    title: 'UPI Payments Dashboard',
+    description: 'Power BI dashboard on 76 months of NPCI data. PhonePe and Google Pay handle 78% of UPI transactions, but market concentration is the lowest it has been since 2020 as newer apps like Navi grow.',
+    tools: 'Power BI · DAX · Power Query',
+    image: upiDashboard,
     category: 'Data Analytics',
-    github: 'https://github.com/koushikxy/Credit-Card-Financial-Dashboard',
+    github: 'https://github.com/koushikxy/upi-payments-dashboard',
     live: null
   },
   {
-    title: 'Flight Ticket Sell Analysis',
-    description: 'In-depth analysis of flight ticket sales data to uncover purchasing trends and metrics using Excel.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
+    title: 'Grocery Reorder Analysis',
+    description: 'SQL analysis of 3.4 million Instacart orders in MySQL. 59% of items bought are repeats, 12% of customers place 30% of orders, and some products are bought together up to 18x more often than chance.',
+    tools: 'MySQL · CTEs · Window Functions',
+    image: groceryReorder,
     category: 'Data Analytics',
-    github: 'https://github.com/koushikxy/Flight-Ticket-Sell-Analysis',
+    github: 'https://github.com/koushikxy/grocery-reorder-analysis',
+    live: null
+  },
+  {
+    title: 'Flight Fare Analysis',
+    description: 'Cleaned and analysed 300k domestic flight fares. Booking within 15 days of departure pushes fares up about 1.7x, and the airline you pick changes the price by up to 45% on the same route.',
+    tools: 'Python · Pandas · Matplotlib',
+    image: flightFares,
+    category: 'Data Analytics',
+    github: 'https://github.com/koushikxy/flight-price-analysis',
+    live: null
+  },
+  {
+    title: 'Card Payments Dashboard',
+    description: 'Excel dashboard on RBI bank-wise card data. UPI QR codes grew 16.5% in a year while card machines fell 14.7%, and debit cards are now mostly used to withdraw cash.',
+    tools: 'Excel · Power Query · XLOOKUP · Pivot Tables',
+    image: cardPayments,
+    category: 'Data Analytics',
+    github: 'https://github.com/koushikxy/card-payments-excel-dashboard',
     live: null
   },
   {
     title: 'ApnaFashion.in',
-    description: 'Ongoing e-commerce frontend project built using Figma, React.js and Tailwind CSS.',
+    description: 'E-commerce frontend for a streetwear brand, designed in Figma and built with React and Tailwind CSS.',
+    tools: 'React · Tailwind CSS · Figma',
     image: apnafashion,
     category: 'Web Development',
     github: 'https://github.com/koushikxy/apnafashion.in',
@@ -37,150 +58,16 @@ const projects = [
   },
   {
     title: 'Hero Cycles Pricing Tool',
-    description: 'Cycle pricing tool for Hero Cycles — select parts, pick a date, get the total price broken down by component.',
-    image: 'https://images.unsplash.com/photo-1547658719-da2b51159128?auto=format&fit=crop&q=80&w=800',
+    description: 'Cycle pricing tool for Hero Cycles: select parts, pick a date, and get the total price broken down by component.',
+    tools: 'Python',
+    image: null,
     category: 'Web Development',
     github: 'https://github.com/koushikxy/hero-cycles-pricing',
-    live: null
-  },
-  {
-    title: 'PDF to WORD Converter',
-    description: 'Web-based tool designed to convert PDF documents into editable Word files using HTML, CSS and PHP.',
-    image: pdftoword,
-    category: 'Other',
-    github: 'https://github.com/koushikxy/CodeClause-PDF-to-WORD-Converter',
-    live: null
-  },
-  {
-    title: 'Blood Bank System',
-    description: 'Blood bank repository responsible for collecting, processing, and storing blood products.',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
-    category: 'Other',
-    github: 'https://github.com/koushikxy/Bloodstock-Depot-Blood-Bank-',
-  },
-  {
-    title: 'Word and Character Counter',
-    description: 'A handy utility to instantly count words and characters in your text.',
-    image: wordandcharcounter,
-    category: 'Web Development',
-    github: null,
-    live: null
-  },
-  {
-    title: 'QR Code Scanner',
-    description: 'A fast and reliable QR code scanner built for the web.',
-    image: qrcodescanner,
-    category: 'Web Development',
-    github: null,
-    live: null
-  },
-  {
-    title: 'QR Code Generator',
-    description: 'Instantly generate scannable QR codes for links and text.',
-    image: qrcodegenerator,
-    category: 'Web Development',
-    github: null,
-    live: null
-  },
-  {
-    title: `Hospital-Management-System`,
-    description: `This is a Hospital Management System using MySQL in terminal.`,
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800',
-    category: 'Other',
-    github: 'https://github.com/koushikxy/Hospital-Management-System-using-MySQL',
-    live: null
-  },
-  {
-    title: `IPL Analysis`,
-    description: `This project analyzes Indian Premier League (IPL) data from 2008 to 2020 using Pandas, NumPy, Matplotlib, and Seaborn.`,
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
-    category: 'Data Analytics',
-    github: 'https://github.com/koushikxy/IPL_Analysis',
-    live: null
-  },
-  {
-    title: `Messaging App`,
-    description: `Capstone project for a messaging application.`,
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800',
-    category: 'Other',
-    github: 'https://github.com/koushikxy/Messaging_app',
-    live: null
-  },
-  {
-    title: `Milestone-Based Crowdfunding`,
-    description: `Crowdfunding smart contract using Solidity.`,
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
-    category: 'Other',
-    github: 'https://github.com/koushikxy/Milestone-Based-Crowdfunding-using-solidity',
-    live: null
-  },
-  {
-    title: `Project Management Dashboard`,
-    description: `An Excel-based tool designed to help teams manage and track the progress of multiple projects efficiently.`,
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
-    category: 'Data Analytics',
-    github: 'https://github.com/koushikxy/Project_Management_Dashboard',
-    live: null
-  },
-  {
-    title: `Resume Analyzer`,
-    description: `Automated Resume Analyzer using Python & NLP. Extracts skills, experience & education info for recruiters.`,
-    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800',
-    category: 'Python',
-    github: 'https://github.com/koushikxy/Resume-Analyzer',
-    live: null
-  },
-  {
-    title: `Sales Dashboard`,
-    description: `Analysis and visualization of sales data, with a focus on displaying key sales figures through Excel charts.`,
-    image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=800',
-    category: 'Data Analytics',
-    github: 'https://github.com/koushikxy/Sales_Dashbaord',
-    live: null
-  },
-  {
-    title: `SynChronize-XIM`,
-    description: `Website made for XIM University's Testfest event.`,
-    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800',
-    category: 'Web Development',
-    github: 'https://github.com/koushikxy/SynChronize-XIM',
-    live: null
-  },
-  {
-    title: `Voting System`,
-    description: `A digital voting system application.`,
-    image: 'https://images.unsplash.com/photo-1547658719-da2b51159128?auto=format&fit=crop&q=80&w=800',
-    category: 'Web Development',
-    github: 'https://github.com/koushikxy/voting_system',
-    live: null
-  },
-  {
-    title: `YouTube Analysis`,
-    description: `Python script for analyzing YouTube comments, sentiment analysis, word clouds, and emoji frequencies.`,
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
-    category: 'Data Analytics',
-    github: 'https://github.com/koushikxy/Youtube_Analysis',
-    live: null
-  },
-  {
-    title: `Zamp Invoice Processor`,
-    description: `Invoice processing tool.`,
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800',
-    category: 'Other',
-    github: 'https://github.com/koushikxy/zamp-invoice-processor',
-    live: null
-  },
-  {
-    title: `Zomato Analysis`,
-    description: `Analyzes Zomato restaurant data from Bengaluru using Pandas, NumPy, Matplotlib, and SQLite.`,
-    image: 'https://images.unsplash.com/photo-1543286386-2e659306cd6c?auto=format&fit=crop&q=80&w=800',
-    category: 'Data Analytics',
-    github: 'https://github.com/koushikxy/Zomato_Analysis',
     live: null
   }
 ];
 
-const categories = ['All', 'Data Analytics', 'Web Development', 'Python', 'Other'];
+const categories = ['All', 'Data Analytics', 'Web Development'];
 
 const getCategoryIcon = (category) => {
     switch(category) {
@@ -273,9 +160,10 @@ const Project = () => {
                   <h2 className='text-xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-[#E79418] transition-colors leading-tight'>
                     {project.title}
                   </h2>
-                  <p className='text-sm text-slate-500 dark:text-slate-400 mb-8 font-medium tracking-wide flex-grow leading-relaxed'>
+                  <p className='text-sm text-slate-500 dark:text-slate-400 mb-4 font-medium tracking-wide flex-grow leading-relaxed'>
                     {project.description}
                   </p>
+                  <p className='text-xs font-bold tracking-[1px] text-[#E79418] mb-8'>{project.tools}</p>
                   
                   {/* Action Buttons */}
                   <div className='flex items-center gap-4 mt-auto'>
