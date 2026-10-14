@@ -51,7 +51,7 @@ const Skill = () => {
               Software & Tools
             </h1>
             <div className='flex flex-wrap gap-4'>
-              {['Power BI', 'Tableau', 'Excel', 'Git / GitHub', 'Jira', 'Figma'].map(skill => (
+              {['Power BI', 'DAX', 'Power Query', 'Excel', 'Git / GitHub', 'Jira', 'Figma'].map(skill => (
                 <span key={skill} className='bg-white dark:bg-[#151515] text-slate-700 dark:text-slate-300 px-6 py-3 rounded-xl font-bold tracking-[1px] border border-slate-200 dark:border-gray-800 hover:border-blue-500 hover:text-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] hover:-translate-y-1 transition-all duration-300 cursor-default'>
                   {skill}
                 </span>
@@ -66,7 +66,7 @@ const Skill = () => {
               Programming & Databases
             </h1>
             <div className='flex flex-wrap gap-4'>
-              {['Python', 'SQL', 'MySQL', 'MongoDB', 'JavaScript'].map(skill => (
+              {['Python', 'Pandas', 'SQL', 'MySQL', 'MongoDB', 'JavaScript'].map(skill => (
                 <span key={skill} className='bg-white dark:bg-[#151515] text-slate-700 dark:text-slate-300 px-6 py-3 rounded-xl font-bold tracking-[1px] border border-slate-200 dark:border-gray-800 hover:border-green-500 hover:text-green-500 hover:shadow-[0_0_20px_rgba(34,197,94,0.15)] hover:-translate-y-1 transition-all duration-300 cursor-default'>
                   {skill}
                 </span>

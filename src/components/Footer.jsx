@@ -48,7 +48,7 @@ const Footer = () => {
 
                     {/* Social Links & Back to Top */}
                     <div className='flex gap-5 sm:gap-6 items-center'>
-                        <a href='https://linkedin.com/in/koushik-maity' target='_blank' rel='noreferrer' className='flex items-center justify-center w-12 h-12 rounded-full border border-slate-300 dark:border-gray-800 text-slate-600 dark:text-slate-400 hover:text-[#E79418] dark:hover:text-[#E79418] hover:border-[#E79418] dark:hover:border-[#E79418] transition-all duration-300 hover:scale-110 hover:bg-slate-50 dark:hover:bg-[#1D1D1F] shadow-sm'>
+                        <a href='https://www.linkedin.com/in/ksmaity/' target='_blank' rel='noreferrer' className='flex items-center justify-center w-12 h-12 rounded-full border border-slate-300 dark:border-gray-800 text-slate-600 dark:text-slate-400 hover:text-[#E79418] dark:hover:text-[#E79418] hover:border-[#E79418] dark:hover:border-[#E79418] transition-all duration-300 hover:scale-110 hover:bg-slate-50 dark:hover:bg-[#1D1D1F] shadow-sm'>
                             <FaLinkedin className='text-xl' />
                         </a>
                         <a href='https://github.com/koushikxy' target='_blank' rel='noreferrer' className='flex items-center justify-center w-12 h-12 rounded-full border border-slate-300 dark:border-gray-800 text-slate-600 dark:text-slate-400 hover:text-[#E79418] dark:hover:text-[#E79418] hover:border-[#E79418] dark:hover:border-[#E79418] transition-all duration-300 hover:scale-110 hover:bg-slate-50 dark:hover:bg-[#1D1D1F] shadow-sm'>
