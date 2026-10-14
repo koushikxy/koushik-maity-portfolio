@@ -4,11 +4,17 @@ import Footer from '../components/Footer'
 import { Link } from 'react-router-dom'
 import { FaArrowLeft, FaGithub, FaExternalLinkAlt, FaChartBar, FaCode, FaPython, FaCubes } from 'react-icons/fa'
 
-import apnafashion from '../projects_img/apnafashion.png'
 import upiDashboard from '../projects_img/upi-dashboard.jpg'
 import groceryReorder from '../projects_img/grocery-reorder.jpg'
 import flightFares from '../projects_img/flight-fares.jpg'
 import cardPayments from '../projects_img/card-payments-excel.jpg'
+import portfolio from '../projects_img/portfolio.jpg'
+import apnafashion from '../projects_img/apnafashion.jpg'
+import heroCycles from '../projects_img/hero-cycles.jpg'
+import radarDetection from '../projects_img/radar-detection.jpg'
+import bloodBank from '../projects_img/blood-bank.jpg'
+import messagingApp from '../projects_img/messaging-app.jpg'
+import crowdfunding from '../projects_img/crowdfunding.jpg'
 
 const projects = [
   {
@@ -48,6 +54,15 @@ const projects = [
     live: null
   },
   {
+    title: 'Hero Cycles Pricing Tool',
+    description: 'Pricing tool for the Hero Cycles sales team: pick parts and a date and get the total price broken down by component, with a command-line version and a small web dashboard.',
+    tools: 'Python · FastAPI · JavaScript',
+    image: heroCycles,
+    category: 'Web Development',
+    github: 'https://github.com/koushikxy/hero-cycles-pricing',
+    live: null
+  },
+  {
     title: 'ApnaFashion.in',
     description: 'E-commerce frontend for a streetwear brand, designed in Figma and built with React and Tailwind CSS.',
     tools: 'React · Tailwind CSS · Figma',
@@ -57,17 +72,53 @@ const projects = [
     live: 'https://apnafashion.netlify.app'
   },
   {
-    title: 'Hero Cycles Pricing Tool',
-    description: 'Cycle pricing tool for Hero Cycles: select parts, pick a date, and get the total price broken down by component.',
-    tools: 'Python',
-    image: null,
+    title: 'Portfolio Website',
+    description: 'This site. My projects, skills, experience and certificates, with a light and dark mode.',
+    tools: 'React · Tailwind CSS',
+    image: portfolio,
     category: 'Web Development',
-    github: 'https://github.com/koushikxy/hero-cycles-pricing',
+    github: 'https://github.com/koushikxy/koushik-maity-portfolio',
+    live: 'https://koushikmaity.netlify.app'
+  },
+  {
+    title: 'Radar Detection on a 3D Map',
+    description: 'Team project. A 3D map that shows radar coverage, detects points passing through it, and suggests better radar positions near mountains.',
+    tools: 'Python · Flask · CesiumJS',
+    image: radarDetection,
+    category: 'Team Projects',
+    github: 'https://github.com/koushikxy/Radar_Detection',
+    live: null
+  },
+  {
+    title: 'Bloodstock Depot: Blood Bank System',
+    description: 'Team project. Blood bank website where donors can register, log in, donate and manage their account.',
+    tools: 'PHP · MySQL · HTML · CSS',
+    image: bloodBank,
+    category: 'Team Projects',
+    github: 'https://github.com/koushikxy/Bloodstock-Depot-Blood-Bank-',
+    live: null
+  },
+  {
+    title: 'Messaging App',
+    description: 'Team capstone project. A real-time chat app with login, chat rooms, voice notes and media sharing.',
+    tools: 'Next.js · Firebase',
+    image: messagingApp,
+    category: 'Team Projects',
+    github: 'https://github.com/koushikxy/Messaging_app',
+    live: null
+  },
+  {
+    title: 'Milestone-Based Crowdfunding',
+    description: 'Team project. A Solidity smart contract that releases crowdfunding money to the creator one milestone at a time once approvers sign off, and refunds backers if the goal is not met by the deadline.',
+    tools: 'Solidity · Ethereum',
+    image: crowdfunding,
+    category: 'Team Projects',
+    github: 'https://github.com/koushikxy/Milestone-Based-Crowdfunding-using-solidity',
     live: null
   }
 ];
 
-const categories = ['All', 'Data Analytics', 'Web Development'];
+const categories = ['All', 'Data Analytics', 'Web Development', 'Team Projects'];
 
 const getCategoryIcon = (category) => {
     switch(category) {
