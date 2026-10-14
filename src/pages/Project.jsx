@@ -11,8 +11,6 @@ import cardPayments from '../projects_img/card-payments-excel.jpg'
 import portfolio from '../projects_img/portfolio.jpg'
 import apnafashion from '../projects_img/apnafashion.jpg'
 import heroCycles from '../projects_img/hero-cycles.jpg'
-import radarDetection from '../projects_img/radar-detection.jpg'
-import bloodBank from '../projects_img/blood-bank.jpg'
 import messagingApp from '../projects_img/messaging-app.jpg'
 import crowdfunding from '../projects_img/crowdfunding.jpg'
 
@@ -79,24 +77,6 @@ const projects = [
     category: 'Web Development',
     github: 'https://github.com/koushikxy/koushik-maity-portfolio',
     live: 'https://koushikmaity.netlify.app'
-  },
-  {
-    title: 'Radar Detection on a 3D Map',
-    description: 'Team project. A 3D map that shows radar coverage, detects points passing through it, and suggests better radar positions near mountains.',
-    tools: 'Python · Flask · CesiumJS',
-    image: radarDetection,
-    category: 'Team Projects',
-    github: 'https://github.com/koushikxy/Radar_Detection',
-    live: null
-  },
-  {
-    title: 'Bloodstock Depot: Blood Bank System',
-    description: 'Team project. Blood bank website where donors can register, log in, donate and manage their account.',
-    tools: 'PHP · MySQL · HTML · CSS',
-    image: bloodBank,
-    category: 'Team Projects',
-    github: 'https://github.com/koushikxy/Bloodstock-Depot-Blood-Bank-',
-    live: null
   },
   {
     title: 'Messaging App',
