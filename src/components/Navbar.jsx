@@ -1,129 +1,134 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa";
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { FiSun, FiMoon, FiArrowUpRight } from 'react-icons/fi'
+import Logo from './Logo'
+import { resume, email, linkedin, github } from '../data'
+import { useScroll } from '../hooks'
+
+const links = [
+  ['About', '/About', 'about'],
+  ['Work', '/Project', 'work'],
+  ['Experience', '/Experience', 'experience'],
+  ['Skills', '/Skill', 'skills'],
+  ['Certificates', '/Certificate', 'certificates'],
+  ['Contact', '/Contact', 'contact']
+]
+
+const Roll = ({ children }) => (
+  <span className='relative block overflow-hidden'>
+    <span className='block transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:-translate-y-full'>{children}</span>
+    <span aria-hidden='true' className='absolute inset-0 translate-y-full transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:translate-y-0'>{children}</span>
+  </span>
+)
 
 const Navbar = () => {
-    const [click, setClick] = useState(false);
-    const location = useLocation();
-    
-    const [isDark, setIsDark] = useState(() => {
-        const saved = localStorage.getItem('theme');
-        if (saved !== null) {
-            return saved === 'dark';
-        }
-        return true; // default dark
-    });
+  const [open, setOpen] = useState(false)
+  const [dark, setDark] = useState(() => document.documentElement.classList.contains('dark'))
+  const [active, setActive] = useState('')
+  const [pill, setPill] = useState(null)
+  const [scrolled, setScrolled] = useState(false)
+  const [hidden, setHidden] = useState(false)
+  const bar = useRef(null)
+  const refs = useRef({})
+  const lastY = useRef(0)
 
-    useEffect(() => {
-        if (isDark) {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
-        }
-    }, [isDark]);
+  const onScroll = useCallback(() => {
+    const y = window.scrollY
+    const max = document.documentElement.scrollHeight - window.innerHeight
+    if (bar.current) bar.current.style.transform = `scaleX(${max > 0 ? y / max : 0})`
+    let current = ''
+    links.forEach(([, , id]) => {
+      const el = document.getElementById(id)
+      if (el && el.getBoundingClientRect().top < window.innerHeight * 0.4) current = id
+    })
+    setActive(current)
+    setScrolled(y > 40)
+    if (Math.abs(y - lastY.current) > 8) {
+      setHidden(y > lastY.current && y > 400)
+      lastY.current = y
+    }
+  }, [])
+  useScroll(onScroll)
 
-    useEffect(() => {
-        if (click) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
-    }, [click]);
+  useEffect(() => {
+    const el = refs.current[active]
+    setPill(el ? { left: el.offsetLeft, width: el.offsetWidth } : null)
+  }, [active])
 
-    const handelClick = () => setClick(!click);
-    const toggleTheme = () => setIsDark(!isDark);
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    const esc = e => e.key === 'Escape' && setOpen(false)
+    window.addEventListener('keydown', esc)
+    return () => window.removeEventListener('keydown', esc)
+  }, [open])
 
-    return (
-        <nav className='flex justify-between items-center py-5 px-6 lg:px-16 bg-[#F5F5F7] dark:bg-[#1D1D1F] fixed w-full z-50 border-b border-slate-300 dark:border-gray-700 shadow-sm transition-colors duration-300'>
-            
-            <div>
-                <Link to='/' onClick={() => setClick(false)}>
-                    <h1 className='font-bold text-slate-900 dark:text-white text-3xl tracking-[3px] hover:scale-105 transition-transform'>
-                        KOUSHIK<span className='text-[#E79418]'>.</span>
-                    </h1>
-                </Link>
+  const toggleTheme = () => {
+    document.documentElement.classList.toggle('dark', !dark)
+    try { localStorage.setItem('theme', dark ? 'light' : 'dark') } catch (e) {}
+    setDark(!dark)
+  }
+
+  return (
+    <header className={`fixed inset-x-0 top-0 z-50 transition-[transform,background-color,border-color] duration-500 ease-[cubic-bezier(.16,1,.3,1)] ${hidden && !open ? '-translate-y-full' : ''} ${scrolled && !open ? 'bg-bg/70 backdrop-blur-xl border-b border-line/60' : 'border-b border-transparent'}`}>
+      <nav aria-label='Main' className='mx-auto max-w-6xl px-5 sm:px-8 h-[4.5rem] flex items-center justify-between gap-4'>
+        <Logo onClick={() => setOpen(false)} />
+
+        <div className='hidden lg:flex relative items-center p-1 rounded-full border border-line bg-card/60 text-sm shadow-[0_8px_30px_-12px_rgb(0_0_0/0.35)]'>
+          {pill && <span className='absolute top-1 bottom-1 rounded-full bg-fg transition-all duration-500 ease-[cubic-bezier(.16,1,.3,1)]' style={pill} />}
+          {links.map(([label, to, id], i) => (
+            <Link key={id} to={to} ref={el => (refs.current[id] = el)} className={`group relative flex items-start gap-1 px-3.5 py-1.5 rounded-full transition-colors duration-300 ${active === id ? 'text-bg' : 'text-muted hover:text-fg'}`}>
+              <Roll>{label}</Roll>
+              <span className='font-mono text-[9px] leading-none mt-0.5 opacity-60'>0{i + 1}</span>
+            </Link>
+          ))}
+        </div>
+
+        <div className='relative z-10 flex items-center gap-2'>
+          <span className='hidden xl:inline-flex items-center gap-2 mr-2 text-xs text-muted'>
+            <span className='relative flex w-2 h-2'>
+              <span className='absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-70' />
+              <span className='relative w-2 h-2 rounded-full bg-emerald-500' />
+            </span>
+            Available
+          </span>
+          <button onClick={toggleTheme} aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'} className='group w-10 h-10 grid place-items-center rounded-full border border-line bg-card/60 hover:border-accent hover:text-accent transition-colors'>
+            <span className='transition-transform duration-700 group-hover:rotate-[180deg]'>{dark ? <FiSun /> : <FiMoon />}</span>
+          </button>
+          <a href={resume} target='_blank' rel='noreferrer' className='group hidden sm:inline-flex items-center gap-1.5 h-10 pl-4 pr-1.5 rounded-full bg-fg text-bg text-sm font-medium'>
+            <Roll>Resume</Roll>
+            <span className='w-7 h-7 rounded-full bg-accent text-bg grid place-items-center transition-transform duration-500 group-hover:rotate-45'><FiArrowUpRight /></span>
+          </a>
+          <button onClick={() => setOpen(!open)} aria-label='Menu' aria-expanded={open} className='lg:hidden w-10 h-10 grid place-items-center rounded-full border border-line bg-card/60'>
+            <span className='relative w-4 h-3'>
+              <span className={`absolute left-0 w-4 h-px bg-fg transition-all duration-300 ${open ? 'top-1.5 rotate-45' : 'top-0'}`} />
+              <span className={`absolute left-0 w-4 h-px bg-fg transition-all duration-300 ${open ? 'top-1.5 -rotate-45' : 'top-3'}`} />
+            </span>
+          </button>
+        </div>
+      </nav>
+      <div ref={bar} className='h-px bg-accent origin-left scale-x-0' />
+
+      <div className={`lg:hidden fixed inset-0 -z-10 bg-bg transition-[clip-path] duration-700 ease-[cubic-bezier(.7,0,.3,1)] ${open ? '[clip-path:inset(0_0_0_0)]' : '[clip-path:inset(0_0_100%_0)] pointer-events-none'}`}>
+        <div className='h-full flex flex-col justify-between px-5 pt-28 pb-10'>
+          <div className='flex flex-col'>
+            {links.map(([label, to, id], i) => (
+              <Link key={to} to={to} onClick={() => setOpen(false)} tabIndex={open ? 0 : -1} className={`flex items-start gap-2 py-1.5 text-5xl font-semibold tracking-tight transition duration-700 ${active === id ? 'text-accent' : ''}`} style={{ transitionDelay: open ? `${0.15 + i * 0.05}s` : '0s', opacity: open ? 1 : 0, transform: open ? 'none' : 'translateY(20px)' }}>
+                {label}<span className='font-mono text-xs text-muted mt-1'>0{i + 1}</span>
+              </Link>
+            ))}
+          </div>
+          <div className='space-y-6'>
+            <div className='flex gap-5 text-sm text-muted'>
+              <a href={linkedin} target='_blank' rel='noreferrer' tabIndex={open ? 0 : -1}>LinkedIn</a>
+              <a href={github} target='_blank' rel='noreferrer' tabIndex={open ? 0 : -1}>GitHub</a>
+              <a href={`mailto:${email}`} tabIndex={open ? 0 : -1}>Email</a>
             </div>
-
-            <div className='hidden lg:flex items-center gap-10'>
-                <ul className='flex gap-10 items-center text-slate-900 dark:text-white text-lg font-semibold tracking-[2px]'>
-                    <Link to='/' onClick={() => setClick(false)}>
-                        <li className={`hover:scale-110 transition-all duration-200 ${location.pathname === '/' ? 'text-[#E79418]' : 'hover:text-[#E79418]'}`}>HOME</li>
-                    </Link>
-                    <Link to='/Project' onClick={() => setClick(false)}>
-                        <li className={`hover:scale-110 transition-all duration-200 ${location.pathname === '/Project' ? 'text-[#E79418]' : 'hover:text-[#E79418]'}`}>PROJECTS</li>
-                    </Link>
-                    <Link to='/Skill' onClick={() => setClick(false)}>
-                        <li className={`hover:scale-110 transition-all duration-200 ${location.pathname === '/Skill' ? 'text-[#E79418]' : 'hover:text-[#E79418]'}`}>SKILL</li>
-                    </Link>
-                    <Link to='/Certificate' onClick={() => setClick(false)}>
-                        <li className={`hover:scale-110 transition-all duration-200 ${location.pathname === '/Certificate' ? 'text-[#E79418]' : 'hover:text-[#E79418]'}`}>CERTIFICATIONS</li>
-                    </Link>
-                    <Link to='/Experience' onClick={() => setClick(false)}>
-                        <li className={`hover:scale-110 transition-all duration-200 ${location.pathname === '/Experience' ? 'text-[#E79418]' : 'hover:text-[#E79418]'}`}>EXPERIENCE</li>
-                    </Link>
-                    <Link to='/Contact' onClick={() => setClick(false)}>
-                        <li className={`border-2 border-[#E79418] px-6 py-2 rounded-md transition-all duration-300 font-bold hover:scale-105 ${location.pathname === '/Contact' ? 'bg-[#E79418] text-white dark:text-[#1D1D1F] shadow-[0_0_15px_rgba(231,148,24,0.5)]' : 'text-[#E79418] hover:bg-[#E79418] hover:text-white dark:hover:text-[#1D1D1F] shadow-[0_0_10px_rgba(231,148,24,0.2)] hover:shadow-[0_0_15px_rgba(231,148,24,0.5)]'}`}>CONTACT ME</li>
-                    </Link>
-                </ul>
-                
-                <div className='w-px h-8 bg-slate-300 dark:bg-slate-700'></div>
-
-                <button 
-                    onClick={toggleTheme} 
-                    className='relative flex items-center justify-center w-12 h-12 rounded-full bg-slate-200 dark:bg-[#252528] text-slate-600 dark:text-slate-300 hover:text-[#E79418] dark:hover:text-[#E79418] border border-slate-300 dark:border-slate-700 hover:border-[#E79418] dark:hover:border-[#E79418] transition-all duration-300 shadow-sm hover:scale-110 hover:shadow-[0_0_10px_rgba(231,148,24,0.2)] overflow-hidden'
-                    title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-                >
-                    <div className={`absolute transition-all duration-500 transform ${isDark ? 'rotate-0 opacity-100 scale-100' : 'rotate-180 opacity-0 scale-50'}`}>
-                        <FaSun className='text-xl' />
-                    </div>
-                    <div className={`absolute transition-all duration-500 transform ${!isDark ? 'rotate-0 opacity-100 scale-100' : '-rotate-180 opacity-0 scale-50'}`}>
-                        <FaMoon className='text-xl' />
-                    </div>
-                </button>
-            </div>
-
-            <div className='flex items-center gap-4 lg:hidden'>
-                <button 
-                    onClick={toggleTheme} 
-                    className='relative flex items-center justify-center w-10 h-10 rounded-full bg-slate-200 dark:bg-[#252528] text-slate-600 dark:text-slate-300 hover:text-[#E79418] dark:hover:text-[#E79418] border border-slate-300 dark:border-slate-700 transition-all duration-300 shadow-sm overflow-hidden'
-                >
-                    <div className={`absolute transition-all duration-500 transform ${isDark ? 'rotate-0 opacity-100 scale-100' : 'rotate-180 opacity-0 scale-50'}`}>
-                        <FaSun />
-                    </div>
-                    <div className={`absolute transition-all duration-500 transform ${!isDark ? 'rotate-0 opacity-100 scale-100' : '-rotate-180 opacity-0 scale-50'}`}>
-                        <FaMoon />
-                    </div>
-                </button>
-                <div className={`text-3xl cursor-pointer transition-transform duration-300 ${click ? 'rotate-90' : 'rotate-0'}`} onClick={handelClick}>
-                    {!click ? <FaBars className='text-slate-900 dark:text-white hover:text-[#E79418] transition-colors' /> : <FaTimes className='text-[#E79418] transition-colors' />}
-                </div>
-            </div>
-
-            <ul className={`fixed top-[80px] left-0 w-full h-[calc(100vh-80px)] pt-16 pb-10 overflow-y-auto z-20 flex flex-col items-center gap-10 text-2xl font-bold tracking-[3px] bg-[#F5F5F7]/95 dark:bg-[#1D1D1F]/95 backdrop-blur-lg text-slate-900 dark:text-white transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] lg:hidden ${click ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}>
-                <Link to='/' onClick={() => setClick(false)}>
-                    <li className={`hover:scale-110 transition-all duration-200 ${location.pathname === '/' ? 'text-[#E79418]' : 'hover:text-[#E79418]'}`}>HOME</li>
-                </Link>
-                <Link to='/Project' onClick={() => setClick(false)}>
-                    <li className={`hover:scale-110 transition-all duration-200 ${location.pathname === '/Project' ? 'text-[#E79418]' : 'hover:text-[#E79418]'}`}>PROJECTS</li>
-                </Link>
-                <Link to='/Skill' onClick={() => setClick(false)}>
-                    <li className={`hover:scale-110 transition-all duration-200 ${location.pathname === '/Skill' ? 'text-[#E79418]' : 'hover:text-[#E79418]'}`}>SKILL</li>
-                </Link>
-                <Link to='/Certificate' onClick={() => setClick(false)}>
-                    <li className={`hover:scale-110 transition-all duration-200 ${location.pathname === '/Certificate' ? 'text-[#E79418]' : 'hover:text-[#E79418]'}`}>CERTIFICATIONS</li>
-                </Link>
-                <Link to='/Experience' onClick={() => setClick(false)}>
-                    <li className={`hover:scale-110 transition-all duration-200 ${location.pathname === '/Experience' ? 'text-[#E79418]' : 'hover:text-[#E79418]'}`}>EXPERIENCE</li>
-                </Link>
-                <Link to='/Contact' onClick={() => setClick(false)}>
-                    <li className={`border-2 border-[#E79418] px-6 py-2 rounded-md transition-all duration-300 font-bold hover:scale-105 ${location.pathname === '/Contact' ? 'bg-[#E79418] text-white dark:text-[#1D1D1F] shadow-[0_0_15px_rgba(231,148,24,0.5)]' : 'text-[#E79418] hover:bg-[#E79418] hover:text-white dark:hover:text-[#1D1D1F] shadow-[0_0_10px_rgba(231,148,24,0.2)]'}`}>CONTACT ME</li>
-                </Link>
-            </ul>
-            
-        </nav>
-    )
+            <a href={resume} target='_blank' rel='noreferrer' tabIndex={open ? 0 : -1} className='btn-primary w-full'>Download resume</a>
+          </div>
+        </div>
+      </div>
+    </header>
+  )
 }
 
 export default Navbar
