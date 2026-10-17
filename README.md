@@ -4,7 +4,7 @@
 
 My personal portfolio site: [koushikmaity.netlify.app](https://koushikmaity.netlify.app/). It has my data analytics projects, work experience, skills and certificates on one page, with a light and dark mode.
 
-Built with React, Tailwind CSS and React Router. Hosted on Netlify.
+Built with React, Tailwind CSS, GSAP and Lenis. Hosted on Netlify.
 
 ## Run it locally
 

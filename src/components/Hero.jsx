@@ -1,62 +1,72 @@
-import React, { useRef } from 'react'
-import { FiArrowDown, FiArrowUpRight } from 'react-icons/fi'
-import photo from '../img/koushik.webp'
-import { resume } from '../data'
-
-const points = [[0, 250], [80, 232], [160, 240], [240, 205], [320, 214], [400, 170], [480, 182], [560, 132], [640, 146], [720, 98], [800, 108], [880, 62], [960, 74], [1040, 40]]
-const path = points.map(([x, y], i) => `${i ? 'L' : 'M'}${x} ${y}`).join(' ')
+import React, { useEffect, useRef } from 'react'
+import { FiArrowDownRight, FiGlobe } from 'react-icons/fi'
+import portrait from '../img/portrait.webp'
+import portraitSm from '../img/portrait-sm.webp'
+import { gsap, onVelocity, reduced } from '../motion'
 
 const Hero = ({ play }) => {
-  const ref = useRef(null)
-  const move = e => {
-    const r = ref.current.getBoundingClientRect()
-    ref.current.style.setProperty('--x', `${e.clientX - r.left}px`)
-    ref.current.style.setProperty('--y', `${e.clientY - r.top}px`)
-  }
+  const root = useRef(null)
+  const track = useRef(null)
+
+  useEffect(() => {
+    if (reduced()) return
+    const ctx = gsap.context(() => {
+      const loop = gsap.to(track.current, { xPercent: -50, duration: 22, ease: 'none', repeat: -1 })
+      let dir = 1
+      const off = onVelocity((v, d) => {
+        if (d) dir = d
+        gsap.to(loop, { timeScale: dir * (1 + Math.min(Math.abs(v), 40) * 0.08), duration: 0.3, overwrite: true })
+        gsap.to(loop, { timeScale: dir, duration: 1.2, delay: 0.3, overwrite: false })
+      })
+      gsap.to('.hero-photo', { yPercent: 12, ease: 'none', scrollTrigger: { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true } })
+      gsap.to('.hero-name', { yPercent: 60, ease: 'none', scrollTrigger: { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true } })
+      return off
+    }, root)
+    return () => ctx.revert()
+  }, [])
+
+  useEffect(() => {
+    if (!play || reduced()) return
+    const ctx = gsap.context(() => {
+      gsap.from('.hero-photo', { y: 120, opacity: 0, duration: 1.6, ease: 'expo.out' })
+      gsap.from('.hero-name', { yPercent: 100, duration: 1.6, ease: 'expo.out', delay: 0.1 })
+      gsap.from('.hero-fade', { opacity: 0, y: 20, duration: 1.2, ease: 'power3.out', delay: 0.5, stagger: 0.1 })
+    }, root)
+    return () => ctx.revert()
+  }, [play])
 
   return (
-    <section ref={ref} onMouseMove={move} className={`relative min-h-[100svh] flex flex-col justify-end overflow-hidden ${play ? 'play' : ''}`}>
-      <div className='absolute inset-0 dots' />
-      <div className='absolute inset-0 spot' />
-      <svg viewBox='0 0 1040 280' preserveAspectRatio='none' className='absolute inset-x-0 bottom-0 w-full h-[34%] text-accent opacity-40 sm:opacity-100' aria-hidden='true'>
-        <defs>
-          <linearGradient id='area' x1='0' x2='0' y1='0' y2='1'>
-            <stop offset='0' stopColor='currentColor' stopOpacity='0.16' />
-            <stop offset='1' stopColor='currentColor' stopOpacity='0' />
-          </linearGradient>
-        </defs>
-        <path className='chart-area' d={`${path} L1040 280 L0 280 Z`} fill='url(#area)' />
-        <path className='chart-line' d={path} pathLength='1' fill='none' stroke='currentColor' strokeOpacity='0.7' strokeWidth='2' vectorEffect='non-scaling-stroke' />
-      </svg>
+    <section id='top' ref={root} className='relative h-[100svh] min-h-[640px] overflow-hidden'>
+      <div className='absolute inset-0 spotlight' />
+      <div className='absolute inset-0 grain pointer-events-none' />
 
-      <div className='relative mx-auto w-full max-w-6xl px-5 sm:px-8 pt-28 pb-12 sm:pb-16'>
-        <div className='inline-flex items-center gap-3 mb-8 pl-1.5 pr-4 py-1.5 rounded-full border border-line bg-card/80 fade' style={{ '--d': '0.2s' }}>
-          <img src={photo} alt='Koushik Maity at graduation' width='40' height='40' className='w-10 h-10 rounded-full object-cover' />
-          <span className='text-sm leading-tight'>
-            <span className='flex items-center gap-2 font-semibold'>
-              <span className='relative flex w-2 h-2'>
-                <span className='absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-70' />
-                <span className='relative w-2 h-2 rounded-full bg-emerald-500' />
-              </span>
-              Open to work
-            </span>
-            <span className='text-muted'>Bangalore or remote, can join now</span>
-          </span>
-        </div>
+      <h1 className='sr-only'>Koushik Maity, Data Analyst in Bangalore</h1>
+      <div className='hero-photo absolute inset-x-0 bottom-0 h-[64%] sm:h-[86%] flex justify-center'>
+        <img src={portrait} srcSet={`${portraitSm} 620w, ${portrait} 1100w`} sizes='(min-width: 640px) 60vh, 50vh' fetchpriority='high' alt='Koushik Maity at graduation' width='1100' height='1487' className='h-full w-auto max-w-none select-none' draggable='false' />
+      </div>
 
-        <h1 className='text-[clamp(2.7rem,min(8.5vw,12.5vh),7.5rem)] font-extrabold tracking-[-0.035em] leading-[1.02]'>
-          <span className='line-mask'><span style={{ '--d': '0.1s' }}>Hi, I'm Koushik.</span></span>
-          <span className='line-mask'><span style={{ '--d': '0.2s' }}>I make data</span></span>
-          <span className='line-mask'><span style={{ '--d': '0.3s' }} className='text-accent'>easy to act on.</span></span>
-        </h1>
+      <div className='hero-fade absolute left-0 top-[44%] hidden lg:flex items-center gap-8 pl-16 pr-3 py-3 rounded-r-full bg-fg text-ink'>
+        <p className='font-medium leading-snug'>Based in<br />Bangalore,<br />India</p>
+        <span className='w-[72px] h-[72px] rounded-full bg-ink text-fg grid place-items-center text-3xl'><FiGlobe className='spin-slow' /></span>
+      </div>
 
-        <div className='mt-10 grid md:grid-cols-[1fr_auto] gap-8 items-end fade' style={{ '--d': '0.7s' }}>
-          <p className='max-w-xl text-lg sm:text-xl text-muted leading-relaxed'>
-            Data analyst working in <span className='text-fg font-semibold'>SQL, Python, Power BI and Excel</span>. B.Tech in Computer Science, most recently a freelance Business Analyst at Turing.
-          </p>
-          <div className='flex flex-wrap items-center gap-3'>
-            <a href='#work' className='btn-primary'>See my work <FiArrowDown /></a>
-            <a href={resume} target='_blank' rel='noreferrer' className='btn-ghost'>Resume <FiArrowUpRight /></a>
+      <div className='hero-fade absolute right-5 sm:right-10 lg:right-[9%] top-28 lg:top-[30%] text-right lg:text-left'>
+        <FiArrowDownRight className='hidden lg:block text-3xl mb-8' />
+        <p className='text-2xl sm:text-4xl font-medium leading-tight'>Data Analyst</p>
+        <p className='text-2xl sm:text-4xl font-medium leading-tight text-muted'>SQL, Python, Power BI</p>
+        <p className='mt-4 inline-flex items-center gap-2 text-sm font-medium'>
+          <span className='w-2 h-2 rounded-full bg-accent animate-pulse' /> Open to work, can join now
+        </p>
+      </div>
+
+      <div className='absolute inset-x-0 bottom-[6%] sm:bottom-[4%] overflow-hidden pointer-events-none'>
+        <div className='hero-name'>
+          <div ref={track} className='flex w-max whitespace-nowrap'>
+            {[0, 1].map(i => (
+              <p key={i} aria-hidden={i === 1} className='text-[clamp(5.5rem,17vw,16rem)] font-medium tracking-[-0.04em] leading-[0.9] pr-[0.35em]'>
+                Koushik Maity <span className='inline-block w-[0.16em] h-[0.16em] mx-[0.2em] rounded-full bg-accent align-middle' /> Data Analyst <span className='inline-block w-[0.16em] h-[0.16em] mx-[0.2em] rounded-full bg-accent align-middle' />
+              </p>
+            ))}
           </div>
         </div>
       </div>

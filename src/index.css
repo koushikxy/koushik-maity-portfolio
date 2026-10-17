@@ -4,73 +4,75 @@
 
 @layer base {
   :root {
-    --bg: 248 250 252;
-    --fg: 15 23 42;
-    --muted: 71 85 105;
-    --line: 226 232 240;
-    --card: 255 255 255;
-    --accent: 37 99 235;
-    --soft: 239 246 255;
-    color-scheme: light;
-  }
-  .dark {
-    --bg: 8 11 20;
-    --fg: 241 245 249;
-    --muted: 163 173 189;
-    --line: 32 41 59;
-    --card: 15 20 33;
-    --accent: 96 165 250;
-    --soft: 20 33 59;
+    --bg: 14 14 14;
+    --fg: 242 241 236;
+    --muted: 161 160 154;
+    --line: 42 42 40;
+    --card: 23 23 22;
+    --accent: 212 255 63;
+    --ink: 14 14 14;
     color-scheme: dark;
   }
   html {
-    scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scrollbar-width: thin;
-    scrollbar-color: rgb(var(--muted) / 0.45) rgb(var(--bg));
+    scrollbar-color: rgb(var(--muted) / 0.4) rgb(var(--bg));
+  }
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
   }
   body {
-    @apply bg-bg text-fg font-sans text-base leading-relaxed;
+    @apply bg-bg text-fg font-sans text-[17px] leading-relaxed;
   }
   section[id] {
-    scroll-margin-top: 4.5rem;
+    scroll-margin-top: 2rem;
   }
   ::selection {
-    @apply bg-accent text-bg;
+    @apply bg-accent text-ink;
   }
   :focus-visible {
     @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-bg rounded-md;
   }
+  @media (hover: hover) and (pointer: fine) {
+    .has-cursor, .has-cursor a, .has-cursor button {
+      cursor: none;
+    }
+  }
 }
 
 @layer components {
-  .eyebrow {
-    @apply inline-flex items-center gap-3 text-sm font-semibold text-accent before:w-6 before:h-0.5 before:rounded-full before:bg-accent;
+  .wrap {
+    @apply mx-auto w-full max-w-[1400px] px-5 sm:px-10 lg:px-16;
   }
-  .btn {
-    @apply inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full font-semibold transition duration-300;
+  .label {
+    @apply text-sm font-medium text-muted;
   }
-  .btn-primary {
-    @apply btn bg-accent text-bg hover:-translate-y-0.5 hover:shadow-[0_10px_30px_-10px_rgb(var(--accent)/0.7)];
+  .pill {
+    @apply inline-flex items-center justify-center gap-2 h-14 px-7 rounded-full border border-line font-medium transition-colors duration-300 hover:bg-fg hover:text-ink hover:border-fg;
   }
-  .btn-ghost {
-    @apply btn border border-line bg-card hover:border-accent hover:text-accent;
+  .pill-accent {
+    @apply inline-flex items-center justify-center gap-2 h-14 px-7 rounded-full bg-accent text-ink font-semibold;
   }
-  .chip {
-    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium bg-soft text-fg;
+  .tag {
+    @apply inline-flex items-center px-3 py-1 rounded-full border border-line text-sm text-fg/80;
   }
 }
 
 ::-webkit-scrollbar {
   width: 10px;
-  height: 10px;
 }
 ::-webkit-scrollbar-track {
   background: rgb(var(--bg));
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(var(--muted) / 0.4);
+  background: rgb(var(--muted) / 0.35);
   border: 3px solid rgb(var(--bg));
   border-radius: 999px;
 }
@@ -78,29 +80,10 @@
   background: rgb(var(--accent));
 }
 
-.logo-line {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 0;
-}
-.group:hover .logo-line {
-  animation: draw 0.8s cubic-bezier(.4,0,.2,1);
-}
-@keyframes draw {
-  from { stroke-dashoffset: 1; }
-  to { stroke-dashoffset: 0; }
-}
-
-.word {
-  transition: color 0.4s ease;
-}
-.word.dim {
-  color: rgb(var(--muted));
-}
-
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s cubic-bezier(.2,.7,.2,1), transform 0.8s cubic-bezier(.2,.7,.2,1);
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1);
   transition-delay: var(--d, 0s);
 }
 .reveal.in {
@@ -108,63 +91,39 @@
   transform: none;
 }
 
-.line-mask {
-  display: block;
+.word-mask {
+  display: inline-block;
   overflow: hidden;
-  padding-bottom: 0.1em;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
 }
-.line-mask > span {
-  display: block;
-  transform: translateY(110%);
-  transition: transform 1s cubic-bezier(.16,1,.3,1);
-  transition-delay: var(--d, 0s);
-}
-.play .line-mask > span {
-  transform: none;
-}
-.fade {
-  opacity: 0;
-  transition: opacity 0.9s ease var(--d, 0s);
-}
-.play .fade {
-  opacity: 1;
+.word-mask > span {
+  display: inline-block;
 }
 
-.dots {
-  background-image: radial-gradient(rgb(var(--fg) / 0.12) 1px, transparent 1px);
-  background-size: 26px 26px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 75%);
+.spotlight {
+  background: radial-gradient(ellipse 45% 55% at 50% 62%, rgb(var(--fg) / 0.13), transparent 70%);
 }
-.spot {
-  background: radial-gradient(500px circle at var(--x, 50%) var(--y, 40%), rgb(var(--accent) / 0.13), transparent 60%);
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  mix-blend-mode: overlay;
 }
 
-.chart-line {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  transition: stroke-dashoffset 2.4s cubic-bezier(.4,0,.2,1) 0.4s;
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
-.play .chart-line {
-  stroke-dashoffset: 0;
-}
-.chart-area {
-  opacity: 0;
-  transition: opacity 1.5s ease 1.6s;
-}
-.play .chart-area {
-  opacity: 1;
+.spin-slow {
+  animation: spin 9s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .reveal, .line-mask > span, .fade, .chart-line, .chart-area {
+  .reveal {
     opacity: 1 !important;
     transform: none !important;
-    stroke-dashoffset: 0 !important;
     transition: none !important;
   }
-  .word.dim { color: inherit; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

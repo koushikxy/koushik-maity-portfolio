@@ -1,44 +1,40 @@
-import React, { useCallback, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { experience } from '../data'
-import { useScroll } from '../hooks'
+import { gsap, whenIdle } from '../motion'
 
 const Experience = () => {
-  const list = useRef(null)
-  const fill = useRef(null)
+  const root = useRef(null)
 
-  const onScroll = useCallback(() => {
-    if (!list.current) return
-    const r = list.current.getBoundingClientRect()
-    const p = Math.min(Math.max((window.innerHeight * 0.6 - r.top) / r.height, 0), 1)
-    fill.current.style.transform = `scaleY(${p})`
-  }, [])
-  useScroll(onScroll)
+  useEffect(() => whenIdle(root, () => {
+    gsap.utils.toArray('.exp-row').forEach(row => {
+      gsap.from(row, { y: 80, opacity: 0, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: row, start: 'top 88%' } })
+      gsap.from(row.querySelector('.exp-line'), { scaleX: 0, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: row, start: 'top 88%' } })
+    })
+  }), [])
 
   return (
-    <section id='experience' className='mx-auto max-w-6xl px-5 sm:px-8 py-24 grid lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20'>
-      <div className='lg:sticky lg:top-28 self-start'>
-        <p className='eyebrow mb-4'>Experience</p>
-        <h2 className='text-4xl sm:text-6xl font-extrabold tracking-tight'>Where I've worked and studied</h2>
+    <section id='experience' ref={root} className='wrap py-24 sm:py-32'>
+      <div className='flex items-end justify-between gap-6 mb-14'>
+        <h2 className='text-[clamp(3rem,7vw,6.5rem)] font-medium tracking-[-0.04em] leading-[0.95]'>Experience<span className='text-accent'>.</span></h2>
+        <span className='hidden sm:block label'>Work and education</span>
       </div>
-      <div className='relative'>
-        <span className='absolute left-0 top-2 bottom-2 w-0.5 rounded-full bg-line' />
-        <span ref={fill} className='absolute left-0 top-2 bottom-2 w-0.5 rounded-full bg-accent origin-top scale-y-0' />
-        <ol ref={list} className='relative pl-8 sm:pl-10'>
-          {experience.map((e, i) => (
-            <li key={e.org} className={`reveal relative ${i ? 'pt-14' : ''}`}>
-              <span className={`absolute -left-8 sm:-left-10 -translate-x-[calc(50%-1px)] ${i ? 'top-[3.85rem]' : 'top-1.5'} w-3.5 h-3.5 rounded-full border-[3px] border-accent bg-bg`} />
-              <p className='text-sm font-semibold text-muted'>{e.dates}</p>
-              <h3 className='mt-2 text-xl sm:text-2xl font-bold tracking-tight'>{e.role}</h3>
-              <p className='font-semibold text-accent'>{e.org}</p>
-              {e.bullets.length > 0 && (
-                <ul className='mt-4 space-y-3 text-muted leading-relaxed'>
-                  {e.bullets.map(b => <li key={b} className='pl-5 relative before:absolute before:left-0 before:top-[0.7em] before:w-2 before:h-0.5 before:rounded-full before:bg-accent'>{b}</li>)}
-                </ul>
-              )}
-            </li>
-          ))}
-        </ol>
-      </div>
+      <ol>
+        {experience.map(e => (
+          <li key={e.org} className='exp-row group relative py-10 sm:py-14 grid md:grid-cols-[0.8fr_1.2fr] gap-6 md:gap-16'>
+            <span className='exp-line absolute top-0 inset-x-0 h-px bg-line origin-left' />
+            <div>
+              <p className='label'>{e.dates}</p>
+              <h3 className='mt-3 text-3xl sm:text-4xl font-medium tracking-tight group-hover:text-accent transition-colors duration-500'>{e.org}</h3>
+              <p className='mt-2 text-lg text-muted'>{e.role}</p>
+            </div>
+            {e.bullets.length > 0 && (
+              <ul className='space-y-4 text-lg text-fg/85 leading-relaxed md:pt-8'>
+                {e.bullets.map(b => <li key={b} className='flex gap-4'><span className='mt-3 w-1.5 h-1.5 shrink-0 rounded-full bg-accent' />{b}</li>)}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ol>
     </section>
   )
 }

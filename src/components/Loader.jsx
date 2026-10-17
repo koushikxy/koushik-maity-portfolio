@@ -1,33 +1,33 @@
 import React, { useEffect, useState } from 'react'
 
+const words = ['Hello', 'नमस्ते', 'Hola', 'Bonjour', 'Ciao', 'Hallo', 'こんにちは', 'Hello']
+
 const Loader = ({ onDone }) => {
-  const [n, setN] = useState(0)
+  const [i, setI] = useState(0)
   const [leaving, setLeaving] = useState(false)
 
   useEffect(() => {
-    let frame
-    const t0 = performance.now()
-    const tick = now => {
-      const p = Math.min((now - t0) / 650, 1)
-      setN(Math.round(100 * (1 - Math.pow(1 - p, 3))))
-      if (p < 1) frame = requestAnimationFrame(tick)
-      else {
+    if (i === words.length - 1) {
+      const t = setTimeout(() => {
         setLeaving(true)
-        setTimeout(onDone, 550)
-      }
+        setTimeout(onDone, 900)
+      }, 350)
+      return () => clearTimeout(t)
     }
-    frame = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(frame)
-  }, [onDone])
+    const t = setTimeout(() => setI(i + 1), i === 0 ? 500 : 120)
+    return () => clearTimeout(t)
+  }, [i, onDone])
 
   return (
-    <div aria-hidden='true' className={`fixed inset-0 z-[100] bg-bg flex items-end justify-between gap-6 p-6 sm:p-10 transition-transform duration-[550ms] ease-[cubic-bezier(.7,0,.3,1)] ${leaving ? '-translate-y-full' : ''}`}>
-      <p className='text-3xl sm:text-5xl font-bold tracking-tight'>
-        Koushik Maity
-        <span className='block mt-1 text-lg sm:text-2xl font-medium text-muted'>Data Analyst</span>
-      </p>
-      <p className='text-6xl sm:text-8xl font-extrabold tabular-nums text-accent'>{n}</p>
-      <div className='absolute left-0 bottom-0 h-1 bg-accent' style={{ width: `${n}%` }} />
+    <div aria-hidden='true' className={`fixed inset-0 z-[160] transition-transform duration-[900ms] ease-[cubic-bezier(.76,0,.24,1)] ${leaving ? '-translate-y-[115%]' : ''}`}>
+      <div className='absolute inset-0 bg-card grid place-items-center'>
+        <p className='flex items-center gap-4 text-4xl sm:text-6xl font-medium'>
+          <span className='w-3 h-3 rounded-full bg-accent' />{words[i]}
+        </p>
+      </div>
+      <svg viewBox='0 0 100 10' preserveAspectRatio='none' className='absolute left-0 top-full w-full h-[15vh] fill-card'>
+        <path d={leaving ? 'M0 0 Q50 0 100 0 L100 0 L0 0Z' : 'M0 0 Q50 10 100 0 L100 0 L0 0Z'} className='transition-[d] duration-[900ms]' />
+      </svg>
     </div>
   )
 }

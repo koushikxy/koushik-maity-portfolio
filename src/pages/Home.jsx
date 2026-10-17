@@ -8,49 +8,48 @@ import Work from '../components/Work'
 import Experience from '../components/Experience'
 import Skills from '../components/Skills'
 import Certificates from '../components/Certificates'
-import Contact from '../components/Contact'
 import Footer from '../components/Footer'
-import { reducedMotion, useReveal } from '../hooks'
+import { useReveal } from '../hooks'
+import { reduced, scrollTo, ScrollTrigger } from '../motion'
 
 const sections = { '/about': 'about', '/project': 'work', '/experience': 'experience', '/skill': 'skills', '/certificate': 'certificates', '/contact': 'contact' }
 
 const firstVisit = () => {
   try {
-    if (reducedMotion() || sessionStorage.getItem('seen')) return false
+    if (reduced() || sessionStorage.getItem('seen')) return false
     sessionStorage.setItem('seen', '1')
   } catch (e) {}
   return window.location.pathname === '/'
 }
 
 const Home = () => {
-  const { pathname, key } = useLocation()
+  const { pathname } = useLocation()
   const [loading, setLoading] = useState(firstVisit)
-  const [play, setPlay] = useState(false)
   const done = useCallback(() => setLoading(false), [])
-  useReveal()
+  useReveal('home')
 
   useEffect(() => {
-    if (!loading) requestAnimationFrame(() => setPlay(true))
-  }, [loading])
-
-  useEffect(() => {
-    const el = document.getElementById(sections[pathname.toLowerCase()])
-    el ? el.scrollIntoView() : window.scrollTo(0, 0)
-  }, [pathname, key])
+    document.title = 'Koushik Maity | Data Analyst'
+    const id = sections[pathname.toLowerCase()]
+    const t = setTimeout(() => {
+      ScrollTrigger.refresh()
+      const el = id && document.getElementById(id)
+      if (el) scrollTo(el, true)
+    }, 60)
+    return () => clearTimeout(t)
+  }, [pathname])
 
   return (
     <>
       {loading && <Loader onDone={done} />}
-      <a href='#main' className='sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-full focus:bg-fg focus:text-bg'>Skip to content</a>
       <Navbar />
       <main id='main'>
-        <Hero play={play} />
+        <Hero play={!loading} />
         <About />
         <Work />
         <Experience />
         <Skills />
         <Certificates />
-        <Contact />
       </main>
       <Footer />
     </>

@@ -1,17 +1,15 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { FiSun, FiMoon, FiArrowUpRight } from 'react-icons/fi'
-import Logo from './Logo'
-import { resume, email, linkedin, github } from '../data'
-import { useScroll } from '../hooks'
+import React, { useCallback, useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
+import Magnetic from './Magnetic'
+import { useGo } from './Transition'
+import { email, github, linkedin, resume } from '../data'
+import { scrollTo, stopScroll } from '../motion'
 
 const links = [
-  ['About', '/About', 'about'],
-  ['Work', '/Project', 'work'],
-  ['Experience', '/Experience', 'experience'],
-  ['Skills', '/Skill', 'skills'],
-  ['Certificates', '/Certificate', 'certificates'],
-  ['Contact', '/Contact', 'contact']
+  ['Work', 'work', '/Project'],
+  ['About', 'about', '/About'],
+  ['Experience', 'experience', '/Experience'],
+  ['Contact', 'contact', '/Contact']
 ]
 
 const Roll = ({ children }) => (
@@ -22,111 +20,102 @@ const Roll = ({ children }) => (
 )
 
 const Navbar = () => {
+  const { pathname } = useLocation()
+  const go = useGo()
   const [open, setOpen] = useState(false)
-  const [dark, setDark] = useState(() => document.documentElement.classList.contains('dark'))
-  const [active, setActive] = useState('')
-  const [pill, setPill] = useState(null)
-  const [scrolled, setScrolled] = useState(false)
-  const [hidden, setHidden] = useState(false)
-  const bar = useRef(null)
-  const refs = useRef({})
-  const lastY = useRef(0)
+  const [floating, setFloating] = useState(false)
+  const home = !pathname.startsWith('/work/')
 
-  const onScroll = useCallback(() => {
-    const y = window.scrollY
-    const max = document.documentElement.scrollHeight - window.innerHeight
-    if (bar.current) bar.current.style.transform = `scaleX(${max > 0 ? y / max : 0})`
-    let current = ''
-    links.forEach(([, , id]) => {
-      const el = document.getElementById(id)
-      if (el && el.getBoundingClientRect().top < window.innerHeight * 0.4) current = id
-    })
-    setActive(current)
-    setScrolled(y > 40)
-    if (Math.abs(y - lastY.current) > 8) {
-      setHidden(y > lastY.current && y > 400)
-      lastY.current = y
-    }
+  useEffect(() => {
+    const check = () => setFloating(window.scrollY > window.innerHeight * 0.3)
+    check()
+    window.addEventListener('scroll', check, { passive: true })
+    return () => window.removeEventListener('scroll', check)
   }, [])
-  useScroll(onScroll)
 
   useEffect(() => {
-    const el = refs.current[active]
-    setPill(el ? { left: el.offsetLeft, width: el.offsetWidth } : null)
-  }, [active])
-
-  useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
+    stopScroll(open)
     const esc = e => e.key === 'Escape' && setOpen(false)
     window.addEventListener('keydown', esc)
     return () => window.removeEventListener('keydown', esc)
   }, [open])
 
-  const toggleTheme = () => {
-    document.documentElement.classList.toggle('dark', !dark)
-    try { localStorage.setItem('theme', dark ? 'light' : 'dark') } catch (e) {}
-    setDark(!dark)
-  }
+  const nav = useCallback((e, id, path, label) => {
+    e.preventDefault()
+    setOpen(false)
+    const el = home && document.getElementById(id)
+    if (el) scrollTo(el)
+    else go(path, label)
+  }, [home, go])
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 transition-[transform,background-color,border-color] duration-500 ease-[cubic-bezier(.16,1,.3,1)] ${hidden && !open ? '-translate-y-full' : ''} ${scrolled && !open ? 'bg-bg/70 backdrop-blur-xl border-b border-line/60' : 'border-b border-transparent'}`}>
-      <nav aria-label='Main' className='mx-auto max-w-6xl px-5 sm:px-8 h-[4.5rem] flex items-center justify-between gap-4'>
-        <Logo onClick={() => setOpen(false)} />
-
-        <div className='hidden lg:flex relative items-center p-1 rounded-full border border-line bg-card/80 text-[15px] shadow-[0_8px_30px_-14px_rgb(0_0_0/0.3)]'>
-          {pill && <span className='absolute top-1 bottom-1 rounded-full bg-accent transition-all duration-500 ease-[cubic-bezier(.16,1,.3,1)]' style={pill} />}
-          {links.map(([label, to, id]) => (
-            <Link key={id} to={to} ref={el => (refs.current[id] = el)} className={`group relative px-4 py-2 rounded-full font-medium transition-colors duration-300 ${active === id ? 'text-bg' : 'text-muted hover:text-fg'}`}>
-              <Roll>{label}</Roll>
-            </Link>
-          ))}
-        </div>
-
-        <div className='relative z-10 flex items-center gap-2'>
-          <span className='hidden xl:inline-flex items-center gap-2 mr-2 text-sm font-medium text-muted'>
-            <span className='relative flex w-2 h-2'>
-              <span className='absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-70' />
-              <span className='relative w-2 h-2 rounded-full bg-emerald-500' />
+    <>
+      <header className='absolute inset-x-0 top-0 z-40'>
+        <nav aria-label='Main' className='wrap h-24 flex items-center justify-between gap-6'>
+          <a href='/' onClick={e => nav(e, 'top', '/', 'Home')} className='group flex items-center gap-1.5 font-medium'>
+            <span className='inline-block transition-transform duration-700 group-hover:rotate-[360deg]'>©</span>
+            <span className='relative overflow-hidden inline-flex'>
+              <span className='block transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:-translate-y-full'>Koushik Maity</span>
+              <span aria-hidden='true' className='absolute left-0 translate-y-full transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:translate-y-0 whitespace-nowrap text-accent'>Data Analyst</span>
             </span>
-            Available
-          </span>
-          <button onClick={toggleTheme} aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'} className='group w-10 h-10 grid place-items-center rounded-full border border-line bg-card/80 hover:border-accent hover:text-accent transition-colors'>
-            <span className='transition-transform duration-700 group-hover:rotate-[180deg]'>{dark ? <FiSun /> : <FiMoon />}</span>
-          </button>
-          <a href={resume} target='_blank' rel='noreferrer' className='group hidden sm:inline-flex items-center gap-2 h-10 pl-4 pr-1.5 rounded-full bg-fg text-bg text-sm font-semibold'>
-            <Roll>Resume</Roll>
-            <span className='w-7 h-7 rounded-full bg-accent text-white dark:text-bg grid place-items-center transition-transform duration-500 group-hover:rotate-45'><FiArrowUpRight /></span>
           </a>
-          <button onClick={() => setOpen(!open)} aria-label='Menu' aria-expanded={open} className='lg:hidden w-10 h-10 grid place-items-center rounded-full border border-line bg-card/80'>
-            <span className='relative w-4 h-3'>
-              <span className={`absolute left-0 w-4 h-px bg-fg transition-all duration-300 ${open ? 'top-1.5 rotate-45' : 'top-0'}`} />
-              <span className={`absolute left-0 w-4 h-px bg-fg transition-all duration-300 ${open ? 'top-1.5 -rotate-45' : 'top-3'}`} />
+          <div className='hidden md:flex items-center gap-1'>
+            {links.map(([label, id, path]) => (
+              <Magnetic key={id} strength={0.4}>
+                <a href={path} onClick={e => nav(e, id, path, label)} className='group relative block px-4 py-2 font-medium'>
+                  <Roll>{label}</Roll>
+                  <span className='absolute left-1/2 -bottom-0.5 w-1.5 h-1.5 -translate-x-1/2 rounded-full bg-accent scale-0 transition-transform duration-300 group-hover:scale-100' />
+                </a>
+              </Magnetic>
+            ))}
+            <Magnetic strength={0.3}>
+              <a href={resume} target='_blank' rel='noreferrer' className='group ml-3 inline-flex items-center h-11 px-5 rounded-full bg-fg text-ink font-semibold'>
+                <Roll>Resume</Roll>
+              </a>
+            </Magnetic>
+          </div>
+        </nav>
+      </header>
+
+      <div className={`fixed top-5 right-5 sm:top-7 sm:right-8 z-[60] transition-transform duration-500 ease-[cubic-bezier(.34,1.56,.64,1)] ${floating || open ? 'scale-100' : 'scale-100 md:scale-0'}`}>
+        <Magnetic strength={0.4}>
+          <button onClick={() => setOpen(!open)} aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} className={`w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-full grid place-items-center transition-colors duration-300 ${open ? 'bg-accent' : 'bg-card border border-line'}`}>
+            <span className='relative w-6 h-3'>
+              <span className={`absolute left-0 w-6 h-0.5 rounded-full transition-all duration-300 ${open ? 'top-1.5 rotate-45 bg-ink' : 'top-0 bg-fg'}`} />
+              <span className={`absolute left-0 w-6 h-0.5 rounded-full transition-all duration-300 ${open ? 'top-1.5 -rotate-45 bg-ink' : 'top-3 bg-fg'}`} />
             </span>
           </button>
-        </div>
-      </nav>
-      <div ref={bar} className='h-px bg-accent origin-left scale-x-0' />
-
-      <div className={`lg:hidden fixed inset-0 -z-10 bg-bg transition-[clip-path] duration-700 ease-[cubic-bezier(.7,0,.3,1)] ${open ? '[clip-path:inset(0_0_0_0)]' : '[clip-path:inset(0_0_100%_0)] pointer-events-none'}`}>
-        <div className='h-full flex flex-col justify-between px-5 pt-28 pb-10'>
-          <div className='flex flex-col'>
-            {links.map(([label, to, id], i) => (
-              <Link key={to} to={to} onClick={() => setOpen(false)} tabIndex={open ? 0 : -1} className={`py-1.5 text-5xl font-bold tracking-tight transition duration-700 ${active === id ? 'text-accent' : ''}`} style={{ transitionDelay: open ? `${0.15 + i * 0.05}s` : '0s', opacity: open ? 1 : 0, transform: open ? 'none' : 'translateY(20px)' }}>
-                {label}
-              </Link>
-            ))}
-          </div>
-          <div className='space-y-6'>
-            <div className='flex gap-6 font-medium text-muted'>
-              <a href={linkedin} target='_blank' rel='noreferrer' tabIndex={open ? 0 : -1}>LinkedIn</a>
-              <a href={github} target='_blank' rel='noreferrer' tabIndex={open ? 0 : -1}>GitHub</a>
-              <a href={`mailto:${email}`} tabIndex={open ? 0 : -1}>Email</a>
-            </div>
-            <a href={resume} target='_blank' rel='noreferrer' tabIndex={open ? 0 : -1} className='btn-primary w-full'>Download resume</a>
-          </div>
-        </div>
+        </Magnetic>
       </div>
-    </header>
+
+      <div onClick={() => setOpen(false)} className={`fixed inset-0 z-50 bg-black/60 transition-opacity duration-500 ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} />
+      <aside aria-hidden={!open} className={`fixed top-0 right-0 bottom-0 z-[55] w-full sm:w-[520px] bg-card border-l border-line transition-transform duration-700 ease-[cubic-bezier(.76,0,.24,1)] ${open ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className='h-full flex flex-col justify-between px-8 sm:px-14 pt-32 pb-10'>
+          <div>
+            <p className='label pb-6 mb-6 border-b border-line'>Navigation</p>
+            <ul className='space-y-1'>
+              {[['Home', 'top', '/'], ...links].map(([label, id, path], i) => (
+                <li key={id} className='transition duration-700' style={{ transitionDelay: open ? `${0.2 + i * 0.06}s` : '0s', transform: open ? 'none' : 'translateX(60px)', opacity: open ? 1 : 0 }}>
+                  <a href={path} tabIndex={open ? 0 : -1} onClick={e => nav(e, id, path, label)} className='group flex items-center gap-5 py-1 text-5xl sm:text-6xl font-medium tracking-tight'>
+                    <span className='w-3 h-3 shrink-0 rounded-full bg-accent scale-0 group-hover:scale-100 transition-transform duration-300' />
+                    <span className='-ml-8 group-hover:ml-0 transition-[margin] duration-300'>{label}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className='label mb-4'>Find me on</p>
+            <div className='flex flex-wrap gap-6 font-medium'>
+              <a href={linkedin} target='_blank' rel='noreferrer' tabIndex={open ? 0 : -1} className='hover:text-accent'>LinkedIn</a>
+              <a href={github} target='_blank' rel='noreferrer' tabIndex={open ? 0 : -1} className='hover:text-accent'>GitHub</a>
+              <a href={`mailto:${email}`} tabIndex={open ? 0 : -1} className='hover:text-accent'>Email</a>
+              <a href={resume} target='_blank' rel='noreferrer' tabIndex={open ? 0 : -1} className='hover:text-accent'>Resume</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </>
   )
 }
 

@@ -1,33 +1,52 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { skills } from '../data'
+import { gsap, whenIdle } from '../motion'
 
-const spot = e => {
-  const r = e.currentTarget.getBoundingClientRect()
-  e.currentTarget.style.setProperty('--x', `${e.clientX - r.left}px`)
-  e.currentTarget.style.setProperty('--y', `${e.clientY - r.top}px`)
-}
+const names = skills.flatMap(s => s.items.map(([n]) => n))
+const rows = [names.slice(0, Math.ceil(names.length / 2)), names.slice(Math.ceil(names.length / 2))]
 
-const Skills = () => (
-  <section id='skills' className='mx-auto max-w-6xl px-5 sm:px-8 py-24'>
-    <p className='eyebrow mb-4'>Skills</p>
-    <h2 className='text-4xl sm:text-6xl font-extrabold tracking-tight mb-12'>What I work with</h2>
-    <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4'>
-      {skills.map(({ group, note, items, wide }, i) => (
-        <div key={group} onMouseMove={spot} className={`reveal group relative overflow-hidden rounded-2xl border border-line bg-card p-6 sm:p-7 flex flex-col hover:border-accent/50 transition-colors ${wide ? 'lg:col-span-2' : ''}`} style={{ '--d': `${(i % 3) * 0.08}s` }}>
-          <div className='absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 spot' />
-          <h3 className='relative text-xl font-bold tracking-tight'>{group}</h3>
-          <ul className='relative mt-5 flex flex-wrap gap-2.5'>
-            {items.map(([name, Icon]) => (
-              <li key={name} className='inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-line bg-bg font-medium'>
-                {Icon && <Icon className='text-lg text-accent' aria-hidden='true' />}{name}
-              </li>
+const Skills = () => {
+  const root = useRef(null)
+
+  useEffect(() => whenIdle(root, () => {
+    gsap.utils.toArray('.skill-band').forEach((band, i) => {
+      gsap.fromTo(band, { xPercent: i ? -30 : 0 }, { xPercent: i ? 0 : -30, ease: 'none', scrollTrigger: { trigger: root.current, start: 'top bottom', end: 'bottom top', scrub: 0.6 } })
+    })
+    gsap.from('.skill-card', { y: 60, opacity: 0, duration: 1, ease: 'expo.out', stagger: 0.08, scrollTrigger: { trigger: '.skill-grid', start: 'top 85%' } })
+  }), [])
+
+  return (
+    <section id='skills' ref={root} className='py-24 sm:py-32 overflow-hidden'>
+      <div aria-hidden='true' className='space-y-4 mb-20 select-none'>
+        {rows.map((row, i) => (
+          <div key={i} className='skill-band flex gap-4 w-max'>
+            {[...row, ...row].map((n, j) => (
+              <span key={j} className={`px-8 py-4 rounded-full text-3xl sm:text-5xl font-medium whitespace-nowrap ${j % 3 === 1 ? 'bg-accent text-ink' : 'border border-line'}`}>{n}</span>
             ))}
-          </ul>
-          <p className='relative mt-auto pt-6 text-muted'>{note}</p>
+          </div>
+        ))}
+      </div>
+      <div className='wrap'>
+        <div className='flex items-end justify-between gap-6 mb-12'>
+          <h2 className='text-[clamp(3rem,7vw,6.5rem)] font-medium tracking-[-0.04em] leading-[0.95]'>Skills<span className='text-accent'>.</span></h2>
+          <span className='hidden sm:block label'>And where I used them</span>
         </div>
-      ))}
-    </div>
-  </section>
-)
+        <div className='skill-grid grid sm:grid-cols-2 lg:grid-cols-3 border-t border-l border-line'>
+          {skills.map(({ group, note, items }) => (
+            <div key={group} className='skill-card border-r border-b border-line p-7 sm:p-9 hover:bg-card transition-colors duration-500'>
+              <h3 className='text-2xl font-medium'>{group}</h3>
+              <p className='mt-1 text-muted'>{note}</p>
+              <ul className='mt-7 flex flex-wrap gap-2'>
+                {items.map(([name, Icon]) => (
+                  <li key={name} className='tag gap-2'>{Icon && <Icon className='text-accent' aria-hidden='true' />}{name}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
 
 export default Skills
