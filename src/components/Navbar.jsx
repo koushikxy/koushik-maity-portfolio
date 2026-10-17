@@ -73,32 +73,31 @@ const Navbar = () => {
       <nav aria-label='Main' className='mx-auto max-w-6xl px-5 sm:px-8 h-[4.5rem] flex items-center justify-between gap-4'>
         <Logo onClick={() => setOpen(false)} />
 
-        <div className='hidden lg:flex relative items-center p-1 rounded-full border border-line bg-card/60 text-sm shadow-[0_8px_30px_-12px_rgb(0_0_0/0.35)]'>
-          {pill && <span className='absolute top-1 bottom-1 rounded-full bg-fg transition-all duration-500 ease-[cubic-bezier(.16,1,.3,1)]' style={pill} />}
-          {links.map(([label, to, id], i) => (
-            <Link key={id} to={to} ref={el => (refs.current[id] = el)} className={`group relative flex items-start gap-1 px-3.5 py-1.5 rounded-full transition-colors duration-300 ${active === id ? 'text-bg' : 'text-muted hover:text-fg'}`}>
+        <div className='hidden lg:flex relative items-center p-1 rounded-full border border-line bg-card/80 text-[15px] shadow-[0_8px_30px_-14px_rgb(0_0_0/0.3)]'>
+          {pill && <span className='absolute top-1 bottom-1 rounded-full bg-accent transition-all duration-500 ease-[cubic-bezier(.16,1,.3,1)]' style={pill} />}
+          {links.map(([label, to, id]) => (
+            <Link key={id} to={to} ref={el => (refs.current[id] = el)} className={`group relative px-4 py-2 rounded-full font-medium transition-colors duration-300 ${active === id ? 'text-bg' : 'text-muted hover:text-fg'}`}>
               <Roll>{label}</Roll>
-              <span className='font-mono text-[9px] leading-none mt-0.5 opacity-60'>0{i + 1}</span>
             </Link>
           ))}
         </div>
 
         <div className='relative z-10 flex items-center gap-2'>
-          <span className='hidden xl:inline-flex items-center gap-2 mr-2 text-xs text-muted'>
+          <span className='hidden xl:inline-flex items-center gap-2 mr-2 text-sm font-medium text-muted'>
             <span className='relative flex w-2 h-2'>
               <span className='absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-70' />
               <span className='relative w-2 h-2 rounded-full bg-emerald-500' />
             </span>
             Available
           </span>
-          <button onClick={toggleTheme} aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'} className='group w-10 h-10 grid place-items-center rounded-full border border-line bg-card/60 hover:border-accent hover:text-accent transition-colors'>
+          <button onClick={toggleTheme} aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'} className='group w-10 h-10 grid place-items-center rounded-full border border-line bg-card/80 hover:border-accent hover:text-accent transition-colors'>
             <span className='transition-transform duration-700 group-hover:rotate-[180deg]'>{dark ? <FiSun /> : <FiMoon />}</span>
           </button>
-          <a href={resume} target='_blank' rel='noreferrer' className='group hidden sm:inline-flex items-center gap-1.5 h-10 pl-4 pr-1.5 rounded-full bg-fg text-bg text-sm font-medium'>
+          <a href={resume} target='_blank' rel='noreferrer' className='group hidden sm:inline-flex items-center gap-2 h-10 pl-4 pr-1.5 rounded-full bg-fg text-bg text-sm font-semibold'>
             <Roll>Resume</Roll>
-            <span className='w-7 h-7 rounded-full bg-accent text-bg grid place-items-center transition-transform duration-500 group-hover:rotate-45'><FiArrowUpRight /></span>
+            <span className='w-7 h-7 rounded-full bg-accent text-white dark:text-bg grid place-items-center transition-transform duration-500 group-hover:rotate-45'><FiArrowUpRight /></span>
           </a>
-          <button onClick={() => setOpen(!open)} aria-label='Menu' aria-expanded={open} className='lg:hidden w-10 h-10 grid place-items-center rounded-full border border-line bg-card/60'>
+          <button onClick={() => setOpen(!open)} aria-label='Menu' aria-expanded={open} className='lg:hidden w-10 h-10 grid place-items-center rounded-full border border-line bg-card/80'>
             <span className='relative w-4 h-3'>
               <span className={`absolute left-0 w-4 h-px bg-fg transition-all duration-300 ${open ? 'top-1.5 rotate-45' : 'top-0'}`} />
               <span className={`absolute left-0 w-4 h-px bg-fg transition-all duration-300 ${open ? 'top-1.5 -rotate-45' : 'top-3'}`} />
@@ -112,13 +111,13 @@ const Navbar = () => {
         <div className='h-full flex flex-col justify-between px-5 pt-28 pb-10'>
           <div className='flex flex-col'>
             {links.map(([label, to, id], i) => (
-              <Link key={to} to={to} onClick={() => setOpen(false)} tabIndex={open ? 0 : -1} className={`flex items-start gap-2 py-1.5 text-5xl font-semibold tracking-tight transition duration-700 ${active === id ? 'text-accent' : ''}`} style={{ transitionDelay: open ? `${0.15 + i * 0.05}s` : '0s', opacity: open ? 1 : 0, transform: open ? 'none' : 'translateY(20px)' }}>
-                {label}<span className='font-mono text-xs text-muted mt-1'>0{i + 1}</span>
+              <Link key={to} to={to} onClick={() => setOpen(false)} tabIndex={open ? 0 : -1} className={`py-1.5 text-5xl font-bold tracking-tight transition duration-700 ${active === id ? 'text-accent' : ''}`} style={{ transitionDelay: open ? `${0.15 + i * 0.05}s` : '0s', opacity: open ? 1 : 0, transform: open ? 'none' : 'translateY(20px)' }}>
+                {label}
               </Link>
             ))}
           </div>
           <div className='space-y-6'>
-            <div className='flex gap-5 text-sm text-muted'>
+            <div className='flex gap-6 font-medium text-muted'>
               <a href={linkedin} target='_blank' rel='noreferrer' tabIndex={open ? 0 : -1}>LinkedIn</a>
               <a href={github} target='_blank' rel='noreferrer' tabIndex={open ? 0 : -1}>GitHub</a>
               <a href={`mailto:${email}`} tabIndex={open ? 0 : -1}>Email</a>

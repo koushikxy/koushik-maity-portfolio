@@ -6,9 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Geist', 'system-ui', 'sans-serif'],
-        mono: ['"Geist Mono"', 'ui-monospace', 'monospace'],
-        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
       },
       colors: {
         bg: v('bg'),
@@ -17,6 +15,7 @@ module.exports = {
         line: v('line'),
         card: v('card'),
         accent: v('accent'),
+        soft: v('soft'),
       },
     },
   },

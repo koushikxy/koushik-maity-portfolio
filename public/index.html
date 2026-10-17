@@ -13,8 +13,8 @@
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" sizes="any" />
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <meta name="theme-color" content="#f5f4f0" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#080b14" media="(prefers-color-scheme: dark)" />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://koushikmaity.netlify.app/" />
@@ -45,16 +45,14 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&family=Instrument+Serif:ital@0;1&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&family=Instrument+Serif:ital@0;1&display=swap" /></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" /></noscript>
 
   <script>
     try {
       var t = localStorage.getItem('theme');
-      if (t !== 'light') document.documentElement.classList.add('dark');
-    } catch (e) {
-      document.documentElement.classList.add('dark');
-    }
+      if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark');
+    } catch (e) {}
   </script>
 </head>
 

@@ -15,24 +15,24 @@ const Experience = () => {
   useScroll(onScroll)
 
   return (
-    <section id='experience' className='mx-auto max-w-6xl px-5 sm:px-8 py-28 grid lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20'>
+    <section id='experience' className='mx-auto max-w-6xl px-5 sm:px-8 py-24 grid lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20'>
       <div className='lg:sticky lg:top-28 self-start'>
-        <p className='label mb-4'>(03) Experience</p>
-        <h2 className='text-4xl sm:text-6xl font-semibold tracking-tight'>Where I've <span className='font-serif italic font-normal'>worked</span> and studied</h2>
+        <p className='eyebrow mb-4'>Experience</p>
+        <h2 className='text-4xl sm:text-6xl font-extrabold tracking-tight'>Where I've worked and studied</h2>
       </div>
       <div className='relative'>
-        <span className='absolute left-0 top-2 bottom-2 w-px bg-line' />
-        <span ref={fill} className='absolute left-0 top-2 bottom-2 w-px bg-accent origin-top scale-y-0' />
+        <span className='absolute left-0 top-2 bottom-2 w-0.5 rounded-full bg-line' />
+        <span ref={fill} className='absolute left-0 top-2 bottom-2 w-0.5 rounded-full bg-accent origin-top scale-y-0' />
         <ol ref={list} className='relative pl-8 sm:pl-10'>
           {experience.map((e, i) => (
             <li key={e.org} className={`reveal relative ${i ? 'pt-14' : ''}`}>
-              <span className={`absolute -left-8 sm:-left-10 -translate-x-1/2 ${i ? 'top-[3.9rem]' : 'top-1.5'} w-3 h-3 rounded-full border-2 border-accent bg-bg`} />
-              <p className='font-mono text-xs text-muted'>{e.dates}</p>
-              <h3 className='mt-2 text-xl sm:text-2xl font-semibold tracking-tight'>{e.role}</h3>
-              <p className='text-accent'>{e.org}</p>
+              <span className={`absolute -left-8 sm:-left-10 -translate-x-[calc(50%-1px)] ${i ? 'top-[3.85rem]' : 'top-1.5'} w-3.5 h-3.5 rounded-full border-[3px] border-accent bg-bg`} />
+              <p className='text-sm font-semibold text-muted'>{e.dates}</p>
+              <h3 className='mt-2 text-xl sm:text-2xl font-bold tracking-tight'>{e.role}</h3>
+              <p className='font-semibold text-accent'>{e.org}</p>
               {e.bullets.length > 0 && (
                 <ul className='mt-4 space-y-3 text-muted leading-relaxed'>
-                  {e.bullets.map(b => <li key={b}>{b}</li>)}
+                  {e.bullets.map(b => <li key={b} className='pl-5 relative before:absolute before:left-0 before:top-[0.7em] before:w-2 before:h-0.5 before:rounded-full before:bg-accent'>{b}</li>)}
                 </ul>
               )}
             </li>

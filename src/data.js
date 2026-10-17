@@ -14,7 +14,6 @@ import reactCert from './certificate/react.webp'
 import jsCert from './certificate/javascript.webp'
 import sqlCert from './certificate/mysql.webp'
 import cssCert from './certificate/css.webp'
-import penToPixel from './certificate/pen-to-pixel.webp'
 
 export const email = 'ksmaity21@gmail.com'
 export const linkedin = 'https://www.linkedin.com/in/ksmaity/'
@@ -156,6 +155,5 @@ export const certs = [
   { title: 'React JS', issuer: 'Infosys', image: reactCert, size: [1200, 849] },
   { title: 'JavaScript', issuer: 'Udemy', image: jsCert, size: [1200, 892] },
   { title: 'MySQL', issuer: 'Udemy', image: sqlCert, size: [1200, 892] },
-  { title: 'CSS', issuer: 'HackerRank', image: cssCert, size: [1200, 915] },
-  { title: 'Pen To Pixel', issuer: 'AI/ML and IoT event', image: penToPixel, size: [1200, 849] }
+  { title: 'CSS', issuer: 'HackerRank', image: cssCert, size: [1200, 915] }
 ]

@@ -15,8 +15,8 @@ class Safe extends Component {
     return (
       <main className='min-h-[100svh] grid place-items-center px-5 text-center'>
         <div>
-          <p className='label'>Something went wrong</p>
-          <h1 className='mt-4 text-4xl sm:text-5xl font-semibold tracking-tight'>This page didn't load properly.</h1>
+          <p className='eyebrow'>Something went wrong</p>
+          <h1 className='mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight'>This page didn't load properly.</h1>
           <p className='mt-4 text-muted'>Please reload, or email me at ksmaity21@gmail.com.</p>
           <button onClick={() => window.location.reload()} className='btn-primary mt-8'>Reload the page</button>
         </div>

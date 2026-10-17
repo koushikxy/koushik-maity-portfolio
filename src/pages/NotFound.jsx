@@ -25,15 +25,15 @@ const NotFound = () => {
       <Navbar />
       <main id='main' className={`relative min-h-[100svh] flex items-center overflow-hidden ${play ? 'play' : ''}`}>
         <div className='absolute inset-0 dots' />
-        <svg viewBox='0 0 1040 280' preserveAspectRatio='none' className='absolute inset-x-0 bottom-0 w-full h-1/3 text-accent opacity-50' aria-hidden='true'>
+        <svg viewBox='0 0 1040 280' preserveAspectRatio='none' className='absolute inset-x-0 bottom-0 w-full h-1/3 text-accent opacity-60' aria-hidden='true'>
           <path className='chart-line' d='M0 60 L120 80 L240 50 L360 90 L480 70 L560 120 L620 270 L1040 270' pathLength='1' fill='none' stroke='currentColor' strokeWidth='2' vectorEffect='non-scaling-stroke' />
         </svg>
 
         <div className='relative mx-auto w-full max-w-6xl px-5 sm:px-8 pt-28 pb-16 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center'>
           <div>
-            <p className='label'>Error 404</p>
-            <h1 className='mt-4 text-[clamp(2.6rem,7vw,5.5rem)] font-semibold tracking-[-0.04em] leading-[0.95]'>
-              This query returned <span className='font-serif italic font-normal text-accent'>0 rows.</span>
+            <p className='eyebrow'>Error 404</p>
+            <h1 className='mt-4 text-[clamp(2.6rem,7vw,5.5rem)] font-extrabold tracking-[-0.035em] leading-[1.02]'>
+              This query returned <span className='text-accent'>0 rows.</span>
             </h1>
             <p className='mt-6 max-w-md text-lg text-muted'>The page you asked for isn't here. The link may be old or have a typo in it.</p>
             <div className='mt-10 flex flex-wrap gap-3'>
@@ -47,7 +47,7 @@ const NotFound = () => {
               <span className='w-2.5 h-2.5 rounded-full bg-red-500/70' />
               <span className='w-2.5 h-2.5 rounded-full bg-amber-500/70' />
               <span className='w-2.5 h-2.5 rounded-full bg-emerald-500/70' />
-              <span className='ml-3 text-xs text-muted'>query.sql</span>
+              <span className='ml-3 text-sm text-muted'>query.sql</span>
             </div>
             <pre className='p-5 leading-7 whitespace-pre-wrap break-all'>
               <span className='text-accent'>SELECT</span> *{'\n'}
