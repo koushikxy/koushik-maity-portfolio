@@ -39,6 +39,7 @@ export const projects = [
     cover: upiOverview,
     size: [1400, 803],
     intro: "UPI handles more than 20 billion payments a month now, and most of them go through two apps. I wanted to see how that happened and whether it's changing, so I built a Power BI dashboard from NPCI's official monthly app-wise statistics.",
+    line: true,
     numbers: [['18x', 'growth in monthly UPI transactions since June 2020'], ['-37%', 'drop in the average payment, from ₹1,958 to ₹1,225'], ['3,211', 'market concentration (HHI), the lowest in the whole period']],
     findings: [
       'Monthly UPI transactions grew about 18x, from 1.3 billion in June 2020 to 23.9 billion in September 2026. Volume in September 2026 was 24% higher than a year earlier.',
@@ -116,6 +117,10 @@ export const projects = [
       'Weekend flights cost about 5% more, even when booked early.',
       'Departure time barely matters. Pre-5am flights are 18% cheaper, but they are under 2% of all flights.'
     ],
+    charts: [
+      { title: 'Fare compared with the normal fare for the route, by when you book', unit: 'x', digits: 1, rows: [['16+ days ahead', 1.0], ['Within 15 days', 1.7], ['Last 3 days', 2.4]], note: '16+ days ahead is roughly the normal fare for the route.' },
+      { title: 'Fare compared with the route median, by airline', unit: '%', rows: [['AirAsia', -40], ['IndiGo', -18], ['Vistara', 11]] }
+    ],
     gallery: [[flightAirlines, [775, 431], 'Fare compared with the route median, by airline']],
     process: [
       'Used the raw economy and business files instead of the cleaned Kaggle file.',
@@ -150,6 +155,10 @@ export const projects = [
       'Bank type is a heading row above each group rather than a column, so it is filled down to every bank.',
       'A Banks sheet uses SORTBY, FILTER and XLOOKUP to compare the two months and find banks that dropped out.',
       'Pivots with a bank type slicer, and a dashboard sheet with SUMIFS KPIs and 4 charts. Adding a month is drop the file in and refresh.'
+    ],
+    charts: [
+      { title: 'Change in payment infrastructure, August 2025 to August 2026', unit: '%', rows: [['UPI QR codes', 16.5], ['ATMs', 1.4], ['PoS card machines', -14.7], ['Bharat QR codes', -18.9]] },
+      { title: 'Share of all credit cards, August 2026', unit: '%', digits: 1, rows: [['HDFC Bank', 21.8], ['SBI', 18.5], ['ICICI Bank', 16.0], ['Axis Bank', 13.1]] }
     ],
     links: [['GitHub repo', repo('card-payments-excel-dashboard')], ['Dashboard (PDF)', file('card-payments-excel-dashboard', 'dashboard.pdf')], ['Excel workbook', file('card-payments-excel-dashboard', 'rbi_card_payments.xlsx')]]
   }

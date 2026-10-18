@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { FiArrowUpRight, FiDownload, FiLink, FiCheck, FiMail, FiEye, FiEyeOff } from 'react-icons/fi'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import Magnetic from '../components/Magnetic'
 import { GoLink } from '../components/Transition'
 import { cv, pdf, email, linkedin, github, experience } from '../data'
 import { useReveal } from '../hooks'
@@ -48,10 +47,10 @@ const Resume = () => {
           </h1>
           <p className='r-fade mt-6 text-2xl sm:text-3xl text-muted'>Data Analyst, Bangalore, India</p>
           <div className='r-fade mt-12 flex flex-wrap gap-3'>
-            <Magnetic strength={0.25}><a href={pdf} download='Koushik_Maity_Data_Analyst_CV.pdf' className='pill-accent'><FiDownload /> Download PDF</a></Magnetic>
-            <Magnetic strength={0.25}><a href={pdf} target='_blank' rel='noreferrer' className='pill'>Open PDF <FiArrowUpRight /></a></Magnetic>
-            <Magnetic strength={0.25}><button onClick={copy} className='pill'>{copied ? <FiCheck className='text-accent' /> : <FiLink />} {copied ? 'Link copied' : 'Copy link'}</button></Magnetic>
-            <Magnetic strength={0.25}><button onClick={() => setPreview(!preview)} className='pill hidden md:inline-flex'>{preview ? <FiEyeOff /> : <FiEye />} {preview ? 'Hide preview' : 'Preview PDF'}</button></Magnetic>
+            <a href={pdf} download='Koushik_Maity_Data_Analyst_CV.pdf' className='pill-accent'><FiDownload /> Download PDF</a>
+            <a href={pdf} target='_blank' rel='noreferrer' className='pill'>Open PDF <FiArrowUpRight /></a>
+            <button onClick={copy} className='pill'>{copied ? <FiCheck className='text-accent' /> : <FiLink />} {copied ? 'Link copied' : 'Copy link'}</button>
+            <button onClick={() => setPreview(!preview)} className='pill hidden md:inline-flex'>{preview ? <FiEyeOff /> : <FiEye />} {preview ? 'Hide preview' : 'Preview PDF'}</button>
           </div>
           {preview && (
             <div className='mt-10 rounded-[1.25rem] bg-card p-3 hidden md:block'>
@@ -131,7 +130,7 @@ const Resume = () => {
             </Block>
             <div className='reveal pt-10 border-t border-line flex flex-wrap items-center justify-between gap-6'>
               <p className='text-xl'>Want it as a file?</p>
-              <Magnetic strength={0.25}><a href={pdf} download='Koushik_Maity_Data_Analyst_CV.pdf' className='pill-accent'><FiDownload /> Download PDF</a></Magnetic>
+              <a href={pdf} download='Koushik_Maity_Data_Analyst_CV.pdf' className='pill-accent'><FiDownload /> Download PDF</a>
             </div>
           </div>
         </div>

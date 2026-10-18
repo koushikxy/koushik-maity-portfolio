@@ -40,11 +40,6 @@
   :focus-visible {
     @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-bg rounded-md;
   }
-  @media (hover: hover) and (pointer: fine) {
-    .has-cursor, .has-cursor a, .has-cursor button {
-      cursor: none;
-    }
-  }
 }
 
 @layer components {
@@ -128,4 +123,11 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

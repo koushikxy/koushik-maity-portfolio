@@ -51,9 +51,6 @@ export const TransitionProvider = ({ children }) => {
       {children}
       <div aria-hidden='true' className={`fixed inset-0 z-[150] pointer-events-none transition-transform duration-[750ms] ease-[cubic-bezier(.76,0,.24,1)] ${y}`}>
         <div className='absolute inset-0 bg-card' />
-        <svg viewBox='0 0 100 10' preserveAspectRatio='none' className='absolute left-0 w-full h-[12vh] -top-[12vh] fill-card'>
-          <path d={phase === 'cover' ? 'M0 10 Q50 10 100 10 L100 10 L0 10Z' : 'M0 10 Q50 0 100 10 L100 10 L0 10Z'} className='transition-[d] duration-700' />
-        </svg>
         <div className='absolute inset-0 grid place-items-center'>
           <p className='flex items-center gap-4 font-display text-4xl sm:text-6xl font-medium tracking-tight'>
             <span className='w-3 h-3 rounded-full bg-accent' />{label}

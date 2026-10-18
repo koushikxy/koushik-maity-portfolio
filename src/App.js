@@ -4,7 +4,6 @@ import { Routes, Route } from 'react-router-dom'
 
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
-import Cursor from './components/Cursor'
 import { TransitionProvider } from './components/Transition'
 import { startScroll } from './motion'
 
@@ -46,7 +45,6 @@ const App = () => {
           <Route path='*' element={<NotFound />} />
         </Routes>
       </TransitionProvider>
-      <Cursor />
     </Safe>
   )
 }

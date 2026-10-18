@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { FiArrowLeft, FiArrowUpRight } from 'react-icons/fi'
 import Navbar from '../components/Navbar'
-import Magnetic from '../components/Magnetic'
 import { GoLink } from '../components/Transition'
 
 const NotFound = () => {
@@ -26,8 +25,8 @@ const NotFound = () => {
           <h1 className='mt-6 text-[clamp(3rem,8vw,7.5rem)] font-display font-semibold tracking-[-0.045em] leading-[0.92]'>This query returned <span className='text-accent'>0 rows.</span></h1>
           <p className='mt-8 max-w-md text-xl text-muted'>The page you asked for isn't here. The link may be old or have a typo in it.</p>
           <div className='mt-12 flex flex-wrap gap-3'>
-            <Magnetic strength={0.3}><GoLink to='/' label='Home' className='pill-accent'><FiArrowLeft /> Back to home</GoLink></Magnetic>
-            <Magnetic strength={0.3}><GoLink to='/Project' label='Work' className='pill'>See my projects <FiArrowUpRight /></GoLink></Magnetic>
+            <GoLink to='/' label='Home' className='pill-accent'><FiArrowLeft /> Back to home</GoLink>
+            <GoLink to='/Project' label='Work' className='pill'>See my projects <FiArrowUpRight /></GoLink>
           </div>
         </div>
         <div className='rounded-[1.25rem] bg-card font-mono text-[15px] overflow-hidden'>

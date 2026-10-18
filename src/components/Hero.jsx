@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { FiArrowDownRight } from 'react-icons/fi'
+import { FiArrowDown, FiArrowUpRight } from 'react-icons/fi'
 import portrait from '../img/portrait.webp'
 import portraitSm from '../img/portrait-sm.webp'
-import t1 from '../img/trail-1.webp'
-import t2 from '../img/trail-2.webp'
-import t3 from '../img/trail-3.webp'
-import t4 from '../img/trail-4.webp'
-import { gsap, onVelocity, reduced, finePointer } from '../motion'
+import LineChart from './LineChart'
+import { GoLink } from './Transition'
+import { resume, stats } from '../data'
+import { upiMonthly } from '../upi'
+import { useCount } from '../hooks'
+import { gsap, reduced, scrollTo } from '../motion'
 
-const trail = [t1, t2, t3, t4]
 const ring = 'BASED IN BANGALORE • INDIA • OPEN TO WORK • '
 const time = () => new Date().toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: false })
 
@@ -19,7 +19,7 @@ const Badge = () => {
     return () => clearInterval(t)
   }, [])
   return (
-    <div className='relative w-36 h-36 sm:w-44 sm:h-44'>
+    <div className='relative w-32 h-32 sm:w-40 sm:h-40'>
       <svg viewBox='0 0 200 200' className='absolute inset-0 w-full h-full spin-slow' aria-hidden='true'>
         <defs><path id='ring' d='M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0' /></defs>
         <text className='fill-fg font-display' textLength='488' lengthAdjust='spacing' style={{ fontSize: 15, fontWeight: 600 }}>
@@ -34,102 +34,77 @@ const Badge = () => {
   )
 }
 
+const Kpi = ({ value, suffix, label, start }) => {
+  const n = useCount(value, start)
+  return (
+    <div className='rounded-2xl border border-line bg-card/60 p-5'>
+      <p className='font-display text-4xl sm:text-5xl font-semibold tracking-tight tabular-nums'>{n}<span className='text-accent'>{suffix}</span></p>
+      <p className='mt-2 text-sm text-muted leading-snug'>{label}</p>
+    </div>
+  )
+}
+
 const Hero = ({ play }) => {
   const root = useRef(null)
-  const track = useRef(null)
-  const pool = useRef([])
+  const [chartOn, setChartOn] = useState(false)
 
   useEffect(() => {
-    if (reduced()) return
+    if (!play) return
+    const t = setTimeout(() => setChartOn(true), 500)
+    if (reduced()) return () => clearTimeout(t)
     const ctx = gsap.context(() => {
-      const loop = gsap.to(track.current, { xPercent: -50, duration: 24, ease: 'none', repeat: -1 })
-      let dir = 1
-      const off = onVelocity((v, d) => {
-        if (d) dir = d
-        gsap.to(loop, { timeScale: dir * (1 + Math.min(Math.abs(v), 40) * 0.08), duration: 0.3, overwrite: true })
-        gsap.to(loop, { timeScale: dir, duration: 1.2, delay: 0.3, overwrite: false })
-      })
-      gsap.to('.hero-photo', { yPercent: 10, ease: 'none', scrollTrigger: { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true } })
-      gsap.to('.hero-name', { yPercent: 60, ease: 'none', scrollTrigger: { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true } })
-      return off
+      gsap.from('.hero-line > span', { yPercent: 110, duration: 1.3, ease: 'expo.out', stagger: 0.08 })
+      gsap.from('.hero-fade', { opacity: 0, y: 30, duration: 1.2, ease: 'expo.out', stagger: 0.08, delay: 0.3 })
+      gsap.from('.hero-photo', { opacity: 0, y: 60, duration: 1.4, ease: 'expo.out', delay: 0.2 })
+      gsap.from('.hero-badge', { scale: 0, rotate: -120, duration: 1.6, ease: 'elastic.out(1, 0.6)', delay: 0.6 })
     }, root)
-    return () => ctx.revert()
-  }, [])
-
-  useEffect(() => {
-    if (reduced() || !finePointer()) return
-    const el = root.current
-    let last = null
-    let i = 0
-    let z = 1
-    const move = e => {
-      const r = el.getBoundingClientRect()
-      const x = e.clientX - r.left
-      const y = e.clientY - r.top
-      if (last && Math.hypot(x - last[0], y - last[1]) < 110) return
-      last = [x, y]
-      const img = pool.current[i % pool.current.length]
-      img.src = trail[i % trail.length]
-      i++
-      gsap.killTweensOf(img)
-      gsap.set(img, { x, y, xPercent: -50, yPercent: -50, zIndex: z++, opacity: 1, scale: 0.6, rotate: gsap.utils.random(-10, 10) })
-      gsap.to(img, { scale: 1, duration: 0.5, ease: 'expo.out' })
-      gsap.to(img, { opacity: 0, scale: 0.85, duration: 0.6, delay: 0.55, ease: 'power2.in' })
-    }
-    el.addEventListener('mousemove', move)
-    return () => el.removeEventListener('mousemove', move)
-  }, [])
-
-  useEffect(() => {
-    if (!play || reduced()) return
-    const ctx = gsap.context(() => {
-      gsap.from('.hero-photo', { y: 140, opacity: 0, duration: 1.6, ease: 'expo.out' })
-      gsap.from('.hero-name', { yPercent: 100, duration: 1.6, ease: 'expo.out', delay: 0.1 })
-      gsap.from('.hero-fade', { opacity: 0, y: 24, duration: 1.2, ease: 'power3.out', delay: 0.5, stagger: 0.1 })
-      gsap.from('.hero-badge', { scale: 0, rotate: -120, duration: 1.6, ease: 'elastic.out(1, 0.6)', delay: 0.7 })
-    }, root)
-    return () => ctx.revert()
+    return () => { clearTimeout(t); ctx.revert() }
   }, [play])
 
   return (
-    <section id='top' ref={root} className='relative h-[100svh] min-h-[640px] overflow-hidden'>
-      <div className='absolute inset-0 spotlight' />
+    <section id='top' ref={root} className='relative pt-40 lg:pt-32 pb-16 overflow-hidden'>
       <div className='absolute inset-0 grain pointer-events-none' />
-      <h1 className='sr-only'>Koushik Maity, Data Analyst in Bangalore</h1>
+      <div className='wrap relative'>
+        <div className='hero-fade flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-line text-sm'>
+          <span className='font-mono text-muted'>Portfolio / Data Analyst</span>
+          <span className='inline-flex items-center gap-2'><span className='w-2 h-2 rounded-full bg-accent animate-pulse' /> Open to Data Analyst and Business Analyst roles</span>
+        </div>
 
-      <div className='hero-photo absolute inset-x-0 bottom-0 h-[62%] sm:h-[80%] flex justify-center'>
-        <img src={portrait} srcSet={`${portraitSm} 520w, ${portrait} 777w`} sizes='(min-width: 640px) 52vh, 45vh' fetchpriority='high' alt='Koushik Maity' width='777' height='955' className='h-full w-auto max-w-none select-none' draggable='false' />
-      </div>
+        <div className='mt-12 grid lg:grid-cols-[1.25fr_0.75fr] gap-12 lg:gap-16 items-end'>
+          <div>
+            <h1 className='font-display text-[clamp(3.6rem,10vw,9.5rem)] font-semibold tracking-[-0.045em] leading-[0.88]'>
+              <span className='hero-line word-mask'><span>Koushik</span></span><br />
+              <span className='hero-line word-mask'><span>Maity<span className='text-accent'>.</span></span></span>
+            </h1>
+            <p className='hero-fade mt-8 max-w-xl text-xl sm:text-2xl text-muted leading-snug'>
+              Data analyst in Bangalore. I turn messy data into <span className='text-fg'>answers people can act on</span>, using SQL, Python, Power BI and Excel.
+            </p>
+            <div className='hero-fade mt-10 flex flex-wrap gap-3'>
+              <a href='#work' onClick={e => { e.preventDefault(); scrollTo(document.getElementById('work')) }} className='pill-accent'>See my projects <FiArrowDown /></a>
+              <GoLink to={resume} label='Resume' className='pill'>Resume <FiArrowUpRight /></GoLink>
+            </div>
+          </div>
 
-      <div aria-hidden='true' className='absolute inset-0 pointer-events-none'>
-        {[0, 1, 2, 3, 4, 5, 6, 7].map(n => (
-          <img key={n} ref={el => (pool.current[n] = el)} alt='' className='absolute left-0 top-0 w-36 sm:w-44 aspect-[3/4] object-cover rounded-xl opacity-0 shadow-[0_20px_50px_rgb(0_0_0/0.5)]' />
-        ))}
-      </div>
-
-      <div className='absolute left-5 sm:left-10 lg:left-16 top-28 lg:top-[30%]'>
-        <div className='hero-badge'><Badge /></div>
-        <p className='hero-fade hidden lg:flex mt-6 items-center gap-2 text-sm text-muted'>
-          <span className='w-1.5 h-1.5 rounded-full bg-accent' /> Move your cursor around
-        </p>
-      </div>
-
-      <div className='hero-fade absolute right-5 sm:right-10 lg:right-[8%] top-28 lg:top-[30%] text-right lg:text-left'>
-        <FiArrowDownRight className='hidden lg:block text-3xl mb-8' />
-        <p className='font-display text-2xl sm:text-4xl font-semibold leading-tight'>Data Analyst</p>
-        <p className='font-display text-2xl sm:text-4xl font-medium leading-tight text-muted'>SQL, Python,<br className='sm:hidden' /> Power BI</p>
-      </div>
-
-      <div className='absolute inset-x-0 bottom-[5%] sm:bottom-[3%] overflow-hidden pointer-events-none'>
-        <div className='hero-name'>
-          <div ref={track} className='flex w-max whitespace-nowrap'>
-            {[0, 1].map(i => (
-              <p key={i} aria-hidden='true' className='font-display text-[clamp(5.5rem,17vw,16rem)] font-semibold tracking-[-0.03em] leading-[0.9] pr-[0.3em]'>
-                Koushik Maity <span className='inline-block w-[0.16em] h-[0.16em] mx-[0.2em] rounded-full bg-accent align-middle' /> Data Analyst <span className='inline-block w-[0.16em] h-[0.16em] mx-[0.2em] rounded-full bg-accent align-middle' />
-              </p>
-            ))}
+          <div className='hero-photo relative'>
+            <div className='relative aspect-[4/5] rounded-[1.75rem] overflow-hidden border border-line bg-[radial-gradient(ellipse_at_50%_100%,rgb(var(--fg)/0.16),transparent_70%)]'>
+              <div className='absolute inset-0 opacity-40 [background-image:linear-gradient(rgb(var(--line))_1px,transparent_1px),linear-gradient(90deg,rgb(var(--line))_1px,transparent_1px)] [background-size:40px_40px]' />
+              <img src={portrait} srcSet={`${portraitSm} 520w, ${portrait} 777w`} sizes='(min-width: 1024px) 34vw, 90vw' fetchpriority='high' alt='Koushik Maity' width='777' height='955' className='absolute bottom-0 left-1/2 -translate-x-1/2 h-[92%] w-auto max-w-none' />
+            </div>
+            <div className='hero-badge absolute -top-10 -left-8 sm:-left-12'><Badge /></div>
           </div>
         </div>
+
+        <div className='hero-fade mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3'>
+          {stats.map(([value, suffix, label]) => <Kpi key={label} value={value} suffix={suffix} label={label} start={chartOn} />)}
+        </div>
+
+        <figure className='hero-fade mt-3 rounded-[1.75rem] border border-line bg-card/60 p-5 sm:p-8'>
+          <figcaption className='flex flex-wrap items-baseline justify-between gap-3 mb-6'>
+            <span><span className='font-mono text-sm text-accent'>Exhibit 1</span><span className='ml-3 font-display text-lg sm:text-xl font-semibold'>Monthly UPI transactions in India, in billions</span></span>
+            <GoLink to='/work/upi-payments-dashboard' label='UPI Payments Dashboard' className='text-sm text-muted hover:text-accent'>From my UPI dashboard project <FiArrowUpRight className='inline' /></GoLink>
+          </figcaption>
+          <LineChart data={upiMonthly} unit='bn' play={chartOn} />
+        </figure>
       </div>
     </section>
   )

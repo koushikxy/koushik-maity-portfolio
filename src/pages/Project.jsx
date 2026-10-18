@@ -3,37 +3,42 @@ import { useParams } from 'react-router-dom'
 import { FiArrowUpRight, FiX, FiArrowLeft } from 'react-icons/fi'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import Magnetic from '../components/Magnetic'
 import { GoLink } from '../components/Transition'
 import NotFound from './NotFound'
+import LineChart from '../components/LineChart'
 import { projects } from '../data'
+import { upiMonthly } from '../upi'
 import { useInView, useReveal } from '../hooks'
 import { gsap, reduced, stopScroll } from '../motion'
 
-const Bars = ({ chart }) => {
+const Bars = ({ chart, n }) => {
   const [ref, seen] = useInView('-15% 0px')
-  const max = Math.max(...chart.rows.map(r => r[1]))
+  const signed = chart.rows.some(r => r[1] < 0)
+  const max = Math.max(...chart.rows.map(r => Math.abs(r[1])))
+  const fmt = v => `${signed && v > 0 ? '+' : ''}${chart.digits ? v.toFixed(chart.digits) : v}${chart.unit}`
   return (
-    <div ref={ref} className='rounded-[1.25rem] bg-card p-6 sm:p-10'>
-      <p className='text-xl font-medium mb-8'>{chart.title}</p>
+    <figure ref={ref} className='rounded-[1.25rem] bg-card p-6 sm:p-10'>
+      <figcaption className='mb-8'><span className='font-mono text-sm text-accent'>Exhibit {n}</span><span className='block mt-2 font-display text-xl font-semibold'>{chart.title}</span></figcaption>
       <ul className='space-y-5'>
         {chart.rows.map(([name, value], i) => (
-          <li key={name} className='grid grid-cols-[8.5rem_1fr_3.5rem] sm:grid-cols-[10rem_1fr_4rem] items-center gap-4'>
-            <span className='text-muted'>{name}</span>
-            <span className='h-3 rounded-full bg-line overflow-hidden'>
-              <span className='block h-full rounded-full bg-accent transition-[width] duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)]' style={{ width: seen ? `${(value / max) * 100}%` : 0, transitionDelay: `${i * 0.08}s` }} />
+          <li key={name} className='grid grid-cols-[1fr_auto] sm:grid-cols-[11rem_1fr_4.5rem] items-center gap-x-4 gap-y-2'>
+            <span className='text-muted leading-tight'>{name}</span>
+            <span className={`relative h-3 rounded-full bg-line col-span-2 sm:col-span-1 order-last sm:order-none ${signed ? '' : 'overflow-hidden'}`}>
+              {signed && <span className='absolute left-1/2 -top-1.5 -bottom-1.5 w-px bg-muted/50' />}
+              <span className={`absolute top-0 bottom-0 rounded-full transition-[width] duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] ${value < 0 ? 'right-1/2 bg-fg/70' : `${signed ? 'left-1/2' : 'left-0'} bg-accent`}`} style={{ width: seen ? `${(Math.abs(value) / max) * (signed ? 50 : 100)}%` : 0, transitionDelay: `${i * 0.08}s` }} />
             </span>
-            <span className='text-right font-medium tabular-nums'>{value}{chart.unit}</span>
+            <span className='text-right font-medium tabular-nums'>{fmt(value)}</span>
           </li>
         ))}
       </ul>
-    </div>
+      {chart.note && <p className='mt-6 text-sm text-muted'>{chart.note}</p>}
+    </figure>
   )
 }
 
 const Zoomable = ({ src, size, alt, caption, onZoom }) => (
   <figure className='reveal'>
-    <button onClick={() => onZoom({ src, alt })} data-cursor='view' className='block w-full rounded-[1.25rem] bg-card p-3 sm:p-6 overflow-hidden'>
+    <button onClick={() => onZoom({ src, alt })} className='block w-full rounded-[1.25rem] bg-card p-3 sm:p-6 overflow-hidden'>
       <img src={src} width={size[0]} height={size[1]} alt={alt} loading='lazy' className='w-full rounded-lg' />
     </button>
     {caption && <figcaption className='mt-4 text-muted'>{caption}</figcaption>}
@@ -101,7 +106,7 @@ const Project = () => {
         </header>
 
         <div className='wrap'>
-          <button onClick={() => setZoom({ src: p.cover, alt: `${p.title} main chart` })} data-cursor='view' className='p-cover block w-full rounded-[1.5rem] bg-card p-4 sm:p-14 overflow-hidden'>
+          <button onClick={() => setZoom({ src: p.cover, alt: `${p.title} main chart` })} className='p-cover block w-full rounded-[1.5rem] bg-card p-4 sm:p-14 overflow-hidden'>
             <img src={p.cover} width={p.size[0]} height={p.size[1]} alt={`${p.title} main chart`} className='w-full rounded-lg' />
           </button>
         </div>
@@ -133,10 +138,17 @@ const Project = () => {
           </ol>
         </Section>
 
-        {(p.gallery || p.charts) && (
-          <Section title='Charts'>
+        {(p.gallery || p.charts || p.line) && (
+          <Section title='Exhibits'>
             <div className='space-y-10'>
-              {p.charts && p.charts.map(c => <Bars key={c.title} chart={c} />)}
+              {p.line && (
+                <figure className='rounded-[1.25rem] bg-card p-6 sm:p-10'>
+                  <figcaption className='mb-8'><span className='font-mono text-sm text-accent'>Exhibit 1</span><span className='block mt-2 font-display text-xl font-semibold'>Monthly UPI transactions, June 2020 to September 2026, in billions</span></figcaption>
+                  <LineChart data={upiMonthly} unit='bn' />
+                  <p className='mt-6 text-sm text-muted'>Totals of all apps in each monthly NPCI file. Hover or tap the chart to read a month.</p>
+                </figure>
+              )}
+              {p.charts && p.charts.map((c, i) => <Bars key={c.title} chart={c} n={i + 1 + (p.line ? 1 : 0)} />)}
               {p.gallery && p.gallery.map(([src, size, caption]) => <Zoomable key={caption} src={src} size={size} alt={caption} caption={caption} onZoom={setZoom} />)}
             </div>
           </Section>
@@ -160,14 +172,14 @@ const Project = () => {
           </ul>
           <div className='reveal mt-14 flex flex-wrap gap-3'>
             {p.links.map(([label, url], i) => (
-              <Magnetic key={label} strength={0.25}>
+              
                 <a href={url} target='_blank' rel='noreferrer' className={i ? 'pill' : 'pill-accent'}>{label} <FiArrowUpRight /></a>
-              </Magnetic>
+              
             ))}
           </div>
         </Section>
 
-        <GoLink to={`/work/${next.slug}`} label={next.title} data-cursor='view' className='group block border-t border-line'>
+        <GoLink to={`/work/${next.slug}`} label={next.title} className='group block border-t border-line'>
           <div className='wrap py-24 sm:py-36 grid lg:grid-cols-[1fr_0.8fr] gap-12 items-center'>
             <div>
               <p className='label'>Next project</p>

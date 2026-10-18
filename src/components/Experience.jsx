@@ -15,7 +15,10 @@ const Experience = () => {
   return (
     <section id='experience' ref={root} className='wrap py-24 sm:py-32'>
       <div className='flex items-end justify-between gap-6 mb-14'>
-        <h2 className='text-[clamp(3rem,7vw,6.5rem)] font-display font-semibold tracking-[-0.04em] leading-[0.95]'>Experience<span className='text-accent'>.</span></h2>
+        <div>
+          <p className='font-mono text-sm text-accent mb-6'>03 / Experience</p>
+          <h2 className='text-[clamp(3rem,7vw,6.5rem)] font-display font-semibold tracking-[-0.04em] leading-[0.95]'>Experience<span className='text-accent'>.</span></h2>
+        </div>
         <span className='hidden sm:block label'>Work and education</span>
       </div>
       <ol>

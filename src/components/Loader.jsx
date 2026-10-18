@@ -1,33 +1,49 @@
 import React, { useEffect, useState } from 'react'
 
-const words = ['Hello', 'नमस्ते', 'Hola', 'Bonjour', 'Ciao', 'Hallo', 'こんにちは', 'Hello']
+const steps = [
+  ['projects', '4'],
+  ['experience', '2 roles'],
+  ['largest dataset', '33.8M rows'],
+  ['certificates', '6']
+]
 
 const Loader = ({ onDone }) => {
-  const [i, setI] = useState(0)
+  const [n, setN] = useState(0)
   const [leaving, setLeaving] = useState(false)
 
   useEffect(() => {
-    if (i === words.length - 1) {
+    if (n > steps.length) {
       const t = setTimeout(() => {
         setLeaving(true)
-        setTimeout(onDone, 900)
-      }, 350)
+        setTimeout(onDone, 700)
+      }, 250)
       return () => clearTimeout(t)
     }
-    const t = setTimeout(() => setI(i + 1), i === 0 ? 500 : 120)
+    const t = setTimeout(() => setN(n + 1), n ? 190 : 300)
     return () => clearTimeout(t)
-  }, [i, onDone])
+  }, [n, onDone])
 
   return (
-    <div aria-hidden='true' className={`fixed inset-0 z-[160] transition-transform duration-[900ms] ease-[cubic-bezier(.76,0,.24,1)] ${leaving ? '-translate-y-[115%]' : ''}`}>
-      <div className='absolute inset-0 bg-card grid place-items-center'>
-        <p className='flex items-center gap-4 font-display text-4xl sm:text-6xl font-medium'>
-          <span className='w-3 h-3 rounded-full bg-accent' />{words[i]}
-        </p>
+    <div aria-hidden='true' className={`fixed inset-0 z-[160] bg-card transition-[clip-path] duration-700 ease-[cubic-bezier(.76,0,.24,1)] ${leaving ? '[clip-path:inset(0_0_100%_0)]' : '[clip-path:inset(0_0_0_0)]'}`}>
+      <div className='wrap h-full flex flex-col justify-end pb-14 sm:pb-20'>
+        <p className='font-mono text-sm text-muted'><span className='text-accent'>SELECT</span> * <span className='text-accent'>FROM</span> koushik_maity;</p>
+        <ul className='mt-6 font-mono text-sm sm:text-base space-y-2 min-h-[8.5rem]'>
+          {steps.slice(0, n).map(([k, v]) => (
+            <li key={k} className='flex gap-3 max-w-md'>
+              <span className='text-muted'>{k}</span>
+              <span className='flex-1 border-b border-dotted border-line mb-1.5' />
+              <span>{v}</span>
+            </li>
+          ))}
+        </ul>
+        <div className='mt-8 flex items-end justify-between gap-6'>
+          <p className='font-display text-4xl sm:text-6xl font-semibold'>Koushik Maity</p>
+          <p className='font-display text-4xl sm:text-6xl font-semibold text-accent tabular-nums'>{Math.round(Math.min(n, steps.length) / steps.length * 100)}%</p>
+        </div>
+        <div className='mt-6 h-1 rounded-full bg-line overflow-hidden'>
+          <div className='h-full bg-accent transition-[width] duration-300' style={{ width: `${Math.min(n, steps.length) / steps.length * 100}%` }} />
+        </div>
       </div>
-      <svg viewBox='0 0 100 10' preserveAspectRatio='none' className='absolute left-0 top-full w-full h-[15vh] fill-card'>
-        <path d={leaving ? 'M0 0 Q50 0 100 0 L100 0 L0 0Z' : 'M0 0 Q50 10 100 0 L100 0 L0 0Z'} className='transition-[d] duration-[900ms]' />
-      </svg>
     </div>
   )
 }

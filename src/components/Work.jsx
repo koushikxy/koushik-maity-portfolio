@@ -5,7 +5,7 @@ import { projects, otherProjects } from '../data'
 import { finePointer, gsap, whenIdle } from '../motion'
 
 const Card = ({ p, i }) => (
-  <GoLink to={`/work/${p.slug}`} label={p.title} data-cursor='view' className={`work-card group block ${i % 2 ? 'md:mt-40' : ''}`}>
+  <GoLink to={`/work/${p.slug}`} label={p.title} className={`work-card group block ${i % 2 ? 'md:mt-40' : ''}`}>
     <div className='relative aspect-[4/3] rounded-[1.25rem] bg-card overflow-hidden'>
       <div className='absolute inset-0 bg-fg/[0.07] origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-700 ease-[cubic-bezier(.76,0,.24,1)]' />
       <div className='absolute inset-0 grid place-items-center p-6 sm:p-12'>
@@ -53,10 +53,13 @@ const Work = () => {
   return (
     <section id='work' ref={root} className='wrap py-24 sm:py-32'>
       <div className='flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 sm:mb-24'>
-        <h2 className='work-title text-[clamp(3.5rem,9vw,8.5rem)] font-display font-semibold tracking-[-0.04em] leading-[0.92]'>
-          <span className='word-mask'><span>Selected</span></span><br />
-          <span className='word-mask'><span>work<span className='text-accent'>.</span></span></span>
-        </h2>
+        <div>
+          <p className='font-mono text-sm text-accent mb-6'>02 / Projects</p>
+          <h2 className='work-title text-[clamp(3.5rem,9vw,8.5rem)] font-display font-semibold tracking-[-0.04em] leading-[0.92]'>
+            <span className='word-mask'><span>Selected</span></span><br />
+            <span className='word-mask'><span>work<span className='text-accent'>.</span></span></span>
+          </h2>
+        </div>
         <p className='max-w-sm text-lg text-muted'>Four end-to-end analyses on real public data. Open one to see the full story, the charts, and the code behind it.</p>
       </div>
 
@@ -74,7 +77,7 @@ const Work = () => {
             <li key={p.title} onMouseEnter={() => setHover(i)} className='other-row group relative border-b border-line py-8 sm:py-12 flex items-center gap-5 sm:gap-10'>
               <img src={p.image} width={p.size[0]} height={p.size[1]} alt='' loading='lazy' className='[@media(hover:hover)]:hidden w-24 sm:w-32 aspect-[4/3] shrink-0 rounded-lg object-cover object-top' />
               <div className='flex-1 min-w-0 transition duration-500 [@media(hover:hover)]:group-hover:translate-x-4 [@media(hover:hover)]:group-hover:opacity-60'>
-                <a href={p.github} target='_blank' rel='noreferrer' data-cursor='view' className='font-display text-2xl sm:text-5xl font-semibold tracking-tight after:absolute after:inset-0'>{p.title}</a>
+                <a href={p.github} target='_blank' rel='noreferrer' className='font-display text-2xl sm:text-5xl font-semibold tracking-tight after:absolute after:inset-0'>{p.title}</a>
                 <p className='mt-2 text-muted'>{p.description}</p>
               </div>
               <span className='hidden md:block text-muted'>{p.tools}</span>

@@ -28,7 +28,10 @@ const Skills = () => {
       </div>
       <div className='wrap'>
         <div className='flex items-end justify-between gap-6 mb-12'>
-          <h2 className='text-[clamp(3rem,7vw,6.5rem)] font-display font-semibold tracking-[-0.04em] leading-[0.95]'>Skills<span className='text-accent'>.</span></h2>
+          <div>
+            <p className='font-mono text-sm text-accent mb-6'>04 / Skills</p>
+            <h2 className='text-[clamp(3rem,7vw,6.5rem)] font-display font-semibold tracking-[-0.04em] leading-[0.95]'>Skills<span className='text-accent'>.</span></h2>
+          </div>
           <span className='hidden sm:block label'>And where I used them</span>
         </div>
         <div className='skill-grid grid sm:grid-cols-2 lg:grid-cols-3 border-t border-l border-line'>

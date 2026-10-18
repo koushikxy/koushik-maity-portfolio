@@ -22,7 +22,10 @@ const Certificates = () => {
   return (
     <section id='certificates' className='wrap py-24 sm:py-32'>
       <div className='flex items-end justify-between gap-6 mb-14'>
-        <h2 className='text-[clamp(3rem,7vw,6.5rem)] font-display font-semibold tracking-[-0.04em] leading-[0.95]'>Certificates<span className='text-accent'>.</span></h2>
+        <div>
+          <p className='font-mono text-sm text-accent mb-6'>05 / Certificates</p>
+          <h2 className='text-[clamp(3rem,7vw,6.5rem)] font-display font-semibold tracking-[-0.04em] leading-[0.95]'>Certificates<span className='text-accent'>.</span></h2>
+        </div>
         <span className='hidden sm:block label'>Click one to view it</span>
       </div>
 
@@ -33,7 +36,7 @@ const Certificates = () => {
           <p className='mt-5 text-lg text-muted'>Cleaning, analysing and visualising data with spreadsheets, SQL, Tableau and R, ending with a case study.</p>
           <a href={featuredCert.link} target='_blank' rel='noreferrer' className='pill-accent mt-9'>Verify on Coursera <FiArrowUpRight /></a>
         </div>
-        <button onClick={() => setOpen(featuredCert)} data-cursor='view' className='block rounded-xl overflow-hidden'>
+        <button onClick={() => setOpen(featuredCert)} className='block rounded-xl overflow-hidden'>
           <img src={featuredCert.image} width={featuredCert.size[0]} height={featuredCert.size[1]} alt='Google Data Analytics Professional Certificate issued to Koushik Maity' loading='lazy' className='w-full hover:scale-[1.03] transition-transform duration-700' />
         </button>
       </div>
@@ -41,7 +44,7 @@ const Certificates = () => {
       <ul className='mt-6 border-t border-line'>
         {certs.map(c => (
           <li key={c.title} className='reveal border-b border-line'>
-            <button onClick={() => c.image && setOpen(c)} disabled={!c.image} data-cursor={c.image ? 'view' : undefined} className='group w-full py-7 flex items-center justify-between gap-6 text-left'>
+            <button onClick={() => c.image && setOpen(c)} disabled={!c.image} className='group w-full py-7 flex items-center justify-between gap-6 text-left'>
               <span className='text-2xl sm:text-3xl font-medium tracking-tight transition-transform duration-500 group-enabled:group-hover:translate-x-3'>{c.title}</span>
               <span className='flex items-center gap-6 text-muted'>
                 <span>{c.issuer}{c.year && `, ${c.year}`}</span>
