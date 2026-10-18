@@ -1,47 +1,45 @@
 import React, { useEffect, useState } from 'react'
 
-const steps = [
-  ['projects', '4'],
-  ['experience', '2 roles'],
-  ['largest dataset', '33.8M rows'],
-  ['certificates', '6']
+const words = [
+  ['Hello', 'english'],
+  ['नमस्ते', 'hindi'],
+  ['ನಮಸ್ಕಾರ', 'kannada'],
+  ['নমস্কার', 'bengali'],
+  ['வணக்கம்', 'tamil'],
+  ['నమస్కారం', 'telugu'],
+  ['ନମସ୍କାର', 'odia'],
+  ["Hello, I'm Koushik", 'portfolio']
 ]
 
 const Loader = ({ onDone }) => {
-  const [n, setN] = useState(0)
+  const [i, setI] = useState(0)
   const [leaving, setLeaving] = useState(false)
+  const last = i === words.length - 1
 
   useEffect(() => {
-    if (n > steps.length) {
+    if (last) {
       const t = setTimeout(() => {
         setLeaving(true)
         setTimeout(onDone, 700)
-      }, 250)
+      }, 650)
       return () => clearTimeout(t)
     }
-    const t = setTimeout(() => setN(n + 1), n ? 190 : 300)
+    const t = setTimeout(() => setI(i + 1), i ? 170 : 450)
     return () => clearTimeout(t)
-  }, [n, onDone])
+  }, [i, last, onDone])
 
   return (
     <div aria-hidden='true' className={`fixed inset-0 z-[160] bg-card transition-[clip-path] duration-700 ease-[cubic-bezier(.76,0,.24,1)] ${leaving ? '[clip-path:inset(0_0_100%_0)]' : '[clip-path:inset(0_0_0_0)]'}`}>
-      <div className='wrap h-full flex flex-col justify-end pb-14 sm:pb-20'>
-        <p className='font-mono text-sm text-muted'><span className='text-accent'>SELECT</span> * <span className='text-accent'>FROM</span> koushik_maity;</p>
-        <ul className='mt-6 font-mono text-sm sm:text-base space-y-2 min-h-[8.5rem]'>
-          {steps.slice(0, n).map(([k, v]) => (
-            <li key={k} className='flex gap-3 max-w-md'>
-              <span className='text-muted'>{k}</span>
-              <span className='flex-1 border-b border-dotted border-line mb-1.5' />
-              <span>{v}</span>
-            </li>
-          ))}
-        </ul>
-        <div className='mt-8 flex items-end justify-between gap-6'>
-          <p className='font-display text-4xl sm:text-6xl font-semibold'>Koushik Maity</p>
-          <p className='font-display text-4xl sm:text-6xl font-semibold text-accent tabular-nums'>{Math.round(Math.min(n, steps.length) / steps.length * 100)}%</p>
-        </div>
-        <div className='mt-6 h-1 rounded-full bg-line overflow-hidden'>
-          <div className='h-full bg-accent transition-[width] duration-300' style={{ width: `${Math.min(n, steps.length) / steps.length * 100}%` }} />
+      <div className='wrap h-full flex flex-col justify-center'>
+        <p className='font-mono text-sm text-muted'>lang: <span className='text-accent'>{words[i][1]}</span></p>
+        <p key={i} className={`mt-4 font-display font-semibold tracking-tight leading-[1.1] animate-[rise_.35s_ease-out] ${last ? 'text-[clamp(2.6rem,7vw,6rem)]' : 'text-[clamp(3rem,9vw,8rem)]'}`}>
+          {words[i][0]}{last && <span className='text-accent'>.</span>}
+        </p>
+        <div className='mt-12 flex items-center gap-4'>
+          <div className='flex-1 h-1 rounded-full bg-line overflow-hidden'>
+            <div className='h-full bg-accent transition-[width] duration-200' style={{ width: `${((i + 1) / words.length) * 100}%` }} />
+          </div>
+          <span className='font-mono text-sm tabular-nums text-muted w-10 text-right'>{Math.round(((i + 1) / words.length) * 100)}%</span>
         </div>
       </div>
     </div>

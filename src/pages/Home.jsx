@@ -26,6 +26,10 @@ const Home = () => {
   const { pathname } = useLocation()
   const [loading, setLoading] = useState(firstVisit)
   const done = useCallback(() => setLoading(false), [])
+
+  useEffect(() => {
+    if (loading) window.scrollTo(0, 0)
+  }, [loading])
   useReveal('home')
 
   useEffect(() => {
