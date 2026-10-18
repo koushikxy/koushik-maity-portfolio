@@ -89,7 +89,7 @@ const Project = () => {
       <main id='main'>
         <header className='wrap pt-40 sm:pt-48 pb-16'>
           <GoLink to='/Project' label='Work' className='p-fade inline-flex items-center gap-2 label hover:text-fg transition-colors'><FiArrowLeft /> All work</GoLink>
-          <h1 className='p-title mt-8 text-[clamp(3rem,9vw,8.5rem)] font-medium tracking-[-0.045em] leading-[0.92]'>
+          <h1 className='p-title mt-8 text-[clamp(3rem,9vw,8.5rem)] font-display font-semibold tracking-[-0.045em] leading-[0.92]'>
             {p.title.split(' ').map((w, i) => <span key={i} className='word-mask mr-[0.22em]'><span>{w}</span></span>)}
           </h1>
           <p className='p-fade mt-8 max-w-3xl text-2xl sm:text-3xl text-muted'>{p.question}</p>
@@ -110,12 +110,12 @@ const Project = () => {
           <p className='reveal text-2xl sm:text-3xl font-medium leading-[1.35]'>{p.intro}</p>
           <div className='mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5'>
             <div className='reveal rounded-[1.25rem] bg-accent text-ink p-7'>
-              <p className='text-5xl sm:text-6xl font-bold tracking-tight'>{p.stat}</p>
+              <p className='font-display text-[clamp(2.5rem,3.4vw,3.5rem)] font-semibold tracking-tight leading-none break-words'>{p.stat}</p>
               <p className='mt-3 font-medium'>{p.statLabel}</p>
             </div>
             {p.numbers.map(([n, l], i) => (
               <div key={l} className='reveal rounded-[1.25rem] bg-card p-7' style={{ '--d': `${(i + 1) * 0.08}s` }}>
-                <p className='text-5xl sm:text-6xl font-bold tracking-tight'>{n}</p>
+                <p className='font-display text-[clamp(2.5rem,3.4vw,3.5rem)] font-semibold tracking-tight leading-none break-words'>{n}</p>
                 <p className='mt-3 text-muted'>{l}</p>
               </div>
             ))}
@@ -171,7 +171,7 @@ const Project = () => {
           <div className='wrap py-24 sm:py-36 grid lg:grid-cols-[1fr_0.8fr] gap-12 items-center'>
             <div>
               <p className='label'>Next project</p>
-              <p className='mt-6 text-[clamp(2.8rem,7vw,7rem)] font-medium tracking-[-0.045em] leading-[0.95] group-hover:text-accent transition-colors duration-500'>{next.title}</p>
+              <p className='mt-6 text-[clamp(2.8rem,7vw,7rem)] font-display font-semibold tracking-[-0.045em] leading-[0.95] group-hover:text-accent transition-colors duration-500'>{next.title}</p>
               <p className='mt-6 text-xl text-muted'>{next.question}</p>
             </div>
             <div className='rounded-[1.25rem] bg-card p-6 overflow-hidden'>
@@ -183,8 +183,8 @@ const Project = () => {
       <Footer />
 
       {zoom && (
-        <div role='dialog' aria-modal='true' aria-label={zoom.alt} onClick={() => setZoom(null)} className='fixed inset-0 z-[90] bg-black/90 backdrop-blur-sm grid place-items-center p-3 sm:p-10'>
-          <img src={zoom.src} alt={zoom.alt} className='w-full max-w-6xl max-h-full object-contain rounded-lg bg-white' onClick={e => e.stopPropagation()} />
+        <div role='dialog' aria-modal='true' aria-label={zoom.alt} onClick={() => setZoom(null)} className='fixed inset-0 z-[90] bg-black/90 backdrop-blur-sm flex items-center justify-center p-3'>
+          <img src={zoom.src} alt={zoom.alt} className='w-[min(94vw,1200px)] h-auto max-h-[86vh] object-contain rounded-lg bg-white' onClick={e => e.stopPropagation()} />
           <button onClick={() => setZoom(null)} autoFocus aria-label='Close' className='absolute top-5 right-5 w-14 h-14 rounded-full bg-accent text-ink grid place-items-center text-xl'><FiX /></button>
         </div>
       )}

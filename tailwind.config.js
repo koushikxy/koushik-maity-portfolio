@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Satoshi', 'system-ui', 'sans-serif'],
+        display: ['"Clash Display"', 'Satoshi', 'system-ui', 'sans-serif'],
       },
       colors: {
         bg: v('bg'),

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { FiArrowUpRight, FiCopy, FiCheck } from 'react-icons/fi'
 import Magnetic from './Magnetic'
+import { GoLink } from './Transition'
 import avatar from '../img/avatar.webp'
 import { email, github, linkedin, resume } from '../data'
 import { gsap, scrollTo, whenIdle } from '../motion'
@@ -52,12 +53,12 @@ const Footer = () => {
       <div className='wrap'>
         <div className='flex items-center gap-5 sm:gap-8'>
           <img src={avatar} alt='Koushik Maity' width='200' height='200' loading='lazy' className='w-16 h-16 sm:w-24 sm:h-24 rounded-full object-cover shrink-0' />
-          <h2 className='text-[clamp(3rem,8.5vw,8.5rem)] font-medium tracking-[-0.045em] leading-[0.92]'>
+          <h2 className='text-[clamp(3rem,8.5vw,8.5rem)] font-display font-semibold tracking-[-0.045em] leading-[0.92]'>
             <span className='sr-only'>Let's work together</span>
             <span aria-hidden='true' className='cta-line word-mask'><span>Let's work</span></span>
           </h2>
         </div>
-        <h2 aria-hidden='true' className='text-[clamp(3rem,8.5vw,8.5rem)] font-medium tracking-[-0.045em] leading-[0.92]'>
+        <h2 aria-hidden='true' className='text-[clamp(3rem,8.5vw,8.5rem)] font-display font-semibold tracking-[-0.045em] leading-[0.92]'>
           <span className='cta-line word-mask'><span>together<span className='text-accent'>.</span></span></span>
         </h2>
 
@@ -113,7 +114,7 @@ const Footer = () => {
             <div className='flex flex-wrap gap-x-5 gap-y-1'>
               <a href={linkedin} target='_blank' rel='noreferrer' className='py-1 hover:text-accent'>LinkedIn</a>
               <a href={github} target='_blank' rel='noreferrer' className='py-1 hover:text-accent'>GitHub</a>
-              <a href={resume} target='_blank' rel='noreferrer' className='py-1 hover:text-accent'>Resume</a>
+              <GoLink to={resume} label='Resume' className='py-1 hover:text-accent'>Resume</GoLink>
             </div>
           </div>
           <div className='md:text-right'>

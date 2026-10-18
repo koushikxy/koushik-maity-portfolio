@@ -21,7 +21,7 @@ const Loader = ({ onDone }) => {
   return (
     <div aria-hidden='true' className={`fixed inset-0 z-[160] transition-transform duration-[900ms] ease-[cubic-bezier(.76,0,.24,1)] ${leaving ? '-translate-y-[115%]' : ''}`}>
       <div className='absolute inset-0 bg-card grid place-items-center'>
-        <p className='flex items-center gap-4 text-4xl sm:text-6xl font-medium'>
+        <p className='flex items-center gap-4 font-display text-4xl sm:text-6xl font-medium'>
           <span className='w-3 h-3 rounded-full bg-accent' />{words[i]}
         </p>
       </div>

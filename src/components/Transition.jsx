@@ -5,10 +5,10 @@ import { reduced, scrollTo, ScrollTrigger } from '../motion'
 const Ctx = createContext(() => {})
 export const useGo = () => useContext(Ctx)
 
-export const GoLink = ({ to, label, children, ...rest }) => {
+export const GoLink = ({ to, label, children, onClick, ...rest }) => {
   const go = useGo()
   return (
-    <a href={to} onClick={e => { if (e.metaKey || e.ctrlKey) return; e.preventDefault(); go(to, label) }} {...rest}>
+    <a href={to} onClick={e => { onClick && onClick(e); if (e.metaKey || e.ctrlKey) return; e.preventDefault(); go(to, label) }} {...rest}>
       {children}
     </a>
   )
@@ -55,7 +55,7 @@ export const TransitionProvider = ({ children }) => {
           <path d={phase === 'cover' ? 'M0 10 Q50 10 100 10 L100 10 L0 10Z' : 'M0 10 Q50 0 100 10 L100 10 L0 10Z'} className='transition-[d] duration-700' />
         </svg>
         <div className='absolute inset-0 grid place-items-center'>
-          <p className='flex items-center gap-4 text-4xl sm:text-6xl font-medium tracking-tight'>
+          <p className='flex items-center gap-4 font-display text-4xl sm:text-6xl font-medium tracking-tight'>
             <span className='w-3 h-3 rounded-full bg-accent' />{label}
           </p>
         </div>

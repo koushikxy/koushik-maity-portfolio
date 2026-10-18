@@ -21,7 +21,7 @@ import cssCert from './certificate/css.webp'
 export const email = 'ksmaity21@gmail.com'
 export const linkedin = 'https://www.linkedin.com/in/ksmaity/'
 export const github = 'https://github.com/koushikxy'
-export const resume = '/Koushik_Maity_Data_Analyst_CV.pdf'
+export const resume = '/resume'
 
 const repo = name => `https://github.com/koushikxy/${name}`
 const file = (name, path) => `${repo(name)}/blob/main/${path}`
@@ -223,3 +223,33 @@ export const certs = [
   { title: 'MySQL', issuer: 'Udemy', image: sqlCert },
   { title: 'CSS', issuer: 'HackerRank', image: cssCert }
 ]
+
+export const pdf = '/Koushik_Maity_Data_Analyst_CV.pdf'
+
+export const cv = {
+  summary: 'Data Analyst with a B.Tech in Computer Science and hands-on experience in SQL, Python and Power BI. Built end-to-end projects on real public datasets of up to 34 million rows, covering data cleaning, analysis, dashboards and business recommendations. Most recently worked as a freelance Business Analyst at Turing, validating data samples and tracking quality metrics.',
+  skills: [
+    ['SQL', 'MySQL, PostgreSQL, CTEs, Window Functions, Joins, Query Optimization'],
+    ['Python', 'Pandas, NumPy, Matplotlib, Seaborn, Jupyter'],
+    ['BI & Reporting', 'Power BI, DAX, Power Query (ETL), Data Modeling, Data Visualization, Excel (Pivot Tables, Lookups), Dashboards, KPI Tracking'],
+    ['Analysis', 'Data Cleaning, Data Validation, EDA, Statistics'],
+    ['Tools', 'Git, GitHub, Jira, Agile']
+  ],
+  projects: [
+    { name: 'UPI Payments Market Dashboard', tech: 'Power BI, DAX, Power Query', slug: 'upi-payments-dashboard', bullets: [
+      'Built a 3-page Power BI dashboard on 76 months of official NPCI data covering 140+ UPI apps, combining inconsistent monthly Excel files with one Power Query function and a lookup table that maps 302 app name variants.',
+      'Wrote 15 DAX measures including market share, YoY growth and HHI concentration; showed PhonePe and Google Pay at 78% of UPI transactions, with concentration at its lowest since 2020 as challengers like Navi grew to 4.8%.'
+    ] },
+    { name: 'Grocery Reorder Analysis', tech: 'MySQL', slug: 'grocery-reorder-analysis', bullets: [
+      'Loaded 33.8M order lines (3.4M orders, 206K customers) into MySQL and analysed repeat buying with CTEs, window functions and self-joins; found 59% of items are reorders and 12% of customers place 30% of orders.',
+      'Reduced runtime by pre-aggregating into summary tables (six queries took 30 min before; the full analysis now runs in 13 min), and caught 333 products silently dropped during the CSV load.',
+      'Identified frequently bought-together products using lift (up to 18x) and recommended bundles and reorder reminders.'
+    ] },
+    { name: 'Flight Fare Analysis', tech: 'Python, Pandas', slug: 'flight-fare-analysis', bullets: [
+      'Cleaned and analysed 300K+ domestic flight fares across 6 airlines and 30 routes from raw scraped data, parsing messy price, duration and stop fields.',
+      'Found fares rise ~1.7x when booked within 15 days of departure and ~2.4x in the last 3 days; showed weekend flights cost ~5% more even when booked early.'
+    ] }
+  ],
+  education: { degree: 'B.Tech in Computer Science and Engineering (Hons.)', org: 'XIM University, Bhubaneswar', dates: 'Aug 2021 - Apr 2025' },
+  certifications: [['Google Data Analytics Professional Certificate', '2025'], ['Data Analytics with Python, NPTEL', '2024']]
+}

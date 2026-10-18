@@ -28,13 +28,13 @@ const Skills = () => {
       </div>
       <div className='wrap'>
         <div className='flex items-end justify-between gap-6 mb-12'>
-          <h2 className='text-[clamp(3rem,7vw,6.5rem)] font-medium tracking-[-0.04em] leading-[0.95]'>Skills<span className='text-accent'>.</span></h2>
+          <h2 className='text-[clamp(3rem,7vw,6.5rem)] font-display font-semibold tracking-[-0.04em] leading-[0.95]'>Skills<span className='text-accent'>.</span></h2>
           <span className='hidden sm:block label'>And where I used them</span>
         </div>
         <div className='skill-grid grid sm:grid-cols-2 lg:grid-cols-3 border-t border-l border-line'>
           {skills.map(({ group, note, items }) => (
             <div key={group} className='skill-card border-r border-b border-line p-7 sm:p-9 hover:bg-card transition-colors duration-500'>
-              <h3 className='text-2xl font-medium'>{group}</h3>
+              <h3 className='font-display text-2xl font-semibold'>{group}</h3>
               <p className='mt-1 text-muted'>{note}</p>
               <ul className='mt-7 flex flex-wrap gap-2'>
                 {items.map(([name, Icon]) => (

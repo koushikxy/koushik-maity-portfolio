@@ -15,7 +15,7 @@ const Experience = () => {
   return (
     <section id='experience' ref={root} className='wrap py-24 sm:py-32'>
       <div className='flex items-end justify-between gap-6 mb-14'>
-        <h2 className='text-[clamp(3rem,7vw,6.5rem)] font-medium tracking-[-0.04em] leading-[0.95]'>Experience<span className='text-accent'>.</span></h2>
+        <h2 className='text-[clamp(3rem,7vw,6.5rem)] font-display font-semibold tracking-[-0.04em] leading-[0.95]'>Experience<span className='text-accent'>.</span></h2>
         <span className='hidden sm:block label'>Work and education</span>
       </div>
       <ol>
@@ -24,7 +24,7 @@ const Experience = () => {
             <span className='exp-line absolute top-0 inset-x-0 h-px bg-line origin-left' />
             <div>
               <p className='label'>{e.dates}</p>
-              <h3 className='mt-3 text-3xl sm:text-4xl font-medium tracking-tight group-hover:text-accent transition-colors duration-500'>{e.org}</h3>
+              <h3 className='mt-3 font-display text-3xl sm:text-4xl font-semibold tracking-tight group-hover:text-accent transition-colors duration-500'>{e.org}</h3>
               <p className='mt-2 text-lg text-muted'>{e.role}</p>
             </div>
             {e.bullets.length > 0 && (

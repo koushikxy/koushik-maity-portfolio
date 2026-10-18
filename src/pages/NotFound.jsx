@@ -23,7 +23,7 @@ const NotFound = () => {
       <main id='main' className='wrap min-h-[100svh] pt-36 pb-16 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center'>
         <div>
           <p className='label'>Error 404</p>
-          <h1 className='mt-6 text-[clamp(3rem,8vw,7.5rem)] font-medium tracking-[-0.045em] leading-[0.92]'>This query returned <span className='text-accent'>0 rows.</span></h1>
+          <h1 className='mt-6 text-[clamp(3rem,8vw,7.5rem)] font-display font-semibold tracking-[-0.045em] leading-[0.92]'>This query returned <span className='text-accent'>0 rows.</span></h1>
           <p className='mt-8 max-w-md text-xl text-muted'>The page you asked for isn't here. The link may be old or have a typo in it.</p>
           <div className='mt-12 flex flex-wrap gap-3'>
             <Magnetic strength={0.3}><GoLink to='/' label='Home' className='pill-accent'><FiArrowLeft /> Back to home</GoLink></Magnetic>

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Magnetic from './Magnetic'
-import { useGo } from './Transition'
+import { GoLink, useGo } from './Transition'
 import { email, github, linkedin, resume } from '../data'
 import { scrollTo, stopScroll } from '../motion'
 
@@ -27,7 +27,7 @@ const Navbar = () => {
   const home = !pathname.startsWith('/work/')
 
   useEffect(() => {
-    const check = () => setFloating(window.scrollY > window.innerHeight * 0.3)
+    const check = () => setFloating(window.scrollY > 120)
     check()
     window.addEventListener('scroll', check, { passive: true })
     return () => window.removeEventListener('scroll', check)
@@ -69,9 +69,9 @@ const Navbar = () => {
               </Magnetic>
             ))}
             <Magnetic strength={0.3}>
-              <a href={resume} target='_blank' rel='noreferrer' className='group ml-3 inline-flex items-center h-11 px-5 rounded-full bg-fg text-ink font-semibold'>
+              <GoLink to={resume} label='Resume' className='group ml-3 inline-flex items-center h-11 px-5 rounded-full bg-fg text-ink font-semibold'>
                 <Roll>Resume</Roll>
-              </a>
+              </GoLink>
             </Magnetic>
           </div>
         </nav>
@@ -96,7 +96,7 @@ const Navbar = () => {
             <ul className='space-y-1'>
               {[['Home', 'top', '/'], ...links].map(([label, id, path], i) => (
                 <li key={id} className='transition duration-700' style={{ transitionDelay: open ? `${0.2 + i * 0.06}s` : '0s', transform: open ? 'none' : 'translateX(60px)', opacity: open ? 1 : 0 }}>
-                  <a href={path} tabIndex={open ? 0 : -1} onClick={e => nav(e, id, path, label)} className='group flex items-center gap-5 py-1 text-5xl sm:text-6xl font-medium tracking-tight'>
+                  <a href={path} tabIndex={open ? 0 : -1} onClick={e => nav(e, id, path, label)} className='group flex items-center gap-5 py-1 font-display text-5xl sm:text-6xl font-medium tracking-tight'>
                     <span className='w-3 h-3 shrink-0 rounded-full bg-accent scale-0 group-hover:scale-100 transition-transform duration-300' />
                     <span className='-ml-8 group-hover:ml-0 transition-[margin] duration-300'>{label}</span>
                   </a>
@@ -110,7 +110,7 @@ const Navbar = () => {
               <a href={linkedin} target='_blank' rel='noreferrer' tabIndex={open ? 0 : -1} className='hover:text-accent'>LinkedIn</a>
               <a href={github} target='_blank' rel='noreferrer' tabIndex={open ? 0 : -1} className='hover:text-accent'>GitHub</a>
               <a href={`mailto:${email}`} tabIndex={open ? 0 : -1} className='hover:text-accent'>Email</a>
-              <a href={resume} target='_blank' rel='noreferrer' tabIndex={open ? 0 : -1} className='hover:text-accent'>Resume</a>
+              <GoLink to={resume} label='Resume' tabIndex={open ? 0 : -1} onClick={() => setOpen(false)} className='hover:text-accent'>Resume</GoLink>
             </div>
           </div>
         </div>

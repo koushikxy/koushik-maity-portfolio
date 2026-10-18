@@ -14,7 +14,7 @@ const Card = ({ p, i }) => (
       <span className='absolute left-5 top-5 px-3 py-1 rounded-full bg-bg/80 text-sm font-medium backdrop-blur'>{p.type}</span>
     </div>
     <div className='mt-7 flex items-start justify-between gap-6 pb-6 border-b border-line'>
-      <h3 className='text-3xl sm:text-4xl font-medium tracking-tight'>{p.title}</h3>
+      <h3 className='font-display text-3xl sm:text-4xl font-semibold tracking-tight'>{p.title}</h3>
       <span className='mt-1 w-12 h-12 shrink-0 rounded-full border border-line grid place-items-center transition duration-500 group-hover:bg-accent group-hover:border-accent group-hover:text-ink group-hover:rotate-45'><FiArrowUpRight className='text-xl' /></span>
     </div>
     <p className='mt-5 text-lg text-muted'><span className='text-accent font-bold'>{p.stat}</span> {p.statLabel}</p>
@@ -53,7 +53,7 @@ const Work = () => {
   return (
     <section id='work' ref={root} className='wrap py-24 sm:py-32'>
       <div className='flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 sm:mb-24'>
-        <h2 className='work-title text-[clamp(3.5rem,9vw,8.5rem)] font-medium tracking-[-0.04em] leading-[0.92]'>
+        <h2 className='work-title text-[clamp(3.5rem,9vw,8.5rem)] font-display font-semibold tracking-[-0.04em] leading-[0.92]'>
           <span className='word-mask'><span>Selected</span></span><br />
           <span className='word-mask'><span>work<span className='text-accent'>.</span></span></span>
         </h2>
@@ -66,7 +66,7 @@ const Work = () => {
 
       <div className='mt-36 sm:mt-48'>
         <div className='flex items-end justify-between gap-6 mb-8'>
-          <h3 className='text-3xl sm:text-5xl font-medium tracking-tight'>Other things I've built</h3>
+          <h3 className='font-display text-3xl sm:text-5xl font-semibold tracking-tight'>Other things I've built</h3>
           <span className='hidden sm:block label'>Web and team projects</span>
         </div>
         <ul className='other-list border-t border-line' onMouseLeave={() => setHover(null)}>
@@ -74,7 +74,7 @@ const Work = () => {
             <li key={p.title} onMouseEnter={() => setHover(i)} className='other-row group relative border-b border-line py-8 sm:py-12 flex items-center gap-5 sm:gap-10'>
               <img src={p.image} width={p.size[0]} height={p.size[1]} alt='' loading='lazy' className='[@media(hover:hover)]:hidden w-24 sm:w-32 aspect-[4/3] shrink-0 rounded-lg object-cover object-top' />
               <div className='flex-1 min-w-0 transition duration-500 [@media(hover:hover)]:group-hover:translate-x-4 [@media(hover:hover)]:group-hover:opacity-60'>
-                <a href={p.github} target='_blank' rel='noreferrer' data-cursor='view' className='text-2xl sm:text-5xl font-medium tracking-tight after:absolute after:inset-0'>{p.title}</a>
+                <a href={p.github} target='_blank' rel='noreferrer' data-cursor='view' className='font-display text-2xl sm:text-5xl font-semibold tracking-tight after:absolute after:inset-0'>{p.title}</a>
                 <p className='mt-2 text-muted'>{p.description}</p>
               </div>
               <span className='hidden md:block text-muted'>{p.tools}</span>

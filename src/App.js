@@ -9,6 +9,7 @@ import { TransitionProvider } from './components/Transition'
 import { startScroll } from './motion'
 
 const Project = lazy(() => import('./pages/Project'))
+const Resume = lazy(() => import('./pages/Resume'))
 
 class Safe extends Component {
   state = { failed: false }
@@ -40,6 +41,7 @@ const App = () => {
           {['/', '/About', '/Project', '/Experience', '/Skill', '/Certificate', '/Contact'].map(path => (
             <Route key={path} path={path} element={<Home />} />
           ))}
+          <Route path='/resume' element={<Suspense fallback={<div className='min-h-[100svh]' />}><Resume /></Suspense>} />
           <Route path='/work/:slug' element={<Suspense fallback={<div className='min-h-[100svh]' />}><Project /></Suspense>} />
           <Route path='*' element={<NotFound />} />
         </Routes>
