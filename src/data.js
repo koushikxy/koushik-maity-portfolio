@@ -222,6 +222,7 @@ export const experience = [
     org: 'XIM University, Bhubaneswar',
     dates: 'Aug 2021 - Apr 2025',
     logo: ximLogo,
+    round: true,
     short: 'XIM University',
     light: true,
     span: ['2021-08', '2025-04'],

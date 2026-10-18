@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { experience } from '../data'
 import { useInView } from '../hooks'
 import { gsap, whenIdle } from '../motion'
@@ -8,23 +8,32 @@ const from = toM('2021-06')
 const to = toM('2026-10')
 const pos = ym => ((toM(ym) - from) / (to - from)) * 100
 const years = [2022, 2023, 2024, 2025, 2026]
+const length = ([a, b]) => {
+  const m = toM(b) - toM(a) + 1
+  const y = Math.floor(m / 12)
+  return [y && `${y} yr${y > 1 ? 's' : ''}`, m % 12 && `${m % 12} month${m % 12 > 1 ? 's' : ''}`].filter(Boolean).join(' ')
+}
 
 const Logo = ({ e }) => (
-  <span className={`w-28 h-16 shrink-0 rounded-2xl grid place-items-center overflow-hidden ${e.light ? 'bg-white p-2' : 'bg-card border border-line px-3'}`}>
+  <span className={`shrink-0 flex items-center justify-center overflow-hidden ${e.round ? 'w-20 h-20 rounded-full bg-white p-0.5' : `w-28 h-16 rounded-2xl ${e.light ? 'bg-white p-2' : 'bg-card border border-line px-3'}`}`}>
     <img src={e.logo} alt={`${e.org} logo`} loading='lazy' className='max-w-full max-h-full object-contain' />
   </span>
 )
 
 const Timeline = () => {
   const [ref, seen] = useInView('-10% 0px')
+  const [hot, setHot] = useState(null)
   const rows = [...experience].reverse()
   return (
     <figure ref={ref} className='rounded-[1.5rem] border border-line bg-card/60 p-5 sm:p-8'>
-      <figcaption className='flex flex-wrap items-baseline justify-between gap-3 mb-8'>
-        <span className='font-display text-xl font-semibold'>Timeline, 2021 to now</span>
+      <figcaption className='flex flex-wrap items-baseline justify-between gap-3 mb-14'>
+        <span><span className='font-display text-xl font-semibold'>Timeline, 2021 to now</span><span className='block mt-1 font-mono text-xs text-muted'>Hover or tap a bar for dates</span></span>
         <span className='flex gap-5 font-mono text-xs text-muted'>
-          <span className='inline-flex items-center gap-2'><span className='w-3 h-3 rounded-sm bg-accent' /> Work</span>
-          <span className='inline-flex items-center gap-2'><span className='w-3 h-3 rounded-sm bg-fg/70' /> Education</span>
+          {[['work', 'Work', 'bg-accent'], ['edu', 'Education', 'bg-fg/70']].map(([k, label, c]) => (
+            <button key={k} onMouseEnter={() => setHot(k)} onMouseLeave={() => setHot(null)} onFocus={() => setHot(k)} onBlur={() => setHot(null)} onClick={() => setHot(hot === k ? null : k)} className={`inline-flex items-center gap-2 transition-colors ${hot === k ? 'text-fg' : ''}`}>
+              <span className={`w-3 h-3 rounded-sm ${c}`} /> {label}
+            </button>
+          ))}
         </span>
       </figcaption>
       <div className='relative'>
@@ -36,10 +45,17 @@ const Timeline = () => {
             const left = pos(e.span[0])
             const width = pos(e.span[1]) - left
             const work = e.bullets.length > 0
+            const on = hot === i || hot === (work ? 'work' : 'edu')
+            const dim = hot !== null && !on
+            const mid = left + Math.max(width, 2.5) / 2
             return (
-              <li key={e.org} className='relative h-12'>
-                <span className={`absolute top-0 h-full rounded-xl transition-[width] duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] ${work ? 'bg-accent' : 'bg-fg/70'}`} style={{ left: `${left}%`, width: seen ? `${Math.max(width, 2.5)}%` : 0, transitionDelay: `${i * 0.15}s` }} />
-                <span className={`absolute top-1/2 -translate-y-1/2 whitespace-nowrap text-sm font-semibold transition-opacity duration-700 delay-700 ${seen ? 'opacity-100' : 'opacity-0'} ${width > 25 ? 'text-ink' : ''}`} style={width > 25 ? { left: `calc(${left}% + 16px)` } : left + width > 70 ? { right: `calc(${100 - left}% + 10px)` } : { left: `calc(${left + Math.max(width, 2.5)}% + 10px)` }}>
+              <li key={e.org} className={`relative h-12 ${on ? 'z-10' : ''}`}>
+                <button onMouseEnter={() => setHot(i)} onMouseLeave={() => setHot(null)} onFocus={() => setHot(i)} onBlur={() => setHot(null)} onClick={() => setHot(hot === i ? null : i)} aria-label={`${e.org}, ${e.role}, ${e.dates}`} className={`absolute top-0 h-full rounded-xl transition-[width,opacity,box-shadow] duration-[1.4s,0.3s,0.3s] ease-[cubic-bezier(.16,1,.3,1)] ${work ? 'bg-accent' : 'bg-fg/70'} ${dim ? 'opacity-30' : ''} ${on ? 'shadow-[0_0_0_3px_rgb(var(--fg)/0.35)]' : ''}`} style={{ left: `${left}%`, width: seen ? `${Math.max(width, 2.5)}%` : 0, transitionDelay: seen && hot === null ? `${i * 0.15}s, 0s, 0s` : '0s' }} />
+                <span role='tooltip' className={`absolute bottom-full mb-2 pointer-events-none rounded-xl bg-fg text-ink px-3.5 py-2.5 text-sm whitespace-nowrap shadow-xl transition duration-200 ${on ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`} style={mid > 75 ? { right: `${100 - left - Math.max(width, 2.5)}%` } : mid < 25 ? { left: `${left}%` } : { left: `${mid}%`, transform: `translateX(-50%) translateY(${on ? 0 : 4}px)` }}>
+                  <span className='block font-semibold'>{e.role}</span>
+                  <span className='block text-ink/70'>{e.dates} <span className='ml-1 font-mono text-xs'>({length(e.span)})</span></span>
+                </span>
+                <span className={`absolute top-1/2 -translate-y-1/2 pointer-events-none whitespace-nowrap text-sm font-semibold transition-opacity duration-700 ${seen && !dim ? 'opacity-100' : dim ? 'opacity-30' : 'opacity-0'} ${width > 25 ? 'text-ink' : ''}`} style={width > 25 ? { left: `calc(${left}% + 16px)` } : left + width > 70 ? { right: `calc(${100 - left}% + 10px)` } : { left: `calc(${left + Math.max(width, 2.5)}% + 10px)` }}>
                   {e.short}
                 </span>
               </li>
