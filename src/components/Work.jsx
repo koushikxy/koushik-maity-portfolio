@@ -1,11 +1,45 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { FiArrowUpRight } from 'react-icons/fi'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { FiArrowUpRight, FiChevronLeft, FiChevronRight, FiX } from 'react-icons/fi'
 import { GoLink } from './Transition'
 import { projects, otherProjects } from '../data'
-import { finePointer, gsap, whenIdle } from '../motion'
+import { finePointer, gsap, stopScroll, whenIdle } from '../motion'
+
+const Gallery = ({ shots, start, onClose }) => {
+  const [i, setI] = useState(start)
+  const close = useRef(null)
+  useEffect(() => {
+    close.current.focus()
+    stopScroll(true)
+    const key = e => {
+      if (e.key === 'Escape') onClose()
+      if (e.key === 'ArrowRight') setI(n => (n + 1) % shots.length)
+      if (e.key === 'ArrowLeft') setI(n => (n - 1 + shots.length) % shots.length)
+    }
+    window.addEventListener('keydown', key)
+    return () => {
+      window.removeEventListener('keydown', key)
+      stopScroll(false)
+    }
+  }, [shots.length, onClose])
+  const [src, , caption] = shots[i]
+  const step = d => e => { e.stopPropagation(); setI(n => (n + d + shots.length) % shots.length) }
+  return (
+    <div role='dialog' aria-modal='true' aria-label={caption} onClick={onClose} className='fixed inset-0 z-[90] bg-black/90 backdrop-blur-sm flex flex-col items-center justify-center gap-4 p-3 sm:p-8'>
+      <img src={src} alt={caption} onClick={e => e.stopPropagation()} className='w-auto h-auto max-w-[min(94vw,1200px)] max-h-[78vh] object-contain rounded-lg bg-white' />
+      <div onClick={e => e.stopPropagation()} className='flex items-center gap-4 text-sm'>
+        {shots.length > 1 && <button onClick={step(-1)} aria-label='Previous image' className='w-11 h-11 rounded-full border border-line grid place-items-center hover:bg-fg hover:text-ink'><FiChevronLeft /></button>}
+        <p className='text-center'><span className='font-mono text-muted'>{i + 1} / {shots.length}</span> <span className='ml-2'>{caption}</span></p>
+        {shots.length > 1 && <button onClick={step(1)} aria-label='Next image' className='w-11 h-11 rounded-full border border-line grid place-items-center hover:bg-fg hover:text-ink'><FiChevronRight /></button>}
+      </div>
+      <button ref={close} onClick={onClose} aria-label='Close' className='absolute top-5 right-5 w-14 h-14 rounded-full bg-accent text-ink grid place-items-center text-xl'><FiX /></button>
+    </div>
+  )
+}
 
 const Story = () => {
   const [active, setActive] = useState(0)
+  const [open, setOpen] = useState(null)
+  const closeGallery = useCallback(() => setOpen(null), [])
   const steps = useRef([])
 
   useEffect(() => {
@@ -57,6 +91,15 @@ const Story = () => {
                 <img src={p.cover} width={p.size[0]} height={p.size[1]} alt='' loading='lazy' className='mt-5 w-full rounded-lg' />
               </div>
               <p className='mt-6 text-lg leading-relaxed text-fg/85'>{p.intro}</p>
+              <div className={`mt-6 grid gap-2 ${p.shots.length > 2 ? 'grid-cols-3' : 'grid-cols-2'}`}>
+                {p.shots.slice(0, 3).map(([src, size, caption], j) => (
+                  <button key={caption} onClick={() => setOpen({ shots: p.shots, start: j })} aria-label={`View ${caption}`} className='group relative aspect-[4/3] rounded-xl overflow-hidden bg-white border border-line'>
+                    <img src={src} width={size[0]} height={size[1]} alt='' loading='lazy' className='w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105' />
+                    {j === 2 && p.shots.length > 3 && <span className='absolute inset-0 bg-black/60 grid place-items-center font-display text-xl font-semibold text-fg'>+{p.shots.length - 3}</span>}
+                  </button>
+                ))}
+              </div>
+              <p className='mt-2 font-mono text-xs text-muted'>{p.shots.length} {p.shots.length > 1 ? 'images' : 'image'} from the project. Click to enlarge.</p>
               <div className='mt-6 flex flex-wrap gap-2'>{p.tools.map(t => <span key={t} className='tag'>{t}</span>)}</div>
               <div className='mt-8 flex flex-wrap gap-3'>
                 <GoLink to={`/work/${p.slug}`} label={p.title} className='pill-accent'>Open the case study <FiArrowUpRight /></GoLink>
@@ -66,6 +109,7 @@ const Story = () => {
           </li>
         ))}
       </ol>
+      {open && <Gallery shots={open.shots} start={open.start} onClose={closeGallery} />}
     </div>
   )
 }

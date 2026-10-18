@@ -1,4 +1,4 @@
-import { SiMysql, SiPostgresql, SiPython, SiPandas, SiNumpy, SiJupyter, SiPowerbi, SiMicrosoftexcel, SiReact, SiJavascript, SiTailwindcss, SiGit, SiGithub, SiJira, SiFigma } from 'react-icons/si'
+import { SiMysql, SiPython, SiPandas, SiNumpy, SiJupyter, SiPowerbi, SiMicrosoftexcel, SiReact, SiTailwindcss, SiGithub, SiFigma, SiFastapi, SiScipy } from 'react-icons/si'
 
 import upiOverview from './work/upi-overview.webp'
 import upiShare from './work/upi-market-share.webp'
@@ -6,6 +6,13 @@ import upiChallengers from './work/upi-challengers.webp'
 import flightWindow from './work/flight-booking-window.webp'
 import flightAirlines from './work/flight-airlines.webp'
 import cardDashboard from './work/card-dashboard.webp'
+import groceryReport1 from './work/grocery-report-1.webp'
+import groceryReport2 from './work/grocery-report-2.webp'
+import flightReport1 from './work/flight-report-1.webp'
+import flightReport2 from './work/flight-report-2.webp'
+import turingLogo from './img/logos/turing.svg'
+import distilLogo from './img/logos/distil.webp'
+import ximLogo from './img/logos/xim.webp'
 import groceryReorder from './projects_img/grocery-reorder.webp'
 import heroCycles from './projects_img/hero-cycles.webp'
 import apnafashion from './projects_img/apnafashion.webp'
@@ -40,6 +47,7 @@ export const projects = [
     size: [1400, 803],
     intro: "UPI handles more than 20 billion payments a month now, and most of them go through two apps. I wanted to see how that happened and whether it's changing, so I built a Power BI dashboard from NPCI's official monthly app-wise statistics.",
     line: true,
+    shots: [[upiOverview, [1400, 803], 'Dashboard page 1: UPI at a glance'], [upiShare, [1400, 803], 'Dashboard page 2: who owns UPI'], [upiChallengers, [1400, 803], "Dashboard page 3: Paytm's fall and the new challengers"]],
     numbers: [['18x', 'growth in monthly UPI transactions since June 2020'], ['-37%', 'drop in the average payment, from ₹1,958 to ₹1,225'], ['3,211', 'market concentration (HHI), the lowest in the whole period']],
     findings: [
       'Monthly UPI transactions grew about 18x, from 1.3 billion in June 2020 to 23.9 billion in September 2026. Volume in September 2026 was 24% higher than a year earlier.',
@@ -69,6 +77,7 @@ export const projects = [
     tools: ['MySQL', 'CTEs', 'Window Functions'],
     data: 'Instacart Market Basket dataset: 3.4 million orders, 33.8 million order lines, 206k customers',
     cover: groceryReorder,
+    shots: [[groceryReorder, [880, 462], 'Customers and orders by shopper type'], [groceryReport1, [1082, 1400], 'Write-up, page 1'], [groceryReport2, [1082, 1400], 'Write-up, page 2']],
     size: [880, 462],
     intro: 'Online grocery apps like Blinkit, Zepto and Instamart live or die on repeat orders, so I wanted to see what repeat buying looks like at scale. I loaded the Instacart dataset into MySQL and answered a set of questions with SQL: when people order, how often they come back, what they reorder, and what they buy together.',
     numbers: [['59%', 'of everything people buy is something they bought before'], ['12%', 'of customers place 30% of all orders'], ['17.9x', 'lift for the most common product pair']],
@@ -107,6 +116,7 @@ export const projects = [
     tools: ['Python', 'Pandas', 'Matplotlib'],
     data: '300k fares between Delhi, Mumbai, Bangalore, Kolkata, Hyderabad and Chennai, scraped from EaseMyTrip (Feb to Mar 2022)',
     cover: flightWindow,
+    shots: [[flightWindow, [937, 477], 'Fares by days before departure'], [flightAirlines, [775, 431], 'Fares by airline'], [flightReport1, [1082, 1400], 'Write-up, page 1'], [flightReport2, [1082, 1400], 'Write-up, page 2']],
     size: [937, 477],
     intro: 'I kept hearing different advice about booking flights: book early, avoid weekends, take the 5am flight. So I took about 300k real fares between India\'s six biggest metros and checked what actually moves the price.',
     numbers: [['2.4x', 'the normal fare when you book in the last 3 days'], ['40%', 'below the route median on AirAsia'], ['9x', 'business class compared with economy']],
@@ -140,7 +150,8 @@ export const projects = [
     tools: ['Excel', 'Power Query', 'XLOOKUP', 'Pivot Tables'],
     data: "RBI bank-wise ATM, POS and card statistics for August 2025 and August 2026, about 64 banks",
     cover: cardDashboard,
-    size: [1498, 980],
+    size: [1400, 916],
+    shots: [[cardDashboard, [1400, 916], 'Excel dashboard, August 2025 vs August 2026']],
     intro: "My UPI dashboard showed UPI taking over everyday payments. I wanted to see what that is doing to cards, ATMs and card machines, so I compared the RBI's bank-wise card statistics for August 2025 and August 2026 in Excel.",
     numbers: [['6.1x', 'more money withdrawn at ATMs with debit cards than spent with them'], ['69.5%', 'of credit cards issued by just four banks'], ['+10.3%', 'growth in credit cards, to 12.4 crore']],
     findings: [
@@ -184,6 +195,9 @@ export const experience = [
     role: 'Business Analyst (Freelance)',
     org: 'Turing',
     dates: 'Mar 2026 - Aug 2026',
+    logo: turingLogo,
+    short: 'Turing',
+    span: ['2026-03', '2026-08'],
     bullets: [
       'Evaluated 200+ Gemini responses and prompts every week against quality criteria, with 92% agreement with senior reviewers.',
       'Curated and validated 40+ data samples a week, checking for inconsistencies, exceptions and recurring patterns.',
@@ -194,6 +208,10 @@ export const experience = [
     role: 'Web Developer Intern',
     org: 'Distil Ventures Limited',
     dates: 'Apr 2024 - Jul 2024',
+    logo: distilLogo,
+    short: 'Distil',
+    light: true,
+    span: ['2024-04', '2024-07'],
     bullets: [
       'Led a team of 5 interns that built and delivered 6 client websites in 3 months.',
       'Found and fixed 60+ layout and responsiveness issues across those sites.'
@@ -203,18 +221,14 @@ export const experience = [
     role: 'B.Tech, Computer Science and Engineering (Hons.)',
     org: 'XIM University, Bhubaneswar',
     dates: 'Aug 2021 - Apr 2025',
+    logo: ximLogo,
+    short: 'XIM University',
+    light: true,
+    span: ['2021-08', '2025-04'],
     bullets: []
   }
 ]
 
-export const skills = [
-  { group: 'BI and reporting', note: 'UPI and card payments dashboards', items: [['Power BI', SiPowerbi], ['DAX'], ['Power Query'], ['Excel', SiMicrosoftexcel], ['Pivot Tables'], ['Data Modeling']] },
-  { group: 'SQL', note: '3.4M-order Instacart analysis', items: [['MySQL', SiMysql], ['PostgreSQL', SiPostgresql], ['CTEs'], ['Window Functions'], ['Joins']] },
-  { group: 'Python', note: '300k flight fares analysis', items: [['Python', SiPython], ['Pandas', SiPandas], ['NumPy', SiNumpy], ['Matplotlib'], ['Seaborn'], ['Jupyter', SiJupyter]] },
-  { group: 'Analysis', note: 'Every project, from raw files to recommendations', items: [['Data Cleaning'], ['Data Validation'], ['EDA'], ['Statistics'], ['KPI Tracking']] },
-  { group: 'Web', note: 'This site and client sites during my internship', items: [['React', SiReact], ['JavaScript', SiJavascript], ['Tailwind CSS', SiTailwindcss], ['HTML and CSS']] },
-  { group: 'Tools', note: 'Version control and task tracking', items: [['Git', SiGit], ['GitHub', SiGithub], ['Jira', SiJira], ['Figma', SiFigma]] }
-]
 
 export const featuredCert = {
   title: 'Google Data Analytics Professional Certificate',
@@ -262,3 +276,24 @@ export const cv = {
   education: { degree: 'B.Tech in Computer Science and Engineering (Hons.)', org: 'XIM University, Bhubaneswar', dates: 'Aug 2021 - Apr 2025' },
   certifications: [['Google Data Analytics Professional Certificate', '2025'], ['Data Analytics with Python, NPTEL', '2024']]
 }
+
+export const tools = [
+  { name: 'Power BI', Icon: SiPowerbi, used: ['UPI Payments Dashboard'] },
+  { name: 'SQL / MySQL', Icon: SiMysql, used: ['Grocery Reorder Analysis'] },
+  { name: 'Python', Icon: SiPython, used: ['Flight Fare Analysis', 'Hero Cycles Pricing Tool'] },
+  { name: 'Excel', Icon: SiMicrosoftexcel, used: ['Card Payments Dashboard'] },
+  { name: 'Pandas', Icon: SiPandas, used: ['Flight Fare Analysis'] },
+  { name: 'DAX', mark: 'DAX', used: ['UPI Payments Dashboard'] },
+  { name: 'Power Query', mark: 'PQ', used: ['UPI Payments Dashboard', 'Card Payments Dashboard'] },
+  { name: 'Jupyter', Icon: SiJupyter, used: ['Flight Fare Analysis'] },
+  { name: 'Matplotlib', mark: 'Mpl', used: ['Flight Fare Analysis'] },
+  { name: 'NumPy', Icon: SiNumpy, used: ['Flight Fare Analysis'] },
+  { name: 'SciPy', Icon: SiScipy, used: ['Flight Fare Analysis'] },
+  { name: 'FastAPI', Icon: SiFastapi, used: ['Hero Cycles Pricing Tool'] },
+  { name: 'React', Icon: SiReact, used: ['This portfolio', 'ApnaFashion.in'] },
+  { name: 'Tailwind CSS', Icon: SiTailwindcss, used: ['This portfolio', 'ApnaFashion.in'] },
+  { name: 'Figma', Icon: SiFigma, used: ['ApnaFashion.in'] },
+  { name: 'Git and GitHub', Icon: SiGithub, used: ['Every project'] }
+]
+
+export const alsoKnow = ['PostgreSQL', 'Seaborn', 'JavaScript', 'Jira', 'Data Modeling', 'Pivot Tables', 'XLOOKUP', 'Statistics', 'Data Validation']
