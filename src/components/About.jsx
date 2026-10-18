@@ -25,7 +25,7 @@ const About = () => {
   useEffect(() => whenIdle(root, () => {
     gsap.from('.about-word > span', { yPercent: 110, duration: 1, ease: 'expo.out', stagger: 0.012, scrollTrigger: { trigger: '.about-text', start: 'top 80%' } })
     gsap.from('.about-side', { opacity: 0, y: 60, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: '.about-side', start: 'top 85%' } })
-    gsap.fromTo('.about-photo img', { yPercent: -4, scale: 1.1 }, { yPercent: 4, scale: 1.1, ease: 'none', scrollTrigger: { trigger: '.about-photo', start: 'top bottom', end: 'bottom top', scrub: true } })
+    gsap.fromTo('.about-photo img', { yPercent: -3, scale: 1.06 }, { yPercent: 3, scale: 1.06, ease: 'none', scrollTrigger: { trigger: '.about-photo', start: 'top bottom', end: 'bottom top', scrub: true } })
   }), [])
 
   return (
@@ -42,8 +42,8 @@ const About = () => {
           <p className='mt-10 max-w-xl text-lg text-muted leading-relaxed'>Most recently I was a freelance Business Analyst at Turing, reviewing AI model responses and tracking quality metrics every week.</p>
           <GoLink to={resume} label='Resume' className='pill mt-8'>Read my resume <FiArrowUpRight /></GoLink>
         </div>
-        <div className='about-side about-photo relative aspect-[3/4] rounded-[1.5rem] overflow-hidden bg-card'>
-          <img src={photo} alt='Koushik Maity at the Victoria Memorial in the evening' width='1200' height='1600' loading='lazy' className='absolute inset-0 w-full h-full object-cover object-[50%_20%]' />
+        <div className='about-side about-photo relative aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-card'>
+          <img src={photo} alt='Koushik Maity at the Victoria Memorial in the evening' width='944' height='1180' loading='lazy' className='absolute inset-0 w-full h-full object-cover object-top' />
         </div>
       </div>
       <div ref={kpiRef} className='mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3'>
