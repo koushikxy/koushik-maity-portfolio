@@ -4,23 +4,71 @@ import { GoLink } from './Transition'
 import { projects, otherProjects } from '../data'
 import { finePointer, gsap, whenIdle } from '../motion'
 
-const Card = ({ p, i }) => (
-  <GoLink to={`/work/${p.slug}`} label={p.title} className={`work-card group block ${i % 2 ? 'md:mt-40' : ''}`}>
-    <div className='relative aspect-[4/3] rounded-[1.25rem] bg-card overflow-hidden'>
-      <div className='absolute inset-0 bg-fg/[0.07] origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-700 ease-[cubic-bezier(.76,0,.24,1)]' />
-      <div className='absolute inset-0 grid place-items-center p-6 sm:p-12'>
-        <img src={p.cover} width={p.size[0]} height={p.size[1]} alt={`${p.title} preview`} loading='lazy' className='work-img w-full rounded-lg shadow-[0_30px_60px_-20px_rgb(0_0_0/0.6)] transition-transform duration-[1.2s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]' />
+const Story = () => {
+  const [active, setActive] = useState(0)
+  const steps = useRef([])
+
+  useEffect(() => {
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) setActive(Number(e.target.dataset.i))
+    }), { rootMargin: '-45% 0px -45% 0px' })
+    steps.current.forEach(el => el && io.observe(el))
+    return () => io.disconnect()
+  }, [])
+
+  const n = projects.length
+  return (
+    <div className='grid lg:grid-cols-[0.55fr_0.45fr] gap-12 lg:gap-16'>
+      <div className='hidden lg:block'>
+        <div className='sticky top-28 h-[calc(100vh-9rem)] min-h-[520px] rounded-[1.75rem] border border-line bg-card p-8 flex flex-col'>
+          <div className='flex items-center justify-between font-mono text-sm text-muted'>
+            <span>Finding <span className='text-fg'>{String(active + 1).padStart(2, '0')}</span> of {String(n).padStart(2, '0')}</span>
+            <span>{projects[active].type}</span>
+          </div>
+          <div className='relative mt-8 h-44'>
+            {projects.map((p, i) => (
+              <div key={p.slug} aria-hidden={i !== active} className={`absolute inset-0 transition duration-700 ease-[cubic-bezier(.16,1,.3,1)] ${i === active ? 'opacity-100 translate-y-0' : i < active ? 'opacity-0 -translate-y-8' : 'opacity-0 translate-y-8'}`}>
+                <p className='font-display text-[clamp(4rem,7vw,7rem)] font-semibold tracking-tight leading-none text-accent'>{p.stat}</p>
+                <p className='mt-4 max-w-md text-xl leading-snug'>{p.statLabel}</p>
+              </div>
+            ))}
+          </div>
+          <div className='relative flex-1 mt-6 rounded-2xl bg-bg/60 overflow-hidden'>
+            {projects.map((p, i) => (
+              <img key={p.slug} src={p.cover} alt='' loading='lazy' className={`absolute inset-0 w-full h-full object-contain p-5 transition duration-700 ${i === active ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`} />
+            ))}
+          </div>
+          <div className='mt-6 grid gap-2' style={{ gridTemplateColumns: `repeat(${n}, 1fr)` }}>
+            {projects.map((p, i) => <span key={p.slug} className={`h-1 rounded-full transition-colors duration-500 ${i <= active ? 'bg-accent' : 'bg-line'}`} />)}
+          </div>
+        </div>
       </div>
-      <span className='absolute left-5 top-5 px-3 py-1 rounded-full bg-bg/80 text-sm font-medium backdrop-blur'>{p.type}</span>
+
+      <ol>
+        {projects.map((p, i) => (
+          <li key={p.slug} ref={el => (steps.current[i] = el)} data-i={i} className={`lg:min-h-[78vh] flex items-center py-10 lg:py-0 border-t lg:border-0 border-line transition-opacity duration-500 ${active === i ? 'lg:opacity-100' : 'lg:opacity-[0.8]'}`}>
+            <div>
+              <p className='font-mono text-sm text-muted'>{String(i + 1).padStart(2, '0')} / {String(n).padStart(2, '0')} <span className='text-accent'>{p.type}</span></p>
+              <h3 className='mt-4 font-display text-4xl sm:text-5xl font-semibold tracking-tight leading-[1.02]'>{p.title}</h3>
+              <p className='mt-4 text-xl sm:text-2xl text-muted'>{p.question}</p>
+              <div className='lg:hidden mt-8 rounded-2xl bg-card p-5'>
+                <p className='font-display text-6xl font-semibold text-accent leading-none'>{p.stat}</p>
+                <p className='mt-3 text-lg'>{p.statLabel}</p>
+                <img src={p.cover} width={p.size[0]} height={p.size[1]} alt='' loading='lazy' className='mt-5 w-full rounded-lg' />
+              </div>
+              <p className='mt-6 text-lg leading-relaxed text-fg/85'>{p.intro}</p>
+              <div className='mt-6 flex flex-wrap gap-2'>{p.tools.map(t => <span key={t} className='tag'>{t}</span>)}</div>
+              <div className='mt-8 flex flex-wrap gap-3'>
+                <GoLink to={`/work/${p.slug}`} label={p.title} className='pill-accent'>Open the case study <FiArrowUpRight /></GoLink>
+                <a href={p.links[0][1]} target='_blank' rel='noreferrer' className='pill'>Code</a>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
     </div>
-    <div className='mt-7 flex items-start justify-between gap-6 pb-6 border-b border-line'>
-      <h3 className='font-display text-3xl sm:text-4xl font-semibold tracking-tight'>{p.title}</h3>
-      <span className='mt-1 w-12 h-12 shrink-0 rounded-full border border-line grid place-items-center transition duration-500 group-hover:bg-accent group-hover:border-accent group-hover:text-ink group-hover:rotate-45'><FiArrowUpRight className='text-xl' /></span>
-    </div>
-    <p className='mt-5 text-lg text-muted'><span className='text-accent font-bold'>{p.stat}</span> {p.statLabel}</p>
-    <div className='mt-5 flex flex-wrap gap-2'>{p.tools.map(t => <span key={t} className='tag'>{t}</span>)}</div>
-  </GoLink>
-)
+  )
+}
 
 const Work = () => {
   const root = useRef(null)
@@ -29,9 +77,6 @@ const Work = () => {
   const [fine] = useState(finePointer)
 
   useEffect(() => whenIdle(root, () => {
-    gsap.utils.toArray('.work-card').forEach(card => {
-      gsap.from(card, { y: 120, opacity: 0, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: card, start: 'top 90%' } })
-    })
     gsap.from('.work-title > span > span', { yPercent: 110, duration: 1.2, ease: 'expo.out', stagger: 0.08, scrollTrigger: { trigger: '.work-title', start: 'top 85%' } })
     gsap.from('.other-row', { y: 60, opacity: 0, duration: 1, ease: 'expo.out', stagger: 0.08, scrollTrigger: { trigger: '.other-list', start: 'top 85%' } })
   }), [])
@@ -60,12 +105,10 @@ const Work = () => {
             <span className='word-mask'><span>work<span className='text-accent'>.</span></span></span>
           </h2>
         </div>
-        <p className='max-w-sm text-lg text-muted'>Four end-to-end analyses on real public data. Open one to see the full story, the charts, and the code behind it.</p>
+        <p className='max-w-sm text-lg text-muted'>Four end-to-end analyses on real public data. Scroll through the main finding of each, then open the full case study.</p>
       </div>
 
-      <div className='grid md:grid-cols-2 gap-x-10 lg:gap-x-16 gap-y-20'>
-        {projects.map((p, i) => <Card key={p.slug} p={p} i={i} />)}
-      </div>
+      <Story />
 
       <div className='mt-36 sm:mt-48'>
         <div className='flex items-end justify-between gap-6 mb-8'>
