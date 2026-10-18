@@ -43,7 +43,7 @@ const About = () => {
           <GoLink to={resume} label='Resume' className='pill mt-8'>Read my resume <FiArrowUpRight /></GoLink>
         </div>
         <div className='about-side about-photo relative aspect-[3/4] rounded-[1.5rem] overflow-hidden bg-card'>
-          <img src={photo} alt='Koushik Maity at the Victoria Memorial in the evening' width='900' height='1200' loading='lazy' className='absolute inset-0 w-full h-full object-cover object-[50%_20%]' />
+          <img src={photo} alt='Koushik Maity at the Victoria Memorial in the evening' width='1200' height='1600' loading='lazy' className='absolute inset-0 w-full h-full object-cover object-[50%_20%]' />
         </div>
       </div>
       <div ref={kpiRef} className='mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3'>
