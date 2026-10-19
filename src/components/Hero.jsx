@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { FiArrowDown, FiArrowUpRight } from 'react-icons/fi'
-import DotShow from './DotShow'
+import QueryCard from './QueryCard'
 import { GoLink } from './Transition'
 import { resume } from '../data'
 import { gsap, reduced, scrollTo } from '../motion'
@@ -20,8 +20,8 @@ const Hero = ({ play }) => {
   return (
     <section id='top' ref={root} className='relative lg:min-h-[100svh] pt-40 lg:pt-32 pb-6 lg:pb-16 flex flex-col lg:justify-center overflow-hidden'>
       <div className='absolute inset-0 grain pointer-events-none' />
-      <div className='wrap relative z-10'>
-        <div className='lg:max-w-[52%]'>
+      <div className='wrap relative z-10 grid grid-cols-1 [&>*]:min-w-0 lg:grid-cols-[1fr_0.9fr] gap-12 lg:gap-20 items-center'>
+        <div>
           <p className='hero-fade font-mono text-sm text-muted'>Data Analyst <span className='text-accent'>/</span> Bangalore, India <span className='text-accent'>/</span> open to work</p>
           <h1 className='mt-6 font-display text-[clamp(3.8rem,10vw,9.5rem)] font-semibold tracking-[-0.045em] leading-[0.86]'>
             <span className='hero-line word-mask'><span>Koushik</span></span><br />
@@ -38,9 +38,9 @@ const Hero = ({ play }) => {
             <span>SQL</span><span>Python</span><span>Power BI</span><span>Excel</span>
           </p>
         </div>
-      </div>
-      <div className='relative mt-10 lg:mt-0 aspect-square sm:aspect-[4/3] lg:aspect-auto lg:absolute lg:inset-0'>
-        <DotShow play={play} />
+        <div className='hero-fade lg:h-[min(76svh,720px)]'>
+          <QueryCard play={play} />
+        </div>
       </div>
     </section>
   )
