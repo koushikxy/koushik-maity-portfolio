@@ -94,7 +94,7 @@ const Navbar = () => {
       <nav aria-label='Main' className='wrap'>
         <div className='flex flex-wrap lg:flex-nowrap items-center justify-between gap-x-6 gap-y-3 py-4'>
           <a href='/' onClick={e => pick(e, 'top', '/', 'Home')} className='leading-tight'>
-            <span className='block font-display text-lg font-semibold'>Koushik Maity<span className='text-accent'>.</span></span>
+            <span className='block font-display text-xl sm:text-2xl font-semibold tracking-tight'>Koushik Maity<span className='text-accent'>.</span></span>
           </a>
           <div className='order-last lg:order-none w-full lg:w-auto min-w-0'>{bar}</div>
           <div className='flex items-center gap-2'>
