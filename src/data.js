@@ -319,7 +319,7 @@ export const cv = {
       'Found fares rise ~1.7x when booked within 15 days of departure and ~2.4x in the last 3 days; showed weekend flights cost ~5% more even when booked early.'
     ] }
   ],
-  education: { degree: 'B.Tech in Computer Science and Engineering (Hons.)', org: 'XIM University, Bhubaneswar', dates: 'Aug 2021 - Apr 2025' },
+  education: { degree: 'B.Tech in Computer Science and Engineering (Hons.), CGPA 7.06/10', org: 'XIM University, Bhubaneswar', dates: 'Aug 2021 - Apr 2025' },
   certifications: [['Google Data Analytics Professional Certificate', '2025'], ['Data Analytics with Python, NPTEL', '2024']]
 }
 
