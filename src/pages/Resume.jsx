@@ -39,7 +39,7 @@ const Resume = () => {
     <div ref={root}>
       <Navbar />
       <main id='main'>
-        <header className='wrap pt-40 sm:pt-48 pb-14'>
+        <header className='wrap pt-32 sm:pt-48 pb-14'>
           <p className='r-fade label'>Resume</p>
           <h1 className='r-title mt-6 font-display text-[clamp(3.2rem,10vw,9rem)] font-semibold tracking-[-0.045em] leading-[0.9]'>
             <span className='word-mask mr-[0.2em]'><span>Koushik</span></span>

@@ -92,7 +92,7 @@ const Hero = ({ play }) => {
         )}
       </div>
 
-      <div className='wrap relative z-10 pt-40 lg:pt-36 pointer-events-none [&_a]:pointer-events-auto'>
+      <div className='wrap relative z-10 pt-28 lg:pt-36 pointer-events-none [&_a]:pointer-events-auto'>
         <p className='hero-fade flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-sm text-muted'><span className='inline-flex items-center gap-1.5'><FiMapPin className='text-accent' /> Bangalore, India</span><span className='text-accent'>/</span><span className='inline-flex items-center gap-2'><span className='w-2 h-2 rounded-full bg-accent animate-pulse' />open to work</span></p>
         <p className='hero-fade mt-6 max-w-xl text-2xl sm:text-4xl font-medium leading-tight tracking-tight'>
           I find the story in messy data and turn it into <span className='text-accent'>answers people can act on</span>.

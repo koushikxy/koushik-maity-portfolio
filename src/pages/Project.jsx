@@ -92,7 +92,7 @@ const Project = () => {
     <div ref={root}>
       <Navbar />
       <main id='main'>
-        <header className='wrap pt-40 sm:pt-48 pb-16'>
+        <header className='wrap pt-32 sm:pt-48 pb-16'>
           <GoLink to='/Project' label='Work' className='p-fade inline-flex items-center gap-2 label hover:text-fg transition-colors'><FiArrowLeft /> All work</GoLink>
           <h1 className='p-title mt-8 text-[clamp(3rem,9vw,8.5rem)] font-display font-semibold tracking-[-0.045em] leading-[0.92]'>
             {p.title.split(' ').map((w, i) => <span key={i} className='word-mask mr-[0.22em]'><span>{w}</span></span>)}
