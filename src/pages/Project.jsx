@@ -106,13 +106,16 @@ const Project = () => {
         </header>
 
         <section className='wrap pb-16' aria-label='In short'>
-          <div className='p-fade grid md:grid-cols-3 gap-px rounded-[1.5rem] overflow-hidden bg-line border border-line'>
-            {['The question', 'The answer', 'Why it matters'].map((h, i) => (
-              <div key={h} className={`p-7 sm:p-9 ${i === 1 ? 'bg-accent text-ink' : 'bg-bg'}`}>
-                <p className={`font-mono text-sm ${i === 1 ? '' : 'text-accent'}`}>{String(i + 1).padStart(2, '0')} / {h}</p>
-                <p className='mt-4 text-lg sm:text-xl leading-snug font-medium'>{p.short[i]}</p>
-              </div>
-            ))}
+          <div className='p-fade border-l-2 border-accent pl-6 sm:pl-8'>
+            <p className='label'>In short</p>
+            <dl className='mt-6 grid md:grid-cols-3 gap-8 md:gap-12'>
+              {['Question', 'Answer', 'Why it matters'].map((h, i) => (
+                <div key={h}>
+                  <dt className='text-sm text-muted'>{h}</dt>
+                  <dd className={`mt-2 text-lg sm:text-xl leading-snug ${i === 1 ? 'font-semibold' : ''}`}>{p.short[i]}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </section>
 
