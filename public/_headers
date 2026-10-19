@@ -1,8 +1,11 @@
 /*
-  X-Frame-Options: DENY
+  X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 
 /static/*
   Cache-Control: public, max-age=31536000, immutable
+
+/Koushik_Maity_Software_Developer_CV.pdf
+  X-Robots-Tag: noindex

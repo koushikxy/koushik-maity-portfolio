@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { FiArrowUpRight, FiChevronLeft, FiChevronRight, FiX } from 'react-icons/fi'
 import { GoLink } from './Transition'
 import { projects, otherProjects } from '../data'
-import { finePointer, gsap, stopScroll, whenIdle } from '../motion'
+import { gsap, stopScroll, whenIdle } from '../motion'
 
 const Gallery = ({ shots, start, onClose }) => {
   const [i, setI] = useState(start)
@@ -116,28 +116,11 @@ const Story = () => {
 
 const Work = () => {
   const root = useRef(null)
-  const preview = useRef(null)
-  const [hover, setHover] = useState(null)
-  const [fine] = useState(finePointer)
 
   useEffect(() => whenIdle(root, () => {
     gsap.from('.work-title > span > span', { yPercent: 110, duration: 1.2, ease: 'expo.out', stagger: 0.08, scrollTrigger: { trigger: '.work-title', start: 'top 85%' } })
     gsap.from('.other-row', { y: 60, opacity: 0, duration: 1, ease: 'expo.out', stagger: 0.08, scrollTrigger: { trigger: '.other-list', start: 'top 85%' } })
   }), [])
-
-  useEffect(() => {
-    if (!finePointer()) return
-    const x = gsap.quickTo(preview.current, 'x', { duration: 0.6, ease: 'power3' })
-    const y = gsap.quickTo(preview.current, 'y', { duration: 0.6, ease: 'power3' })
-    const move = e => { x(e.clientX); y(e.clientY) }
-    const hide = () => setHover(null)
-    window.addEventListener('mousemove', move)
-    window.addEventListener('scroll', hide, { passive: true })
-    return () => {
-      window.removeEventListener('mousemove', move)
-      window.removeEventListener('scroll', hide)
-    }
-  }, [])
 
   return (
     <section id='work' ref={root} className='wrap py-24 sm:py-32'>
@@ -159,11 +142,11 @@ const Work = () => {
           <h3 className='font-display text-3xl sm:text-5xl font-semibold tracking-tight'>Other things I've built</h3>
           <span className='hidden sm:block label'>Web and team projects</span>
         </div>
-        <ul className='other-list border-t border-line' onMouseLeave={() => setHover(null)}>
-          {otherProjects.map((p, i) => (
-            <li key={p.title} onMouseEnter={() => setHover(i)} className='other-row group relative border-b border-line py-8 sm:py-12 flex items-center gap-5 sm:gap-10'>
-              <img src={p.image} width={p.size[0]} height={p.size[1]} alt='' loading='lazy' className='[@media(hover:hover)]:hidden w-24 sm:w-32 aspect-[4/3] shrink-0 rounded-lg object-cover object-top' />
-              <div className='flex-1 min-w-0 transition duration-500 [@media(hover:hover)]:group-hover:translate-x-4 [@media(hover:hover)]:group-hover:opacity-60'>
+        <ul className='other-list border-t border-line'>
+          {otherProjects.map(p => (
+            <li key={p.title} className='other-row group relative border-b border-line py-8 sm:py-12 flex items-center gap-5 sm:gap-10'>
+              <img src={p.image} width={p.size[0]} height={p.size[1]} alt='' loading='lazy' className='w-24 sm:w-40 lg:w-48 aspect-[4/3] shrink-0 rounded-lg object-cover object-top border border-line transition-transform duration-500 group-hover:scale-[1.03]' />
+              <div className='flex-1 min-w-0 transition-colors duration-300 group-hover:text-accent'>
                 <a href={p.github} target='_blank' rel='noreferrer' className='font-display text-2xl sm:text-5xl font-semibold tracking-tight after:absolute after:inset-0'>{p.title}</a>
                 <p className='mt-2 text-muted'>{p.description}</p>
               </div>
@@ -172,17 +155,6 @@ const Work = () => {
             </li>
           ))}
         </ul>
-        {fine && <div ref={preview} aria-hidden='true' className='fixed left-0 top-0 z-40 pointer-events-none'>
-          <div className={`-translate-x-1/2 -translate-y-1/2 w-[380px] aspect-[4/3] rounded-xl overflow-hidden bg-card transition-transform duration-500 ease-[cubic-bezier(.76,0,.24,1)] ${hover === null ? 'scale-0' : 'scale-100'}`}>
-            <div className='transition-transform duration-500 ease-[cubic-bezier(.76,0,.24,1)]' style={{ transform: `translateY(-${(hover || 0) * 100}%)` }}>
-              {otherProjects.map(p => (
-                <div key={p.title} className='w-full aspect-[4/3] p-6 grid place-items-center'>
-                  <img src={p.image} alt='' decoding='async' className='w-full max-h-full object-cover object-top rounded-md' />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>}
       </div>
     </section>
   )

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { FiArrowUpRight } from 'react-icons/fi'
 import { GoLink } from './Transition'
-import photo from '../img/kolkata.webp'
+import photo from '../img/graduation.webp'
 import { resume, stats } from '../data'
 import { useCount, useInView } from '../hooks'
 import { gsap, whenIdle } from '../motion'
@@ -43,7 +43,7 @@ const About = () => {
           <GoLink to={resume} label='Resume' className='pill mt-8'>Read my resume <FiArrowUpRight /></GoLink>
         </div>
         <div className='about-side about-photo relative aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-card'>
-          <img src={photo} alt='Koushik Maity at the Victoria Memorial in the evening' width='944' height='1180' loading='lazy' className='absolute inset-0 w-full h-full object-cover object-top' />
+          <img src={photo} alt='Koushik Maity in a graduation gown holding the cap' width='944' height='1180' loading='lazy' className='absolute inset-0 w-full h-full object-cover object-top' />
         </div>
       </div>
       <div ref={kpiRef} className='mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3'>
