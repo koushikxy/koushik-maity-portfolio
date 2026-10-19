@@ -80,7 +80,7 @@ const Story = () => {
 
       <ol>
         {projects.map((p, i) => (
-          <li key={p.slug} ref={el => (steps.current[i] = el)} data-i={i} className={`lg:min-h-[78vh] flex items-center py-10 lg:py-0 border-t lg:border-0 border-line transition-opacity duration-500 ${active === i ? 'lg:opacity-100' : 'lg:opacity-[0.8]'}`}>
+          <li key={p.slug} ref={el => (steps.current[i] = el)} data-i={i} className={`lg:min-h-[78vh] flex items-center py-14 lg:py-28 border-line first:pt-0 [&+&]:border-t transition-opacity duration-500 ${active === i ? 'lg:opacity-100' : 'lg:opacity-[0.8]'}`}>
             <div>
               <p className='font-mono text-sm text-muted'>{String(i + 1).padStart(2, '0')} / {String(n).padStart(2, '0')} <span className='text-accent'>{p.type}</span></p>
               <h3 className='mt-4 font-display text-4xl sm:text-5xl font-semibold tracking-tight leading-[1.02]'>{p.title}</h3>
