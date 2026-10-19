@@ -221,8 +221,8 @@ export const projects = [
 
 export const otherProjects = [
   { title: 'Pixential', description: 'Website and client portal for a web design agency, with an admin panel for leads and clients', tools: 'Next.js, Express, Prisma', image: pixential, size: [900, 520], github: repo('Pixential'), live: 'https://pixential.netlify.app' },
-  { title: 'Hero Cycles Pricing Tool', description: 'Pick parts and a date, get the total price split by component', tools: 'Python, FastAPI, JavaScript', image: heroCycles, size: [900, 746], github: repo('hero-cycles-pricing'), live: 'https://hero-cycles-pricing.netlify.app' },
-  { title: 'ApnaFashion.in', description: 'E-commerce frontend for a streetwear brand, designed in Figma', tools: 'React, Tailwind CSS', image: apnafashion, size: [900, 459], github: repo('apnafashion.in'), live: 'https://apnafashion.netlify.app' },
+  { title: 'Hero Cycles Pricing Tool', description: 'Pick parts and a date, get the total price split by component', tools: 'Python, FastAPI, JavaScript', image: heroCycles, size: [900, 675], github: repo('hero-cycles-pricing'), live: 'https://hero-cycles-pricing.netlify.app' },
+  { title: 'ApnaFashion.in', description: 'E-commerce frontend for a streetwear brand, designed in Figma', tools: 'React, Tailwind CSS', image: apnafashion, size: [900, 675], github: repo('apnafashion.in'), live: 'https://apnafashion.netlify.app' },
   { title: 'Messaging App', description: 'Team capstone. Real-time chat with rooms, voice notes and media', tools: 'Next.js, Firebase', image: messagingApp, size: [900, 520], github: repo('Messaging_app') },
   { title: 'Milestone Crowdfunding', description: 'Team project. Funds are released one milestone at a time', tools: 'Solidity, Ethereum', image: crowdfunding, size: [900, 520], github: repo('Milestone-Based-Crowdfunding-using-solidity') },
   { title: 'This portfolio', description: 'The site you are on', tools: 'React, GSAP, Tailwind CSS', image: portfolio, size: [900, 457], github: repo('koushik-maity-portfolio') }
