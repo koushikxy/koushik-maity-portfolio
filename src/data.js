@@ -19,6 +19,7 @@ import apnafashion from './projects_img/apnafashion.webp'
 import messagingApp from './projects_img/messaging-app.webp'
 import crowdfunding from './projects_img/crowdfunding.webp'
 import portfolio from './projects_img/portfolio.webp'
+import pixential from './projects_img/pixential.webp'
 import googleCert from './certificate/google-data-analytics.webp'
 import reactCert from './certificate/react.webp'
 import jsCert from './certificate/javascript.webp'
@@ -36,6 +37,7 @@ const file = (name, path) => `${repo(name)}/blob/main/${path}`
 export const projects = [
   {
     slug: 'upi-payments-dashboard',
+    short: ['Who handles most UPI payments, and is that changing?', 'PhonePe and Google Pay still handle 78% of transactions, but their grip is the weakest since 2020 as newer apps like Navi grow.', 'A new payments app can still win share, and banks reach users mostly through third-party apps.'],
     title: 'UPI Payments Dashboard',
     question: "Who owns India's payment market?",
     type: 'Power BI dashboard',
@@ -57,6 +59,17 @@ export const projects = [
       'Since then the market has been opening up again. Navi went from almost nothing in mid-2024 to 4.8% of volume, and super.money to 1.7%.',
       "Banks' own apps carry only about 3% of UPI volume. Almost everything goes through third-party apps."
     ],
+    recommendations: [
+      'For a new payments app, the window is open. The top two are back to their early-2021 share and concentration is the lowest on record. Navi went from almost nothing to 4.8% in about two years.',
+      'Build for small, everyday payments. The average payment fell 37% to ₹1,225, so speed and reliability on small amounts matter more than features for big transfers.',
+      "Banks should power third-party apps rather than push their own. Bank apps carry only about 3% of UPI volume.",
+      'Plan for regulatory risk. Paytm lost nearly half its share within a year of the RBI action, so an app that depends on one partner bank needs a backup.'
+    ],
+    limits: [
+      'NPCI publishes app-level totals only, so there is nothing on individual users, merchants or cities.',
+      'The value of PhonePe and Google Pay payments is missing for February and March 2022 in the source, so value measures are blank for those months.',
+      "NPCI's download links for March, May and June 2026 are broken, so I took those months from the table on NPCI's website."
+    ],
     gallery: [[upiShare, [1800, 1032], 'PhonePe and Google Pay share of UPI volume over time'], [upiChallengers, [1800, 1032], 'Newer apps like Navi and super.money taking share']],
     process: [
       'Two different file layouts across the 76 months, so the Power Query function reads the total volume and value from the last two columns.',
@@ -69,6 +82,7 @@ export const projects = [
   },
   {
     slug: 'grocery-reorder-analysis',
+    short: ['What do grocery customers buy again, and how often do they come back?', '59% of items are repeat buys, most people order weekly or fortnightly, and 12% of customers place 30% of orders.', 'A grocery app grows most by making reorders easy and nudging fortnightly shoppers to order weekly.'],
     title: 'Grocery Reorder Analysis',
     question: 'What makes grocery customers reorder?',
     type: 'SQL analysis',
@@ -90,14 +104,19 @@ export const projects = [
       'Sparkling water flavours and salsa ingredients (jalapeño, cilantro, limes) keep showing up in the same orders.'
     ],
     charts: [
-      { title: 'Share of orders by shopper type', unit: '%', rows: [['Weekly', 29.6], ['Fortnightly', 41.6], ['Every 3 weeks', 19.9], ['Monthly or less', 8.8]] },
-      { title: 'Reorder rate by department', unit: '%', rows: [['Dairy & eggs', 67], ['Produce', 65], ['Beverages', 65], ['Snacks', 57], ['Frozen', 54], ['Pantry', 35]] }
+      { title: 'Share of orders by shopper type', unit: '%', note: 'Weekly shoppers are only 12% of customers but place 30% of orders.', rows: [['Weekly', 29.6], ['Fortnightly', 41.6], ['Every 3 weeks', 19.9], ['Monthly or less', 8.8]] },
+      { title: 'Reorder rate by department', unit: '%', note: 'Fresh food and dairy are bought out of habit. Pantry items are stocked up on, not reordered every week.', rows: [['Dairy & eggs', 67], ['Produce', 65], ['Beverages', 65], ['Snacks', 57], ['Frozen', 54], ['Pantry', 35]] }
     ],
     recommendations: [
       'Focus on the fortnightly and 3-week shoppers. They are 65% of customers, and moving some to a weekly routine is worth more than chasing the monthly group.',
       'Build the home screen around reorders. Six in ten items are repeats, and the first items in the cart are the most predictable.',
       'Bundle the obvious pairs: sparkling water variety packs, a salsa kit, a stir-fry kit.',
       'Keep stock tight on the ~800 products that make up half of all volume.'
+    ],
+    limits: [
+      'Instacart only included customers with 4 to 100 orders, so one-time buyers are missing and the real reorder rate would be lower.',
+      'There are no prices, so this is about volume, not revenue.',
+      'The data is from 2017 and US-based, so the patterns will not map exactly onto Indian quick commerce.'
     ],
     process: [
       'products.csv escapes quotes in an unusual way, which made MySQL silently drop 333 products on the first load. Fixed with ESCAPED BY and a REPLACE.',
@@ -108,6 +127,7 @@ export const projects = [
   },
   {
     slug: 'flight-fare-analysis',
+    short: ['What actually changes the price of a domestic flight?', 'When you book matters most: fares are 1.7x inside 15 days and 2.4x in the last 3 days. The airline you pick matters almost as much.', 'Book 16+ days ahead and compare airlines first. Weekends and early-morning flights matter much less.'],
     title: 'Flight Fare Analysis',
     question: 'When should you book a flight in India?',
     type: 'Python analysis',
@@ -129,9 +149,20 @@ export const projects = [
     ],
     charts: [
       { title: 'Fare compared with the normal fare for the route, by when you book', unit: 'x', digits: 1, rows: [['16+ days ahead', 1.0], ['Within 15 days', 1.7], ['Last 3 days', 2.4]], note: '16+ days ahead is roughly the normal fare for the route.' },
-      { title: 'Fare compared with the route median, by airline', unit: '%', rows: [['AirAsia', -40], ['IndiGo', -18], ['Vistara', 11]] }
+      { title: 'Fare compared with the route median, by airline', unit: '%', note: 'Same routes, different airlines: AirAsia is about half the price of Vistara.', rows: [['AirAsia', -40], ['IndiGo', -18], ['Vistara', 11]] }
     ],
     gallery: [[flightAirlines, [775, 431], 'Fare compared with the route median, by airline']],
+    recommendations: [
+      'Book at least 16 days ahead. Inside 15 days the fare jumps to about 1.7x the normal fare for the route.',
+      'Compare airlines before worrying about dates. Picking AirAsia over Vistara on the same route saves about as much as booking early.',
+      'Pick non-stop flights. They were about 38% below the route median, while 2+ stops were 44% above.',
+      'For a travel app: warn users when a route is 16 days out, since that is where the price curve turns up.'
+    ],
+    limits: [
+      'Each days-before-departure value is a different set of flights, not one flight tracked over time, so the booking curve is a snapshot rather than a price history.',
+      'The data covers travel dates from 11 February to 31 March 2022 and only six metros.',
+      'The market has changed since then: Go First stopped flying in 2023 and Vistara merged into Air India in 2024.'
+    ],
     process: [
       'Used the raw economy and business files instead of the cleaned Kaggle file.',
       'The stops column had 37 different values with tabs, newlines and layover airports mixed in, for what is really 0, 1 or 2+ stops.',
@@ -142,6 +173,7 @@ export const projects = [
   },
   {
     slug: 'card-payments-dashboard',
+    short: ['What is UPI doing to cards, ATMs and card machines?', 'UPI is replacing card machines, not cards. QR codes grew 16.5% while card machines fell 14.7%, and credit cards kept growing.', 'Banks should put money into QR acceptance and credit cards, and treat debit cards as a cash card.'],
     title: 'Card Payments Dashboard',
     question: 'How does India pay with cards now?',
     type: 'Excel dashboard',
@@ -161,6 +193,18 @@ export const projects = [
       'HDFC Bank, SBI, ICICI Bank and Axis Bank hold 69.5% of all credit cards. HDFC customers spend the most per card, about ₹22,600 in August 2026.',
       'Paytm Payments Bank is in the August 2025 data but gone by August 2026, the same RBI action that shows up in my UPI project.'
     ],
+    recommendations: [
+      'Move spending on card machines to UPI QR acceptance for small shops. QR codes grew 16.5% while card machines fell 14.7%.',
+      'Treat debit cards as a cash and ATM product. People withdraw 6.1 times more cash with them than they spend in shops and online.',
+      'Put growth money into credit cards, especially online. Online credit card transactions rose 32.2%.',
+      "Smaller banks still have room in credit cards. Small finance banks doubled their share from 1.1% to 2.0%."
+    ],
+    limits: [
+      'Only two months are compared, so a one-off change in either month can look like a trend.',
+      'Numbers are what banks report to the RBI. There is at least one error in the source: RBL Bank reports a fractional number of debit cards.',
+      'The data counts cards and machines, not people, so it cannot show how many people use each.'
+    ],
+    gallery: [[cardDashboard, [1400, 916], 'The Excel dashboard: KPIs and 4 charts, filterable by bank type']],
     process: [
       'The RBI header is spread over 6 merged rows, so columns are named by position in Power Query.',
       'Bank type is a heading row above each group rather than a column, so it is filled down to every bank.',
@@ -168,15 +212,16 @@ export const projects = [
       'Pivots with a bank type slicer, and a dashboard sheet with SUMIFS KPIs and 4 charts. Adding a month is drop the file in and refresh.'
     ],
     charts: [
-      { title: 'Change in payment infrastructure, August 2025 to August 2026', unit: '%', rows: [['UPI QR codes', 16.5], ['ATMs', 1.4], ['PoS card machines', -14.7], ['Bharat QR codes', -18.9]] },
-      { title: 'Share of all credit cards, August 2026', unit: '%', digits: 1, rows: [['HDFC Bank', 21.8], ['SBI', 18.5], ['ICICI Bank', 16.0], ['Axis Bank', 13.1]] }
+      { title: 'Change in payment infrastructure, August 2025 to August 2026', unit: '%', note: 'Shops are swapping card machines for UPI QR codes. ATMs are flat.', rows: [['UPI QR codes', 16.5], ['ATMs', 1.4], ['PoS card machines', -14.7], ['Bharat QR codes', -18.9]] },
+      { title: 'Share of all credit cards, August 2026', unit: '%', digits: 1, note: 'These four banks hold 69.5% of all credit cards.', rows: [['HDFC Bank', 21.8], ['SBI', 18.5], ['ICICI Bank', 16.0], ['Axis Bank', 13.1]] }
     ],
     links: [['GitHub repo', repo('card-payments-excel-dashboard')], ['Dashboard (PDF)', file('card-payments-excel-dashboard', 'dashboard.pdf')], ['Excel workbook', file('card-payments-excel-dashboard', 'rbi_card_payments.xlsx')]]
   }
 ]
 
 export const otherProjects = [
-  { title: 'Hero Cycles Pricing Tool', description: 'Pick parts and a date, get the total price split by component', tools: 'Python, FastAPI, JavaScript', image: heroCycles, size: [900, 746], github: repo('hero-cycles-pricing') },
+  { title: 'Pixential', description: 'Website and client portal for a web design agency, with an admin panel for leads and clients', tools: 'Next.js, Express, Prisma', image: pixential, size: [900, 520], github: repo('Pixential'), live: 'https://pixential.netlify.app' },
+  { title: 'Hero Cycles Pricing Tool', description: 'Pick parts and a date, get the total price split by component', tools: 'Python, FastAPI, JavaScript', image: heroCycles, size: [900, 746], github: repo('hero-cycles-pricing'), live: 'https://hero-cycles-pricing.netlify.app' },
   { title: 'ApnaFashion.in', description: 'E-commerce frontend for a streetwear brand, designed in Figma', tools: 'React, Tailwind CSS', image: apnafashion, size: [900, 459], github: repo('apnafashion.in'), live: 'https://apnafashion.netlify.app' },
   { title: 'Messaging App', description: 'Team capstone. Real-time chat with rooms, voice notes and media', tools: 'Next.js, Firebase', image: messagingApp, size: [900, 520], github: repo('Messaging_app') },
   { title: 'Milestone Crowdfunding', description: 'Team project. Funds are released one milestone at a time', tools: 'Solidity, Ethereum', image: crowdfunding, size: [900, 520], github: repo('Milestone-Based-Crowdfunding-using-solidity') },

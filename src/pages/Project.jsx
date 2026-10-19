@@ -47,7 +47,7 @@ const Zoomable = ({ src, size, alt, caption, onZoom }) => (
 
 const Section = ({ title, children }) => (
   <section className='wrap py-16 sm:py-24 grid lg:grid-cols-[0.35fr_1fr] gap-8 lg:gap-16 border-t border-line'>
-    <h2 className='reveal label text-base'>{title}</h2>
+    <h2 className='reveal label text-base lg:sticky lg:top-28 self-start'>{title}</h2>
     <div>{children}</div>
   </section>
 )
@@ -104,6 +104,17 @@ const Project = () => {
             <div className='lg:col-span-2'><dt className='label'>Data</dt><dd className='mt-2 text-lg'>{p.data}</dd></div>
           </dl>
         </header>
+
+        <section className='wrap pb-16' aria-label='In short'>
+          <div className='p-fade grid md:grid-cols-3 gap-px rounded-[1.5rem] overflow-hidden bg-line border border-line'>
+            {['The question', 'The answer', 'Why it matters'].map((h, i) => (
+              <div key={h} className={`p-7 sm:p-9 ${i === 1 ? 'bg-accent text-ink' : 'bg-bg'}`}>
+                <p className={`font-mono text-sm ${i === 1 ? '' : 'text-accent'}`}>{String(i + 1).padStart(2, '0')} / {h}</p>
+                <p className='mt-4 text-lg sm:text-xl leading-snug font-medium'>{p.short[i]}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
         <div className='wrap'>
           <button onClick={() => setZoom({ src: p.cover, alt: `${p.title} main chart` })} className='p-cover block w-full rounded-[1.5rem] bg-card p-4 sm:p-14 overflow-hidden'>
@@ -163,6 +174,14 @@ const Project = () => {
             </ul>
           </Section>
         )}
+
+        <Section title='Limits of the data'>
+          <ul className='space-y-5'>
+            {p.limits.map((l, i) => (
+              <li key={i} className='reveal flex gap-5 text-lg leading-relaxed text-fg/85'><span className='mt-3 w-2 h-2 shrink-0 rounded-full border border-accent' />{l}</li>
+            ))}
+          </ul>
+        </Section>
 
         <Section title='How I built it'>
           <ul className='space-y-5'>
