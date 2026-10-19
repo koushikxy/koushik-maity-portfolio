@@ -33,7 +33,7 @@ const About = () => {
       <p className='font-mono text-sm text-accent mb-10'>01 / Summary</p>
       <div className='grid lg:grid-cols-[1.25fr_0.75fr] gap-14 lg:gap-20 items-start'>
         <div>
-          <p className='about-text text-[clamp(1.8rem,3.4vw,3.3rem)] font-medium leading-[1.22] tracking-[-0.01em]'>
+          <p className='about-text text-[clamp(1.45rem,3.4vw,3.3rem)] font-medium leading-[1.22] tracking-[-0.01em]'>
             <span className='sr-only'>{text}</span>
             {text.split(' ').map((w, i) => (
               <span key={i} aria-hidden='true' className='about-word word-mask'><span>{w}&nbsp;</span></span>

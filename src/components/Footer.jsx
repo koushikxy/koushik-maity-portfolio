@@ -65,7 +65,7 @@ const Footer = () => {
           {findings.map(([k, v]) => (
             <div key={k} className='cta-row grid sm:grid-cols-[12rem_1fr] gap-2 sm:gap-8 py-6 border-b border-line'>
               <dt className='font-mono text-sm text-muted pt-1'>{k}</dt>
-              <dd className='text-xl sm:text-2xl'>{v}</dd>
+              <dd className='text-lg sm:text-2xl'>{v}</dd>
             </div>
           ))}
         </dl>

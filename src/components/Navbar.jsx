@@ -91,7 +91,7 @@ const Navbar = () => {
     e.preventDefault()
     setOpen(false)
     const el = home && document.getElementById(id)
-    if (el) scrollTo(id === 'top' ? 0 : el)
+    if (el) setTimeout(() => scrollTo(id === 'top' ? 0 : el), 30)
     else go(path, label)
   }, [home, go])
 

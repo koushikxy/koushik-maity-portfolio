@@ -45,7 +45,7 @@ const Resume = () => {
             <span className='word-mask mr-[0.2em]'><span>Koushik</span></span>
             <span className='word-mask'><span>Maity<span className='text-accent'>.</span></span></span>
           </h1>
-          <p className='r-fade mt-6 text-2xl sm:text-3xl text-muted'>Data Analyst, Bangalore, India</p>
+          <p className='r-fade mt-6 text-xl sm:text-3xl text-muted'>Data Analyst, Bangalore, India</p>
           <div className='r-fade mt-12 flex flex-wrap gap-3'>
             <a href={pdf} download='Koushik_Maity_Data_Analyst_CV.pdf' className='pill-accent'><FiDownload /> Download PDF</a>
             <a href={pdf} target='_blank' rel='noreferrer' className='pill'>Open PDF <FiArrowUpRight /></a>
@@ -94,7 +94,7 @@ const Resume = () => {
 
           <div>
             <Block title='Summary'>
-              <p className='text-2xl sm:text-3xl leading-[1.35]'>{cv.summary}</p>
+              <p className='text-xl sm:text-3xl leading-[1.4]'>{cv.summary}</p>
             </Block>
             <Block title='Experience'>
               <ol className='space-y-12'>

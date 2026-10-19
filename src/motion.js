@@ -20,7 +20,7 @@ export const startScroll = () => {
 }
 
 export const scrollTo = (target, immediate = false) => {
-  if (lenis) return lenis.scrollTo(target, { immediate, duration: 1.4 })
+  if (lenis) return lenis.scrollTo(target, { immediate, duration: 1.4, force: true })
   if (typeof target === 'number') return window.scrollTo(0, target)
   target.scrollIntoView()
 }

@@ -97,7 +97,7 @@ const Project = () => {
           <h1 className='p-title mt-8 text-[clamp(3rem,9vw,8.5rem)] font-display font-semibold tracking-[-0.045em] leading-[0.92]'>
             {p.title.split(' ').map((w, i) => <span key={i} className='word-mask mr-[0.22em]'><span>{w}</span></span>)}
           </h1>
-          <p className='p-fade mt-8 max-w-3xl text-2xl sm:text-3xl text-muted'>{p.question}</p>
+          <p className='p-fade mt-6 sm:mt-8 max-w-3xl text-xl sm:text-3xl text-muted'>{p.question}</p>
           <dl className='p-fade mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 border-t border-line pt-8'>
             <div><dt className='label'>Type</dt><dd className='mt-2 text-lg'>{p.type}</dd></div>
             <div><dt className='label'>Tools</dt><dd className='mt-2 text-lg'>{p.tools.join(', ')}</dd></div>
@@ -112,7 +112,7 @@ const Project = () => {
         </div>
 
         <Section title='Overview'>
-          <p className='reveal text-2xl sm:text-3xl font-medium leading-[1.35]'>{p.intro}</p>
+          <p className='reveal text-xl sm:text-3xl font-medium leading-[1.4]'>{p.intro}</p>
           <div className='mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5'>
             <div className='reveal rounded-[1.25rem] bg-accent text-ink p-7'>
               <p className='font-display text-[clamp(2.5rem,3.4vw,3.5rem)] font-semibold tracking-tight leading-none break-words'>{p.stat}</p>

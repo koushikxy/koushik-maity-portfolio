@@ -93,7 +93,7 @@ const Experience = () => {
 
       <ol className='mt-6 grid gap-4'>
         {experience.map(e => (
-          <li key={e.org} className='exp-row rounded-[1.5rem] border border-line p-6 sm:p-8 grid md:grid-cols-[0.85fr_1.15fr] gap-6 md:gap-12'>
+          <li key={e.org} className='exp-row rounded-[1.5rem] border border-line p-6 sm:p-8 grid lg:grid-cols-[0.85fr_1.15fr] gap-6 lg:gap-12'>
             <div className='flex items-start gap-5'>
               <Logo e={e} />
               <div>
