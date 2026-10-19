@@ -15,7 +15,7 @@ const length = ([a, b]) => {
 }
 
 const Logo = ({ e }) => (
-  <span className={`shrink-0 flex items-center justify-center overflow-hidden ${e.round ? 'w-20 h-20 rounded-full bg-white p-0.5' : `w-28 h-16 rounded-2xl ${e.light ? 'bg-white p-2' : 'bg-card border border-line px-3'}`}`}>
+  <span className={`shrink-0 flex items-center justify-center overflow-hidden ${e.round ? 'w-20 h-20 rounded-full bg-white p-0.5' : `w-28 h-16 rounded-2xl ${e.light ? 'bg-white p-2' : 'bg-[#171716] border border-line px-3'}`}`}>
     <img src={e.logo} alt={`${e.org} logo`} loading='lazy' className='max-w-full max-h-full object-contain' />
   </span>
 )

@@ -33,7 +33,7 @@ const Home = () => {
   useReveal('home')
 
   useEffect(() => {
-    document.title = 'Koushik Maity | Data Analyst'
+    document.title = 'KOUSHIK MAITY | PORTFOLIO'
     const id = sections[pathname.toLowerCase()]
     const t = setTimeout(() => {
       ScrollTrigger.refresh()

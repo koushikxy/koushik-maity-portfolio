@@ -27,13 +27,6 @@ export const scrollTo = (target, immediate = false) => {
 
 export const stopScroll = stop => lenis && (stop ? lenis.stop() : lenis.start())
 
-export const onVelocity = fn => {
-  if (!lenis) return () => {}
-  const cb = e => fn(e.velocity, e.direction)
-  lenis.on('scroll', cb)
-  return () => lenis.off('scroll', cb)
-}
-
 export const whenIdle = (scope, build) => {
   if (reduced()) return () => {}
   let ctx

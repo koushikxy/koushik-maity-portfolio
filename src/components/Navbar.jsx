@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { FiArrowUpRight } from 'react-icons/fi'
+import { FiArrowUpRight, FiMoon, FiSun } from 'react-icons/fi'
 import { GoLink, useGo } from './Transition'
 import { resume } from '../data'
 import { scrollTo } from '../motion'
@@ -13,6 +13,21 @@ const filters = [
   ['Skills', 'skills', '/Skill'],
   ['Contact', 'contact', '/Contact']
 ]
+
+const Theme = () => {
+  const [light, setLight] = useState(() => document.documentElement.dataset.theme === 'light')
+  const flip = () => {
+    const next = light ? 'dark' : 'light'
+    document.documentElement.dataset.theme = next
+    try { localStorage.setItem('theme', next) } catch (e) {}
+    setLight(!light)
+  }
+  return (
+    <button onClick={flip} aria-label={light ? 'Switch to dark mode' : 'Switch to light mode'} className='w-11 h-11 rounded-full border border-line grid place-items-center text-lg hover:bg-fg hover:text-bg transition-colors'>
+      {light ? <FiMoon /> : <FiSun />}
+    </button>
+  )
+}
 
 const Navbar = () => {
   const { pathname } = useLocation()
@@ -83,7 +98,10 @@ const Navbar = () => {
             <span className='block font-mono text-xs text-muted'>data_analyst</span>
           </a>
           <div className='order-last lg:order-none w-full lg:w-auto min-w-0'>{bar}</div>
-          <GoLink to={resume} label='Resume' className='inline-flex items-center gap-2 h-11 px-5 rounded-full bg-fg text-ink text-sm font-semibold hover:bg-accent transition-colors'>Resume <FiArrowUpRight /></GoLink>
+          <div className='flex items-center gap-2'>
+            <Theme />
+            <GoLink to={resume} label='Resume' className='inline-flex items-center gap-2 h-11 px-5 rounded-full bg-fg text-bg text-sm font-semibold hover:bg-accent hover:text-ink transition-colors'>Resume <FiArrowUpRight /></GoLink>
+          </div>
         </div>
       </nav>
     </header>

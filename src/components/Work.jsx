@@ -24,12 +24,12 @@ const Gallery = ({ shots, start, onClose }) => {
   const [src, , caption] = shots[i]
   const step = d => e => { e.stopPropagation(); setI(n => (n + d + shots.length) % shots.length) }
   return (
-    <div role='dialog' aria-modal='true' aria-label={caption} onClick={onClose} className='fixed inset-0 z-[90] bg-black/90 backdrop-blur-sm flex flex-col items-center justify-center gap-4 p-3 sm:p-8'>
+    <div role='dialog' aria-modal='true' aria-label={caption} onClick={onClose} className='fixed inset-0 z-[90] bg-black/90 backdrop-blur-sm flex flex-col items-center justify-center gap-4 p-3 sm:p-8 text-white'>
       <img src={src} alt={caption} onClick={e => e.stopPropagation()} className='w-auto h-auto max-w-[min(94vw,1200px)] max-h-[78vh] object-contain rounded-lg bg-white' />
       <div onClick={e => e.stopPropagation()} className='flex items-center gap-4 text-sm'>
-        {shots.length > 1 && <button onClick={step(-1)} aria-label='Previous image' className='w-11 h-11 rounded-full border border-line grid place-items-center hover:bg-fg hover:text-ink'><FiChevronLeft /></button>}
-        <p className='text-center'><span className='font-mono text-muted'>{i + 1} / {shots.length}</span> <span className='ml-2'>{caption}</span></p>
-        {shots.length > 1 && <button onClick={step(1)} aria-label='Next image' className='w-11 h-11 rounded-full border border-line grid place-items-center hover:bg-fg hover:text-ink'><FiChevronRight /></button>}
+        {shots.length > 1 && <button onClick={step(-1)} aria-label='Previous image' className='w-11 h-11 rounded-full border border-white/25 grid place-items-center hover:bg-white hover:text-black'><FiChevronLeft /></button>}
+        <p className='text-center'><span className='font-mono text-white/60'>{i + 1} / {shots.length}</span> <span className='ml-2'>{caption}</span></p>
+        {shots.length > 1 && <button onClick={step(1)} aria-label='Next image' className='w-11 h-11 rounded-full border border-white/25 grid place-items-center hover:bg-white hover:text-black'><FiChevronRight /></button>}
       </div>
       <button ref={close} onClick={onClose} aria-label='Close' className='absolute top-5 right-5 w-14 h-14 rounded-full bg-accent text-ink grid place-items-center text-xl'><FiX /></button>
     </div>
@@ -95,7 +95,7 @@ const Story = () => {
                 {p.shots.slice(0, 3).map(([src, size, caption], j) => (
                   <button key={caption} onClick={() => setOpen({ shots: p.shots, start: j })} aria-label={`View ${caption}`} className='group relative aspect-[4/3] rounded-xl overflow-hidden bg-white border border-line'>
                     <img src={src} width={size[0]} height={size[1]} alt='' loading='lazy' className='w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105' />
-                    {j === 2 && p.shots.length > 3 && <span className='absolute inset-0 bg-black/60 grid place-items-center font-display text-xl font-semibold text-fg'>+{p.shots.length - 3}</span>}
+                    {j === 2 && p.shots.length > 3 && <span className='absolute inset-0 bg-black/60 grid place-items-center font-display text-xl font-semibold text-white'>+{p.shots.length - 3}</span>}
                   </button>
                 ))}
               </div>
@@ -177,7 +177,7 @@ const Work = () => {
             <div className='transition-transform duration-500 ease-[cubic-bezier(.76,0,.24,1)]' style={{ transform: `translateY(-${(hover || 0) * 100}%)` }}>
               {otherProjects.map(p => (
                 <div key={p.title} className='w-full aspect-[4/3] p-6 grid place-items-center'>
-                  <img src={p.image} alt='' loading='lazy' className='w-full max-h-full object-cover object-top rounded-md' />
+                  <img src={p.image} alt='' decoding='async' className='w-full max-h-full object-cover object-top rounded-md' />
                 </div>
               ))}
             </div>
