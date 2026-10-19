@@ -149,6 +149,7 @@ const Work = () => {
               <div className='flex-1 min-w-0 transition-colors duration-300 group-hover:text-accent'>
                 <a href={p.github} target='_blank' rel='noreferrer' className='font-display text-2xl sm:text-5xl font-semibold tracking-tight after:absolute after:inset-0'>{p.title}</a>
                 <p className='mt-2 text-muted'>{p.description}</p>
+                {p.live && <a href={p.live} target='_blank' rel='noreferrer' className='relative z-10 mt-3 inline-flex sm:hidden tag'>Live site <FiArrowUpRight /></a>}
               </div>
               <span className='hidden md:block text-muted'>{p.tools}</span>
               {p.live && <a href={p.live} target='_blank' rel='noreferrer' className='relative z-10 hidden sm:inline-flex tag hover:bg-accent hover:text-ink hover:border-accent transition-colors'>Live site <FiArrowUpRight /></a>}
