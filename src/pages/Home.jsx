@@ -33,7 +33,7 @@ const Home = () => {
   useReveal('home')
 
   useEffect(() => {
-    document.title = 'KOUSHIK MAITY | PORTFOLIO'
+    document.title = 'Koushik Maity – Data Analyst | SQL, Python, Power BI'
     const id = sections[pathname.toLowerCase()]
     const t = setTimeout(() => {
       ScrollTrigger.refresh()
