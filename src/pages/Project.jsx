@@ -62,7 +62,10 @@ const Project = () => {
   useReveal(slug)
 
   useEffect(() => {
-    if (p) document.title = `${p.title} | Koushik Maity`
+    if (!p) return
+    document.title = `${p.title} | Koushik Maity`
+    document.querySelector('meta[name="description"]')?.setAttribute('content', `${p.short[1]} Data analysis project by Koushik Maity.`)
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', `https://koushikmaity.netlify.app/work/${p.slug}`)
   }, [p])
 
   useEffect(() => {
