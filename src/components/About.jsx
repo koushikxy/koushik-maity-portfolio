@@ -3,16 +3,15 @@ import { FiArrowUpRight } from 'react-icons/fi'
 import { GoLink } from './Transition'
 import photo from '../img/graduation.webp'
 import { resume, stats } from '../data'
-import { useCount, useInView } from '../hooks'
+import { useInView } from '../hooks'
 import { gsap, whenIdle } from '../motion'
 
-const text = "I'm a data analyst with a B.Tech in Computer Science. I work mostly in SQL, Python, Power BI and Excel, and I like taking messy real-world data and turning it into clear answers someone can act on."
+const text = "I'm a data analyst who checks the data before trusting it. In one project, 333 products silently disappeared during a CSV load, and catching that kept the results right."
 
-const Kpi = ({ value, suffix, label, start }) => {
-  const n = useCount(value, start)
+const Kpi = ({ value, suffix, label }) => {
   return (
     <div className='rounded-2xl border border-line p-6'>
-      <p className='font-display text-5xl sm:text-6xl font-semibold tracking-tight tabular-nums'>{n}<span className='text-accent'>{suffix}</span></p>
+      <p className='font-display text-5xl sm:text-6xl font-semibold tracking-tight tabular-nums'>{value}<span className='text-accent'>{suffix}</span></p>
       <p className='mt-2 text-muted leading-snug'>{label}</p>
     </div>
   )
@@ -20,7 +19,7 @@ const Kpi = ({ value, suffix, label, start }) => {
 
 const About = () => {
   const root = useRef(null)
-  const [kpiRef, seen] = useInView('-10% 0px')
+  const [kpiRef] = useInView('-10% 0px')
 
   useEffect(() => whenIdle(root, () => {
     gsap.from('.about-word > span', { yPercent: 110, duration: 1, ease: 'expo.out', stagger: 0.012, scrollTrigger: { trigger: '.about-text', start: 'top 80%' } })
@@ -39,7 +38,7 @@ const About = () => {
               <span key={i} aria-hidden='true' className='about-word word-mask'><span>{w}&nbsp;</span></span>
             ))}
           </p>
-          <p className='mt-10 max-w-xl text-lg text-muted leading-relaxed'>Most recently I was a freelance Business Analyst at Turing, reviewing AI model responses and tracking quality metrics every week.</p>
+          <p className='mt-10 max-w-xl text-lg text-muted leading-relaxed'>I work mostly in SQL, Python, Power BI and Excel, with a B.Tech in Computer Science. Most recently I was a freelance Business Analyst at Turing.</p>
           <GoLink to={resume} label='Resume' className='pill mt-8'>Read my resume <FiArrowUpRight /></GoLink>
         </div>
         <div className='about-side about-photo relative aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-card'>
@@ -47,7 +46,7 @@ const About = () => {
         </div>
       </div>
       <div ref={kpiRef} className='mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3'>
-        {stats.map(([value, suffix, label]) => <Kpi key={label} value={value} suffix={suffix} label={label} start={seen} />)}
+        {stats.map(([value, suffix, label]) => <Kpi key={label} value={value} suffix={suffix} label={label} />)}
       </div>
     </section>
   )

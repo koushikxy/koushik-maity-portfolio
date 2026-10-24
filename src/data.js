@@ -1,4 +1,4 @@
-import { SiMysql, SiPython, SiPandas, SiNumpy, SiJupyter, SiPowerbi, SiMicrosoftexcel, SiReact, SiTailwindcss, SiGithub, SiFigma, SiFastapi, SiScipy } from 'react-icons/si'
+import { SiMysql, SiPython, SiPandas, SiNumpy, SiJupyter, SiPowerbi, SiMicrosoftexcel, SiReact, SiTailwindcss, SiGithub, SiFastapi } from 'react-icons/si'
 
 import upiOverview from './work/upi-overview.webp'
 import upiShare from './work/upi-market-share.webp'
@@ -15,16 +15,9 @@ import distilLogo from './img/logos/distil.webp'
 import ximLogo from './img/logos/xim.webp'
 import groceryReorder from './projects_img/grocery-reorder.webp'
 import heroCycles from './projects_img/hero-cycles.webp'
-import apnafashion from './projects_img/apnafashion.webp'
-import messagingApp from './projects_img/messaging-app.webp'
-import crowdfunding from './projects_img/crowdfunding.webp'
 import portfolio from './projects_img/portfolio.webp'
-import pixential from './projects_img/pixential.webp'
 import googleCert from './certificate/google-data-analytics.webp'
-import reactCert from './certificate/react.webp'
-import jsCert from './certificate/javascript.webp'
 import sqlCert from './certificate/mysql.webp'
-import cssCert from './certificate/css.webp'
 
 export const email = 'ksmaity21@gmail.com'
 export const linkedin = 'https://www.linkedin.com/in/ksmaity/'
@@ -94,7 +87,7 @@ export const projects = [
     shots: [[groceryReorder, [880, 462], 'Customers and orders by shopper type'], [groceryReport1, [1082, 1400], 'Write-up, page 1'], [groceryReport2, [1082, 1400], 'Write-up, page 2']],
     size: [880, 462],
     intro: 'Online grocery apps like Blinkit, Zepto and Instamart live or die on repeat orders, so I wanted to see what repeat buying looks like at scale. I loaded the Instacart dataset into MySQL and answered a set of questions with SQL: when people order, how often they come back, what they reorder, and what they buy together.',
-    numbers: [['59%', 'of everything people buy is something they bought before'], ['12%', 'of customers place 30% of all orders'], ['17.9x', 'lift for the most common product pair']],
+    numbers: [['790', 'products, 1.6% of the range, make up half of all items ordered'], ['12%', 'of customers place 30% of all orders'], ['17.9x', 'lift for the most common product pair']],
     findings: [
       'Most customers are on a weekly or fortnightly routine. The most common gap between orders is exactly 7 days.',
       '790 products (1.6% of the 49,685 that sold) account for half of all items ordered.',
@@ -220,11 +213,7 @@ export const projects = [
 ]
 
 export const otherProjects = [
-  { title: 'Pixential', description: 'Website and client portal for a web design agency, with an admin panel for leads and clients', tools: 'Next.js, Express, Prisma', image: pixential, size: [900, 520], github: repo('Pixential'), live: 'https://pixential.netlify.app' },
   { title: 'Hero Cycles Pricing Tool', description: 'Pick parts and a date, get the total price split by component', tools: 'Python, FastAPI, JavaScript', image: heroCycles, size: [900, 675], github: repo('hero-cycles-pricing'), live: 'https://hero-cycles-pricing.netlify.app' },
-  { title: 'ApnaFashion.in', description: 'E-commerce frontend for a streetwear brand, designed in Figma', tools: 'React, Tailwind CSS', image: apnafashion, size: [900, 675], github: repo('apnafashion.in'), live: 'https://apnafashion.netlify.app' },
-  { title: 'Messaging App', description: 'Team capstone. Real-time chat with rooms, voice notes and media', tools: 'Next.js, Firebase', image: messagingApp, size: [900, 520], github: repo('Messaging_app') },
-  { title: 'Milestone Crowdfunding', description: 'Team project. Funds are released one milestone at a time', tools: 'Solidity, Ethereum', image: crowdfunding, size: [900, 520], github: repo('Milestone-Based-Crowdfunding-using-solidity') },
   { title: 'This portfolio', description: 'The site you are on', tools: 'React, GSAP, Tailwind CSS', image: portfolio, size: [900, 457], github: repo('koushik-maity-portfolio') }
 ]
 
@@ -259,7 +248,7 @@ export const experience = [
     span: ['2024-04', '2024-07'],
     bullets: [
       'Built and delivered 2 client websites in 3 months.',
-      'Found and fixed 60+ layout and responsiveness issues across those sites.'
+      'Found and fixed 60+ application issues across those sites through testing.'
     ]
   },
   {
@@ -287,10 +276,7 @@ export const featuredCert = {
 
 export const certs = [
   { title: 'Data Analytics with Python', issuer: 'NPTEL', year: '2024' },
-  { title: 'React JS', issuer: 'Infosys', image: reactCert },
-  { title: 'JavaScript', issuer: 'Udemy', image: jsCert },
   { title: 'MySQL', issuer: 'Udemy', image: sqlCert },
-  { title: 'CSS', issuer: 'HackerRank', image: cssCert }
 ]
 
 export const pdf = '/Koushik_Maity_Data_Analyst_CV.pdf'
@@ -334,12 +320,10 @@ export const tools = [
   { name: 'Jupyter', Icon: SiJupyter, used: ['Flight Fare Analysis'] },
   { name: 'Matplotlib', mark: 'Mpl', used: ['Flight Fare Analysis'] },
   { name: 'NumPy', Icon: SiNumpy, used: ['Flight Fare Analysis'] },
-  { name: 'SciPy', Icon: SiScipy, used: ['Flight Fare Analysis'] },
   { name: 'FastAPI', Icon: SiFastapi, used: ['Hero Cycles Pricing Tool'] },
-  { name: 'React', Icon: SiReact, used: ['This portfolio', 'ApnaFashion.in'] },
-  { name: 'Tailwind CSS', Icon: SiTailwindcss, used: ['This portfolio', 'ApnaFashion.in'] },
-  { name: 'Figma', Icon: SiFigma, used: ['ApnaFashion.in'] },
+  { name: 'React', Icon: SiReact, used: ['This portfolio'] },
+  { name: 'Tailwind CSS', Icon: SiTailwindcss, used: ['This portfolio'] },
   { name: 'Git and GitHub', Icon: SiGithub, used: ['Every project'] }
 ]
 
-export const alsoKnow = ['PostgreSQL', 'Seaborn', 'JavaScript', 'Data Modeling', 'Pivot Tables', 'XLOOKUP', 'Statistics', 'Data Validation']
+export const alsoKnow = ['PostgreSQL', 'Seaborn', 'JavaScript', 'Data Modeling', 'Pivot Tables', 'XLOOKUP', 'Descriptive Statistics', 'Data Validation']

@@ -140,7 +140,7 @@ const Work = () => {
       <div className='mt-36 sm:mt-48'>
         <div className='flex items-end justify-between gap-6 mb-8'>
           <h3 className='font-display text-3xl sm:text-5xl font-semibold tracking-tight'>Other things I've built</h3>
-          <span className='hidden sm:block label'>Web and team projects</span>
+          <span className='hidden sm:block label'>Python and web</span>
         </div>
         <ul className='other-list border-t border-line'>
           {otherProjects.map(p => (
