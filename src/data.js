@@ -258,7 +258,7 @@ export const experience = [
     light: true,
     span: ['2024-04', '2024-07'],
     bullets: [
-      'Led a team of 5 interns that built and delivered 6 client websites in 3 months.',
+      'Built and delivered 2 client websites in 3 months.',
       'Found and fixed 60+ layout and responsiveness issues across those sites.'
     ]
   },
