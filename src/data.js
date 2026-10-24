@@ -311,7 +311,7 @@ export const cv = {
     ] },
     { name: 'Grocery Reorder Analysis', tech: 'MySQL', slug: 'grocery-reorder-analysis', bullets: [
       'Loaded 33.8M order lines (3.4M orders, 206K customers) into MySQL and analysed repeat buying with CTEs, window functions and self-joins; found 59% of items are reorders and 12% of customers place 30% of orders.',
-      'Cut query runtime by pre-aggregating the order lines into summary tables, and caught 333 products silently dropped during the CSV load.',
+      'Cut query runtime by pre-aggregating the order lines into summary tables, and caught a silent data loss during the CSV load.',
       'Identified frequently bought-together products using lift (up to 18x) and recommended bundles and reorder reminders.'
     ] },
     { name: 'Flight Fare Analysis', tech: 'Python, Pandas', slug: 'flight-fare-analysis', bullets: [
