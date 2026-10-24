@@ -244,9 +244,9 @@ export const experience = [
     short: 'Turing',
     span: ['2026-03', '2026-08'],
     bullets: [
-      'Evaluated 200+ Gemini responses and prompts every week against quality criteria, with 92% agreement with senior reviewers.',
-      'Curated and validated 40+ data samples a week, checking for inconsistencies, exceptions and recurring patterns.',
-      'Tracked task-level metrics and quality trends and reported what I found to the team.'
+      'Reached 92% agreement with senior reviewers by evaluating 200+ Gemini responses and prompts a week against structured quality criteria.',
+      'Raised the quality of AI training data by validating 40+ data samples a week and flagging inconsistencies, exceptions and recurring error patterns for correction.',
+      'Helped the team catch quality gaps early by tracking task-level KPIs and quality trends and reporting findings that drove process improvements.'
     ]
   },
   {
@@ -296,13 +296,13 @@ export const certs = [
 export const pdf = '/Koushik_Maity_Data_Analyst_CV.pdf'
 
 export const cv = {
-  summary: 'Data Analyst with a B.Tech in Computer Science and hands-on experience in SQL, Python and Power BI. Built end-to-end projects on real public datasets of up to 34 million rows, covering data cleaning, analysis, dashboards and business recommendations. Most recently worked as a freelance Business Analyst at Turing, validating data samples and tracking quality metrics.',
+  summary: 'Data Analyst who checks the data before trusting it: in one project I caught 333 products silently dropped during a CSV load that would have skewed the results. Built end-to-end projects in SQL, Python and Power BI on real public data of up to 34 million rows, from cleaning to dashboards and recommendations. Most recently a freelance Business Analyst at Turing.',
   skills: [
-    ['SQL', 'MySQL, PostgreSQL, CTEs, Window Functions, Joins, Query Optimization'],
+    ['SQL', 'MySQL, PostgreSQL, CTEs, Window Functions, Joins'],
     ['Python', 'Pandas, NumPy, Matplotlib, Seaborn, Jupyter'],
     ['BI & Reporting', 'Power BI, DAX, Power Query (ETL), Data Modeling, Data Visualization, Excel (Pivot Tables, Lookups), Dashboards, KPI Tracking'],
-    ['Analysis', 'Data Cleaning, Data Validation, EDA, Statistics'],
-    ['Tools', 'Git, GitHub, Jira, Agile']
+    ['Analysis', 'Data Cleaning, Data Validation, EDA, Descriptive Statistics'],
+    ['Tools', 'Git, GitHub']
   ],
   projects: [
     { name: 'UPI Payments Market Dashboard', tech: 'Power BI, DAX, Power Query', slug: 'upi-payments-dashboard', bullets: [
@@ -311,7 +311,7 @@ export const cv = {
     ] },
     { name: 'Grocery Reorder Analysis', tech: 'MySQL', slug: 'grocery-reorder-analysis', bullets: [
       'Loaded 33.8M order lines (3.4M orders, 206K customers) into MySQL and analysed repeat buying with CTEs, window functions and self-joins; found 59% of items are reorders and 12% of customers place 30% of orders.',
-      'Reduced runtime by pre-aggregating into summary tables (six queries took 30 min before; the full analysis now runs in 13 min), and caught 333 products silently dropped during the CSV load.',
+      'Cut query runtime by pre-aggregating the order lines into summary tables, and caught 333 products silently dropped during the CSV load.',
       'Identified frequently bought-together products using lift (up to 18x) and recommended bundles and reorder reminders.'
     ] },
     { name: 'Flight Fare Analysis', tech: 'Python, Pandas', slug: 'flight-fare-analysis', bullets: [
@@ -342,4 +342,4 @@ export const tools = [
   { name: 'Git and GitHub', Icon: SiGithub, used: ['Every project'] }
 ]
 
-export const alsoKnow = ['PostgreSQL', 'Seaborn', 'JavaScript', 'Jira', 'Data Modeling', 'Pivot Tables', 'XLOOKUP', 'Statistics', 'Data Validation']
+export const alsoKnow = ['PostgreSQL', 'Seaborn', 'JavaScript', 'Data Modeling', 'Pivot Tables', 'XLOOKUP', 'Statistics', 'Data Validation']

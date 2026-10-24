@@ -96,22 +96,6 @@ const Resume = () => {
             <Block title='Summary'>
               <p className='text-xl sm:text-3xl leading-[1.4]'>{cv.summary}</p>
             </Block>
-            <Block title='Experience'>
-              <ol className='space-y-12'>
-                {experience.filter(e => e.bullets.length).map(e => (
-                  <li key={e.org}>
-                    <div className='flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1'>
-                      <h3 className='font-display text-2xl sm:text-3xl font-semibold'>{e.role}</h3>
-                      <span className='text-muted'>{e.dates}</span>
-                    </div>
-                    <p className='mt-1 text-accent font-medium'>{e.org}</p>
-                    <ul className='mt-5 space-y-3 text-lg leading-relaxed'>
-                      {e.bullets.map(b => <li key={b} className='flex gap-4'><span className='mt-3 w-1.5 h-1.5 shrink-0 rounded-full bg-accent' />{b}</li>)}
-                    </ul>
-                  </li>
-                ))}
-              </ol>
-            </Block>
             <Block title='Projects'>
               <ol className='space-y-12'>
                 {cv.projects.map(p => (
@@ -124,6 +108,22 @@ const Resume = () => {
                       {p.bullets.map(b => <li key={b} className='flex gap-4'><span className='mt-3 w-1.5 h-1.5 shrink-0 rounded-full bg-accent' />{b}</li>)}
                     </ul>
                     <GoLink to={`/work/${p.slug}`} label={p.name} className='mt-5 inline-flex items-center gap-2 font-medium border-b border-fg/30 pb-0.5 hover:text-accent hover:border-accent transition-colors'>Read the case study <FiArrowUpRight /></GoLink>
+                  </li>
+                ))}
+              </ol>
+            </Block>
+            <Block title='Experience'>
+              <ol className='space-y-12'>
+                {experience.filter(e => e.bullets.length).map(e => (
+                  <li key={e.org}>
+                    <div className='flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1'>
+                      <h3 className='font-display text-2xl sm:text-3xl font-semibold'>{e.role}</h3>
+                      <span className='text-muted'>{e.dates}</span>
+                    </div>
+                    <p className='mt-1 text-accent font-medium'>{e.org}</p>
+                    <ul className='mt-5 space-y-3 text-lg leading-relaxed'>
+                      {e.bullets.map(b => <li key={b} className='flex gap-4'><span className='mt-3 w-1.5 h-1.5 shrink-0 rounded-full bg-accent' />{b}</li>)}
+                    </ul>
                   </li>
                 ))}
               </ol>
