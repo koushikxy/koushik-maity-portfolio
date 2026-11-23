@@ -189,13 +189,8 @@ const Project = () => {
           </ul>
         </Section>
 
-        <Section title='How I built it'>
-          <ul className='space-y-5'>
-            {p.process.map((s, i) => (
-              <li key={i} className='reveal flex gap-5 text-lg leading-relaxed'><span className='mt-3 w-2 h-2 shrink-0 rounded-full bg-accent' />{s}</li>
-            ))}
-          </ul>
-          <div className='reveal mt-14 flex flex-wrap gap-3'>
+        <Section title='Links'>
+          <div className='reveal flex flex-wrap gap-3'>
             {p.links.map(([label, url], i) => (
               
                 <a href={url} target='_blank' rel='noreferrer' className={i ? 'pill' : 'pill-accent'}>{label} <FiArrowUpRight /></a>

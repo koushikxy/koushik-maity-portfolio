@@ -64,13 +64,6 @@ export const projects = [
       "NPCI's download links for March, May and June 2026 are broken, so I took those months from the table on NPCI's website."
     ],
     gallery: [[upiShare, [1800, 1032], 'PhonePe and Google Pay share of UPI volume over time'], [upiChallengers, [1800, 1032], 'Newer apps like Navi and super.money taking share']],
-    process: [
-      'Two different file layouts across the 76 months, so the Power Query function reads the total volume and value from the last two columns.',
-      'Numbers stored as text in Indian format (12,03,787.91) in 12 months, and "-" used for zero.',
-      'January 2022 totals for PhonePe and Google Pay were literally ######## in the source, so I rebuilt them from the breakdown columns.',
-      "App names were spelled 302 different ways. I mapped them to 141 apps and marked each as a bank or third-party app.",
-      'Measures in DAX: volume share, top 2 share, HHI, year-on-year change and average ticket size.'
-    ],
     links: [['GitHub repo', repo('upi-payments-dashboard')], ['Dashboard (PDF)', file('upi-payments-dashboard', 'upi_dashboard.pdf')], ['Write-up (PDF)', file('upi-payments-dashboard', 'upi_report.pdf')]]
   },
   {
@@ -110,11 +103,6 @@ export const projects = [
       'Instacart only included customers with 4 to 100 orders, so one-time buyers are missing and the real reorder rate would be lower.',
       'There are no prices, so this is about volume, not revenue.',
       'The data is from 2017 and US-based, so the patterns will not map exactly onto Indian quick commerce.'
-    ],
-    process: [
-      'products.csv escapes quotes in an unusual way, which made MySQL silently drop 333 products on the first load. Fixed with ESCAPED BY and a REPLACE.',
-      'Joining 33.8M order lines for every question took minutes per query, so I aggregate once into summary tables. The whole file runs in about 13 minutes instead of 30 for just six queries.',
-      'CTEs, ROW_NUMBER, running SUM() OVER for cumulative share, self-joins for product pairs and CASE for customer segments.'
     ],
     links: [['GitHub repo', repo('grocery-reorder-analysis')], ['SQL queries', file('grocery-reorder-analysis', 'analysis.sql')], ['Write-up (PDF)', file('grocery-reorder-analysis', 'grocery_reorder_report.pdf')]]
   },
@@ -156,12 +144,6 @@ export const projects = [
       'The data covers travel dates from 11 February to 31 March 2022 and only six metros.',
       'The market has changed since then: Go First stopped flying in 2023 and Vistara merged into Air India in 2024.'
     ],
-    process: [
-      'Used the raw economy and business files instead of the cleaned Kaggle file.',
-      'The stops column had 37 different values with tabs, newlines and layover airports mixed in, for what is really 0, 1 or 2+ stops.',
-      'Prices and durations were stored as text, and some rows were duplicates or had broken durations.',
-      'Fares are compared against the median for their route, so expensive routes do not skew the results.'
-    ],
     links: [['GitHub repo', repo('flight-price-analysis')], ['Notebook', file('flight-price-analysis', 'flight_price_analysis.ipynb')], ['Write-up (PDF)', file('flight-price-analysis', 'flight_fare_report.pdf')]]
   },
   {
@@ -198,12 +180,6 @@ export const projects = [
       'The data counts cards and machines, not people, so it cannot show how many people use each.'
     ],
     gallery: [[cardDashboard, [1400, 916], 'The Excel dashboard: KPIs and 4 charts, filterable by bank type']],
-    process: [
-      'The RBI header is spread over 6 merged rows, so columns are named by position in Power Query.',
-      'Bank type is a heading row above each group rather than a column, so it is filled down to every bank.',
-      'A Banks sheet uses SORTBY, FILTER and XLOOKUP to compare the two months and find banks that dropped out.',
-      'Pivots with a bank type slicer, and a dashboard sheet with SUMIFS KPIs and 4 charts. Adding a month is drop the file in and refresh.'
-    ],
     charts: [
       { title: 'Change in payment infrastructure, August 2025 to August 2026', unit: '%', note: 'Shops are swapping card machines for UPI QR codes. ATMs are flat.', rows: [['UPI QR codes', 16.5], ['ATMs', 1.4], ['PoS card machines', -14.7], ['Bharat QR codes', -18.9]] },
       { title: 'Share of all credit cards, August 2026', unit: '%', digits: 1, note: 'These four banks hold 69.5% of all credit cards.', rows: [['HDFC Bank', 21.8], ['SBI', 18.5], ['ICICI Bank', 16.0], ['Axis Bank', 13.1]] }
