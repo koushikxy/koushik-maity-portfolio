@@ -1,4 +1,4 @@
-import { SiMysql, SiPython, SiPandas, SiNumpy, SiJupyter, SiPowerbi, SiMicrosoftexcel, SiReact, SiTailwindcss, SiGithub, SiFastapi } from 'react-icons/si'
+import { SiMysql, SiPython, SiPandas, SiNumpy, SiJupyter, SiPowerbi, SiTableau, SiMicrosoftexcel, SiReact, SiTailwindcss, SiGithub, SiFastapi } from 'react-icons/si'
 
 import upiOverview from './work/upi-overview.webp'
 import upiShare from './work/upi-market-share.webp'
@@ -6,6 +6,10 @@ import upiChallengers from './work/upi-challengers.webp'
 import flightWindow from './work/flight-booking-window.webp'
 import flightAirlines from './work/flight-airlines.webp'
 import cardDashboard from './work/card-dashboard.webp'
+import milletsOverview from './work/millets-overview.webp'
+import milletsStates from './work/millets-states.webp'
+import milletsMaharashtra from './work/millets-maharashtra.webp'
+import milletsJowar from './work/millets-jowar.webp'
 import groceryReport1 from './work/grocery-report-1.webp'
 import groceryReport2 from './work/grocery-report-2.webp'
 import flightReport1 from './work/flight-report-1.webp'
@@ -185,6 +189,42 @@ export const projects = [
       { title: 'Share of all credit cards, August 2026', unit: '%', digits: 1, note: 'These four banks hold 69.5% of all credit cards.', rows: [['HDFC Bank', 21.8], ['SBI', 18.5], ['ICICI Bank', 16.0], ['Axis Bank', 13.1]] }
     ],
     links: [['GitHub repo', repo('card-payments-excel-dashboard')], ['Dashboard (PDF)', file('card-payments-excel-dashboard', 'dashboard.pdf')], ['Excel workbook', file('card-payments-excel-dashboard', 'rbi_card_payments.xlsx')]]
+  },
+  {
+    slug: 'india-millets-dashboard',
+    short: ['What happened to millet farming in India over the last 25 years?', 'Millet area fell 40% between 1998-2000 and 2020-22, mostly jowar in Maharashtra and Karnataka, but production held steady because yields rose 73%.', "Millet programmes have more room in the Deccan states that gave up jowar than in Rajasthan, which already grows 38% of the country's millets."],
+    title: 'India Millets Dashboard',
+    question: "Where did India's millets go?",
+    type: 'Tableau dashboard',
+    stat: '-40%',
+    statLabel: 'fall in millet area between 1998-2000 and 2020-22',
+    tools: ['Tableau', 'Python', 'Pandas'],
+    data: 'Ministry of Agriculture (DES) district crop statistics, 1997-98 to 2022-23, 743 districts and 8 cereal crops',
+    cover: milletsOverview,
+    size: [1188, 798],
+    shots: [[milletsOverview, [1188, 798], 'Dashboard 1: millets at a glance'], [milletsStates, [1188, 798], 'Dashboard 2: which states gave up millets']],
+    intro: "2023 was the International Year of Millets, and jowar, bajra and ragi were suddenly everywhere. I wanted to know what had actually happened to millet farming in India before that, so I built a Tableau dashboard from the Ministry of Agriculture's district-level crop statistics.",
+    numbers: [['-40%', 'millet area, 22.3 to 13.3 million hectares'], ['+73%', 'millet yield, 0.81 to 1.40 tonnes per hectare'], ['65%', 'of the lost millet area was in Maharashtra and Karnataka']],
+    findings: [
+      'Millet area (jowar, bajra, ragi and small millets) fell from 22.3 million hectares in 1998-2000 to 13.3 million in 2020-22, down 40%. Millets went from 22.5% of all cereal area to 12.2%.',
+      'Production did not fall with it. Millet output went from 18.1 to 18.7 million tonnes because yield rose from 0.81 to 1.40 tonnes per hectare. Bajra production rose 81% on 19% less land.',
+      'Jowar lost the most. Its area fell 58%, from 10.1 to 4.2 million hectares, and Maharashtra alone lost about 3 million hectares of jowar.',
+      'Rice area grew 17%, wheat 31% and maize 58% over the same years.',
+      'Maharashtra and Karnataka together lost about 6 million hectares of millet area, 65% of all the area lost. Telangana kept only 13% of its millet area.',
+      "Rajasthan is the exception. Its millet area went up 4%, and it now has 38% of India's millet area, 88% of it bajra. Barmer district alone has 7%."
+    ],
+    recommendations: [
+      'Millet programmes aimed at growing area should look at Maharashtra and Karnataka first. That is where most of the land was lost.',
+      'Rajasthan already grows bajra at scale, so the gain there is more likely to come from yield and from buying and processing what is grown than from adding land.',
+      'Treat jowar and bajra separately. Bajra kept growing in output while jowar fell in both area and production, so one plan for all millets will miss what is happening to each crop.'
+    ],
+    limits: [
+      'The figures are summed from district data and do not exactly match the all-India estimates DES publishes separately, so I compare changes and shares rather than quoting them as official totals.',
+      'Some states stop reporting some crops (Maharashtra has no small millets figures after 2015-16), so the 70% fall in small millets is partly missing data.',
+      'District boundaries changed a lot over these years, so I compare states over time, not districts.'
+    ],
+    gallery: [[milletsJowar, [1188, 798], 'The overview with jowar selected'], [milletsMaharashtra, [1188, 798], 'Clicking Maharashtra filters the district list']],
+    links: [['GitHub repo', repo('india-millets-dashboard')]]
   }
 ]
 
@@ -195,7 +235,7 @@ export const otherProjects = [
 
 export const stats = [
   [34, 'M', 'rows of data in my biggest project'],
-  [4, '', 'data projects built end to end'],
+  [5, '', 'data projects built end to end'],
   [200, '+', 'AI responses reviewed every week at Turing'],
   [92, '%', 'agreement with senior reviewers']
 ]
@@ -258,11 +298,11 @@ export const certs = [
 export const pdf = '/Koushik_Maity_Data_Analyst_CV.pdf'
 
 export const cv = {
-  summary: 'Data Analyst who checks the data before trusting it: in one project I caught 333 products silently dropped during a CSV load that would have skewed the results. Built end-to-end projects in SQL, Python and Power BI on real public data of up to 34 million rows, from cleaning to dashboards and recommendations. Most recently a freelance Business Analyst at Turing.',
+  summary: 'Data Analyst who checks the data before trusting it: in one project I caught 333 products silently dropped during a CSV load that would have skewed the results. Built end-to-end projects in SQL, Python, Power BI and Tableau on real public data of up to 34 million rows, from cleaning to dashboards and recommendations. Most recently a freelance Business Analyst at Turing.',
   skills: [
     ['SQL', 'MySQL, PostgreSQL, CTEs, Window Functions, Joins'],
     ['Python', 'Pandas, NumPy, Matplotlib, Seaborn, Jupyter'],
-    ['BI & Reporting', 'Power BI, DAX, Power Query (ETL), Data Modeling, Data Visualization, Excel (Pivot Tables, Lookups), Dashboards, KPI Tracking'],
+    ['BI & Reporting', 'Power BI, DAX, Power Query (ETL), Tableau, Data Modeling, Data Visualization, Excel (Pivot Tables, Lookups), Dashboards, KPI Tracking'],
     ['Analysis', 'Data Cleaning, Data Validation, EDA, Descriptive Statistics'],
     ['Tools', 'Git, GitHub']
   ],
@@ -288,9 +328,10 @@ export const cv = {
 export const tools = [
   { name: 'Power BI', Icon: SiPowerbi, used: ['UPI Payments Dashboard'] },
   { name: 'SQL / MySQL', Icon: SiMysql, used: ['Grocery Reorder Analysis'] },
-  { name: 'Python', Icon: SiPython, used: ['Flight Fare Analysis', 'Hero Cycles Pricing Tool'] },
+  { name: 'Python', Icon: SiPython, used: ['Flight Fare Analysis', 'India Millets Dashboard', 'Hero Cycles Pricing Tool'] },
+  { name: 'Tableau', Icon: SiTableau, used: ['India Millets Dashboard'] },
   { name: 'Excel', Icon: SiMicrosoftexcel, used: ['Card Payments Dashboard'] },
-  { name: 'Pandas', Icon: SiPandas, used: ['Flight Fare Analysis'] },
+  { name: 'Pandas', Icon: SiPandas, used: ['Flight Fare Analysis', 'India Millets Dashboard'] },
   { name: 'DAX', mark: 'DAX', used: ['UPI Payments Dashboard'] },
   { name: 'Power Query', mark: 'PQ', used: ['UPI Payments Dashboard', 'Card Payments Dashboard'] },
   { name: 'Jupyter', Icon: SiJupyter, used: ['Flight Fare Analysis'] },

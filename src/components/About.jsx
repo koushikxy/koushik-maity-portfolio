@@ -38,7 +38,7 @@ const About = () => {
               <span key={i} aria-hidden='true' className='about-word word-mask'><span>{w}&nbsp;</span></span>
             ))}
           </p>
-          <p className='mt-10 max-w-xl text-lg text-muted leading-relaxed'>I work mostly in SQL, Python, Power BI and Excel, with a B.Tech in Computer Science. Most recently I was a freelance Business Analyst at Turing.</p>
+          <p className='mt-10 max-w-xl text-lg text-muted leading-relaxed'>I work mostly in SQL, Python, Power BI, Tableau and Excel, with a B.Tech in Computer Science. Most recently I was a freelance Business Analyst at Turing.</p>
           <GoLink to={resume} label='Resume' className='pill mt-8'>Read my resume <FiArrowUpRight /></GoLink>
         </div>
         <div className='about-side about-photo relative aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-card'>

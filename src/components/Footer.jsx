@@ -8,8 +8,8 @@ const time = () => new Date().toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolk
 const field = 'w-full rounded-xl border border-line bg-bg px-4 py-3.5 placeholder:text-muted/60 focus:outline-none focus:border-accent transition-colors'
 
 const findings = [
-  ['Can do', 'SQL, Python, Power BI and Excel on real data, from cleaning to dashboards'],
-  ['Has shown', '4 end-to-end projects, the largest on 33.8M rows'],
+  ['Can do', 'SQL, Python, Power BI, Tableau and Excel on real data, from cleaning to dashboards'],
+  ['Has shown', '5 end-to-end projects, the largest on 33.8M rows'],
   ['Available', 'Now, for Data Analyst or Business Analyst roles in Bangalore or remote']
 ]
 
