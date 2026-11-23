@@ -224,7 +224,7 @@ export const projects = [
       'District boundaries changed a lot over these years, so I compare states over time, not districts.'
     ],
     gallery: [[milletsJowar, [1188, 798], 'The overview with jowar selected'], [milletsMaharashtra, [1188, 798], 'Clicking Maharashtra filters the district list']],
-    links: [['GitHub repo', repo('india-millets-dashboard')]]
+    links: [['Tableau Public', 'https://public.tableau.com/app/profile/koushik.maity/viz/india_millets/Overview'], ['GitHub repo', repo('india-millets-dashboard')]]
   }
 ]
 
