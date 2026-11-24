@@ -26,6 +26,11 @@ import outagesImg from './projects_img/outages.webp'
 import epfoImg from './projects_img/epfo.webp'
 import googleCert from './certificate/google-data-analytics.webp'
 import sqlCert from './certificate/mysql.webp'
+import tradeCover from './work/trade-cover.webp'
+import tradeOverview from './work/trade-overview.webp'
+import tradeMarkets from './work/trade-markets.webp'
+import tradeMarketsUs from './work/trade-markets-us.webp'
+import tradeImg from './projects_img/trade.webp'
 import gstCover from './work/gst-cover.webp'
 import gstS0 from './work/gst-s0.webp'
 import gstS1 from './work/gst-s1.webp'
@@ -321,10 +326,30 @@ export const moreProjects = [
     findings: ["Net payroll here means new EPF members, minus members who left, plus members who came back. It counts EPF accounts, not jobs.", "Net additions went from 61.1 lakh in 2018-19 to a peak of 1.39 crore in 2022-23 and were 1.30 crore in 2024-25, 6.3% below the peak. The big jump was 2021-22, up 58.7% after Covid.", "The people joining are getting older. In 2018-19, 67.3% of net additions were aged 18 to 25 and by 2024-25 it was 49.1%. The group aged 26 and over grew from 19.0 lakh to 65.4 lakh and is now the bigger one.", "Maharashtra, Tamil Nadu, Karnataka, Gujarat and Haryana had 58.3% of net additions in 2024-25. Maharashtra's share fell from 25.8% to 22.1% because other states grew faster, such as Odisha at 6.4 times its 2018-19 figure.", "The age mix differs a lot by state: about 60% of 2024-25 additions in Karnataka and Bihar were aged 18 to 25, against 38.9% in Odisha and 24.6% in Jharkhand."],
     limits: ["Net payroll is not the number of new jobs. It counts EPF accounts, includes temporary workers, and EPFO revises it every month.", "The state is where the employer's EPF account is, not where the person lives or works. Four small states and UTs are not in the state tables.", "I only used the state tables. The industry tables in the same PDF show only the top 10 industries per age group and one has a wrong header, so I left them out."],
     links: [["GitHub repo", repo("india-epfo-payroll-excel")], ["Dashboard (PDF)", file("india-epfo-payroll-excel", "dashboard.pdf")], ["Excel workbook", file("india-epfo-payroll-excel", "epfo_payroll.xlsx")]]
+  },
+  {
+    slug: "india-trade-dashboard",
+    short: ["Which products and which buyers account for India's export growth?", "Exports grew 44% from 2017-18 to 2024-25, but imports grew 55%, so the trade deficit widened to USD 283.5 billion.", "Electronics gave 26% of the export rise and the United States 29%, so exports lean more on a few products and buyers."],
+    title: "India Merchandise Trade",
+    question: "Where did India's export growth come from?",
+    type: "Tableau dashboard",
+    stat: "+44%",
+    statLabel: "growth in India's merchandise exports, 2017-18 to 2024-25",
+    tools: ["Tableau", "Python", "Pandas"],
+    data: "Ministry of Commerce TradeStat: 2,008 country pages, 150,168 rows of trade by country and HS chapter",
+    cover: tradeCover,
+    size: [1400, 940],
+    shots: [[tradeOverview, [1188, 798], 'Overview: exports, imports and the products behind the change'], [tradeMarkets, [1188, 798], 'Markets: where exports went and what India sells there'], [tradeMarketsUs, [1188, 798], 'Markets with the United States clicked']],
+    intro: "India's merchandise exports went from USD 303.5 billion in 2017-18 to USD 437.7 billion in 2024-25. I wanted to know which products and which buyers account for that rise, and what happened to imports over the same years, so I used the Ministry of Commerce's country-by-commodity trade data and built a Tableau workbook on top of it.",
+    numbers: [["USD 283.5 bn", "trade deficit in 2024-25, up from USD 162.1 bn; China is 35% of it"], ["26%", "of the export rise came from electronics, up from USD 9.3 bn to USD 44.1 bn"], ["52.6%", "of exports went to the same top 10 markets, up from 46.9%"]],
+    findings: ["Exports grew 44% over the seven years, but imports grew faster, 55%, from USD 465.6 billion to USD 721.2 billion. The trade deficit widened from USD 162.1 billion to USD 283.5 billion, and China alone accounts for USD 99.2 billion of it.", "Electronics did the most for export growth: chapter 85 went from USD 9.3 billion to USD 44.1 billion. Petroleum products added USD 28.6 billion and chemicals and pharma USD 24.5 billion, while gems and jewellery fell 28% and textiles did not grow.", "The United States took 19.8% of India's exports in 2024-25, up from 15.8%, and explains 29% of the rise on its own. 42% of the electronics rise went to the US.", "The Netherlands went from USD 6.3 billion to USD 22.8 billion and is now the third largest market, mostly because of petroleum products. Exports to China barely moved, from USD 13.3 billion to USD 14.3 billion.", "The year-by-year path was not smooth. Exports fell in 2019-20 and 2020-21, jumped 44.6% in 2021-22, and have been flat at about USD 437 billion for the last two years."],
+    limits: ["These are customs values of goods only. Services, a large part of India's exports, are not in this data, and values are in current US dollars, so part of the growth is prices, especially for petroleum products.", "A country is where goods were sent, not where they were used. The Netherlands is a trading hub, so much of what India sends there probably goes on to other countries.", "Eight small partners cannot be placed on the map, mainly 'Unspecified' and old codes such as Netherlands Antilles. They stay in every total."],
+    links: [['GitHub repo', repo("india-trade-dashboard")], ['Tableau Public', "https://public.tableau.com/app/profile/koushik.maity/viz/india_trade/Overview"], ['Tableau workbook', file("india-trade-dashboard", 'india_trade.twbx')]]
   }
 ]
 
 export const otherProjects = [
+  { title: 'India merchandise trade, 2017-18 to 2024-25', description: 'Tableau dashboard on which products and buyers drove the export rise', tools: 'Tableau, Python', slug: "india-trade-dashboard", image: tradeImg, size: [900, 604], github: repo("india-trade-dashboard") },
   { title: "India's GST collections by state", description: 'Power BI dashboard of state-wise GST collections, 2017 to 2026', tools: 'Power BI, DAX, Power Query', slug: "india-gst-dashboard", image: gstImg, size: [900, 507], github: repo('india-gst-dashboard') },
   { title: 'Is city air in India getting cleaner?', description: '11 years of CPCB daily AQI bulletins: most cities improved, Delhi barely moved', tools: 'Python, pandas, matplotlib', slug: "india-city-air-quality-python", image: airQualityImg, size: [900, 386], github: repo('india-city-air-quality-python') },
   { title: "Why are India's power plants out of service?", description: 'Three years of CEA daily outage reports for coal and nuclear units, in MySQL', tools: 'MySQL, Python', slug: "india-power-plant-outages-sql", image: outagesImg, size: [900, 489], github: repo('india-power-plant-outages-sql') },
@@ -335,7 +360,7 @@ export const otherProjects = [
 
 export const stats = [
   [34, 'M', 'rows of data in my biggest project'],
-  [9, '', 'data projects built end to end'],
+  [10, '', 'data projects built end to end'],
   [200, '+', 'AI responses reviewed every week at Turing'],
   [92, '%', 'agreement with senior reviewers']
 ]
