@@ -349,7 +349,7 @@ export const moreProjects = [
 ]
 
 export const otherProjects = [
-  { title: 'India merchandise trade, 2017-18 to 2024-25', description: 'Tableau dashboard on which products and buyers drove the export rise', tools: 'Tableau, Python', slug: "india-trade-dashboard", image: tradeImg, size: [900, 604], github: repo("india-trade-dashboard") },
+  { title: "Where did India's export growth come from?", description: 'Tableau dashboard on which products and buyers drove the export rise', tools: 'Tableau, Python', slug: "india-trade-dashboard", image: tradeImg, size: [900, 604], github: repo("india-trade-dashboard") },
   { title: "India's GST collections by state", description: 'Power BI dashboard of state-wise GST collections, 2017 to 2026', tools: 'Power BI, DAX, Power Query', slug: "india-gst-dashboard", image: gstImg, size: [900, 507], github: repo('india-gst-dashboard') },
   { title: 'Is city air in India getting cleaner?', description: '11 years of CPCB daily AQI bulletins: most cities improved, Delhi barely moved', tools: 'Python, pandas, matplotlib', slug: "india-city-air-quality-python", image: airQualityImg, size: [900, 386], github: repo('india-city-air-quality-python') },
   { title: "Why are India's power plants out of service?", description: 'Three years of CEA daily outage reports for coal and nuclear units, in MySQL', tools: 'MySQL, Python', slug: "india-power-plant-outages-sql", image: outagesImg, size: [900, 489], github: repo('india-power-plant-outages-sql') },
