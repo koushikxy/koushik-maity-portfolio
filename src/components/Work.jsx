@@ -154,13 +154,11 @@ const Work = () => {
                     : <a href={p.github} target='_blank' rel='noreferrer' className='font-display text-2xl sm:text-5xl font-semibold tracking-tight after:absolute after:inset-0'>{p.title}</a>}
                 <p className='mt-2 text-muted'>{p.description}</p>
                 <div className='relative z-10 mt-3 flex gap-2 sm:hidden'>
-                  {p.live && <a href={p.live} target='_blank' rel='noreferrer' className='tag'>Live site <FiArrowUpRight /></a>}
                   <a href={p.github} target='_blank' rel='noreferrer' className='tag'>GitHub <FiArrowUpRight /></a>
                 </div>
               </div>
               <span className='hidden md:block text-muted'>{p.tools}</span>
               <div className='relative z-10 hidden sm:flex gap-2'>
-                {p.live && <a href={p.live} target='_blank' rel='noreferrer' className='tag hover:bg-accent hover:text-ink hover:border-accent transition-colors'>Live site <FiArrowUpRight /></a>}
                 <a href={p.github} target='_blank' rel='noreferrer' className='tag hover:bg-accent hover:text-ink hover:border-accent transition-colors'>GitHub <FiArrowUpRight /></a>
               </div>
             </li>
