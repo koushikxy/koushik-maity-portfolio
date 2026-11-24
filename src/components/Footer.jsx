@@ -9,7 +9,7 @@ const field = 'w-full rounded-xl border border-line bg-bg px-4 py-3.5 placeholde
 
 const findings = [
   ['Can do', 'SQL, Python, Power BI, Tableau and Excel on real data, from cleaning to dashboards'],
-  ['Has shown', '5 end-to-end projects, the largest on 33.8M rows'],
+  ['Has shown', '9 end-to-end projects, the largest on 33.8M rows'],
   ['Available', 'Now, for Data Analyst or Business Analyst roles in Bangalore or remote']
 ]
 

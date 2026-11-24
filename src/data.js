@@ -243,7 +243,7 @@ export const otherProjects = [
 
 export const stats = [
   [34, 'M', 'rows of data in my biggest project'],
-  [5, '', 'data projects built end to end'],
+  [9, '', 'data projects built end to end'],
   [200, '+', 'AI responses reviewed every week at Turing'],
   [92, '%', 'agreement with senior reviewers']
 ]
