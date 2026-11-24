@@ -26,6 +26,19 @@ import outagesImg from './projects_img/outages.webp'
 import epfoImg from './projects_img/epfo.webp'
 import googleCert from './certificate/google-data-analytics.webp'
 import sqlCert from './certificate/mysql.webp'
+import gstCover from './work/gst-cover.webp'
+import gstS0 from './work/gst-s0.webp'
+import gstS1 from './work/gst-s1.webp'
+import gstS2 from './work/gst-s2.webp'
+import airCover from './work/air-cover.webp'
+import airS1 from './work/air-s1.webp'
+import airS2 from './work/air-s2.webp'
+import airS3 from './work/air-s3.webp'
+import sqlCover from './work/sql-cover.webp'
+import sqlS1 from './work/sql-s1.webp'
+import sqlS2 from './work/sql-s2.webp'
+import sqlS3 from './work/sql-s3.webp'
+import epfoCover from './work/epfo-cover.webp'
 
 export const email = 'ksmaity21@gmail.com'
 export const linkedin = 'https://www.linkedin.com/in/ksmaity/'
@@ -232,11 +245,90 @@ export const projects = [
   }
 ]
 
+export const moreProjects = [
+  {
+    slug: "india-gst-dashboard",
+    short: ["Which states does India's GST money come from, and how fast is it growing?", "Collections roughly doubled between 2018-19 and 2025-26, but yearly growth has slowed from 26.9% to 6.4%.", "The big states' share is growing: the top 5 went from 52.2% to 55.6% of collections."],
+    title: "India's GST Collections",
+    question: "Which states does India's GST money come from?",
+    type: "Power BI dashboard",
+    stat: "+107%",
+    statLabel: "growth in GST collections, 2018-19 to 2025-26",
+    tools: ["Power BI", "DAX", "Power Query"],
+    data: "GST portal state-wise collection files, July 2017 to September 2026, 12,849 rows",
+    cover: gstCover,
+    size: [1400, 788],
+    shots: [[gstS0, [1400, 789], "Overview: yearly and monthly collections"], [gstS1, [1400, 789], "Trend: growth by year"], [gstS2, [1400, 789], "States: collections and growth by state"]],
+    intro: "GST collections are reported every month as one big all-India number. I wanted to see which states that money comes from, whether the gap between the big states and the rest is changing, and how fast collections are still growing, so I built a Power BI dashboard from the GST portal's state-wise collection files.",
+    numbers: [["₹16.32 lakh crore", "collected in 2025-26, up from ₹7.89 lakh crore in 2018-19"], ["6.4%", "growth in 2025-26, down from 26.9% in 2021-22"], ["55.6%", "of collections came from the top 5 states, up from 52.2%"]],
+    findings: ["Domestic GST (CGST + SGST + IGST) collections went from ₹7.89 lakh crore in 2018-19 to ₹16.32 lakh crore in 2025-26, up 107%.", "Growth has slowed every year since the post-lockdown rebound: 26.9% in 2021-22, then 20.9%, 15.2%, 10.3% and 6.4% in 2025-26.", "November 2025 was 2.3% below November 2024, the first month below the year before since June 2021. It came soon after the rate cuts of 22 September 2025, but this data alone can't say how much of the dip is because of them.", "The top 5 states had 52.2% of the total in 2018-19 and 55.6% in 2025-26. Maharashtra alone went from 20.1% to 22.2%, and Karnataka moved past Gujarat into second place.", "Among the 15 biggest states, growth since 2018-19 ranged from +69% in Andhra Pradesh to +141% in Odisha. The split between IGST, SGST and CGST hardly moved."],
+    limits: ["These are collections by the state where tax was paid, before IGST is settled between the Centre and states, so they are not each state's GST revenue. Import IGST is not split by state in these files.", "The figures are provisional and 2026-27 only runs to September. Cess is left out because newer files do not report it, so my totals are lower than the gross GST figures in the news.", "I haven't checked causes of the late-2025 dip other than the rate cuts, such as refunds or compliance changes."],
+    links: [["GitHub repo", repo("india-gst-dashboard")], ["Dashboard (PDF)", file("india-gst-dashboard", "gst_dashboard.pdf")]]
+  },
+  {
+    slug: "india-city-air-quality-python",
+    short: ["Is city air in India getting cleaner, and is Delhi improving along with everyone else?", "Across 41 cities with continuous monitors, mean AQI fell 17.7% from 2019 to 2025, but Delhi fell only 6.6%.", "Part of the improvement is new monitoring stations, not cleaner air, so I report it with that limit."],
+    title: "India City Air Quality",
+    question: "Is city air in India getting cleaner?",
+    type: "Python analysis",
+    stat: "-17.7%",
+    statLabel: "mean AQI across a fixed panel of 41 cities, 2019 to 2025",
+    tools: ["Python", "pandas", "matplotlib"],
+    data: "CPCB daily AQI bulletins, May 2015 to November 2026: 4,219 PDFs and 551,221 city-day rows",
+    cover: airCover,
+    size: [1399, 600],
+    shots: [[airCover, [1399, 600], "Delhi's daily AQI"], [airS1, [1276, 696], "Days rated Poor or worse by year"], [airS2, [1285, 722], "AQI by month of the year"], [airS3, [1182, 1388], "Change in mean AQI by city"]],
+    intro: "Every day CPCB publishes an Air Quality Index bulletin listing each Indian city with a continuous monitor. I downloaded all of them, turned the tables into city-day rows with Python, and checked whether air quality has improved since 2019 and whether Delhi improved along with everyone else.",
+    numbers: [["-17.7%", "mean AQI across 41 cities, 137.7 in 2019 to 113.3 in 2025"], ["-6.6%", "for Delhi, still the worst of the 41 cities in 2025"], ["360", "Delhi's median AQI in November, against 84 in August"]],
+    findings: ["The number of cities in the bulletin grew from 33 in 2016 to 289 in 2025, so the all-city average falls partly because cleaner cities join the list. For the trend I used a fixed panel of 41 cities that reported on at least 300 days in every year from 2019 to 2025.", "Leaving Delhi out, the share of days rated Poor or worse (AQI above 200) fell from 19.1% to 8.8%. Delhi had 164 such days in 2025 against 183 in 2019.", "The problem is the winter. Delhi's median AQI is 84 in August and 360 in November, and the other cities follow the same curve at a lower level.", "32 of the 41 cities had a lower average in 2025 than in 2019, but not all of that is cleaner air. The five biggest drops all went from one monitoring station to three or more in the same years. Cities that started below an AQI of 130 improved by about 8% whether or not they gained stations.", "Delhi's daily AQI moves almost exactly with Noida (correlation 0.96), Ghaziabad (0.93), Greater Noida (0.92) and Gurugram (0.91), and much less with Chennai (0.30)."],
+    limits: ["AQI is an index based on the worst pollutant of the day, not a concentration, and the bulletin gives one 24-hour value per city. The city value is an average of the stations that reported, so station changes affect it.", "The trend is for 41 cities that already had monitors in 2019, mostly in the north, not all 338 cities.", "The bulletins have no weather, crop-burning or policy data, so I can't say what caused these changes."],
+    links: [["GitHub repo", repo("india-city-air-quality-python")], ["Write-up (PDF)", file("india-city-air-quality-python", "air_quality_report.pdf")]]
+  },
+  {
+    slug: "india-power-plant-outages-sql",
+    short: ["How much of India's coal, lignite and nuclear capacity is out of service on a given day, and why?", "About 16% of the monitored capacity was out on an average day, and 46.5% of that was down because something broke.", "About a fifth of the idle capacity was not broken but had no schedule, no buyer or was on reserve shutdown."],
+    title: "India Power Plant Outages",
+    question: "Why are India's power plants out of service?",
+    type: "MySQL analysis",
+    stat: "40.3 GW",
+    statLabel: "of coal, lignite and nuclear capacity out on an average day",
+    tools: ["MySQL", "Python"],
+    data: "CEA daily maintenance reports, April 2023 to March 2026: 1,093 days and 165,249 rows",
+    cover: sqlCover,
+    size: [1400, 760],
+    shots: [[sqlCover, [1400, 760], "Database schema"], [sqlS1, [1300, 546], "Capacity out by reason"], [sqlS2, [1400, 636], "Capacity out by month"], [sqlS3, [1300, 780], "Breakdown loss by state"]],
+    intro: "On any given day a large part of India's coal, lignite and nuclear capacity is not running. The Central Electricity Authority publishes a daily maintenance report listing every unit that is out and the reason. I downloaded three years of these reports, cleaned them and worked through the questions in MySQL.",
+    numbers: [["46.5%", "of the capacity out was down because something broke"], ["21.9%", "was idle with no demand or no buyer"], ["7.0%", "Gujarat's breakdown loss without one plant, against 13.3% with it"]],
+    findings: ["On an average day 40.3 GW was out of service, about 16% of the 254 GW of units in CEA's monitored list: 40.1 GW in 2023-24, 37.2 GW in 2024-25 and 43.6 GW in 2025-26.", "I grouped the 376 different reason texts into a few categories. Breakdowns were 46.5% of the capacity out, planned maintenance 26.8% and no demand or no buyer 21.9%.", "Most of the 2025-26 jump in breakdowns is one plant. All five Mundra UMTPP units went out on 1-3 July 2025 and stayed out to March 2026, which looks like one plant-wide shutdown. Without Mundra, breakdowns were 17.2, 16.4 and 17.9 GW a day, about the same in all three years.", "CEA moved most reserve shutdowns from its Others column into the forced-outage columns from April 2025, so the forced column can't be compared across years.", "State plants lost 9.5% of their capacity to breakdowns, private plants 7.7% and central plants 5.1%. Water wall tube leakage is the most common single breakdown, with 2,583 outages in three years."],
+    limits: ["The report is a snapshot taken once a day, so a unit that trips and returns between two reports may never appear and durations are rough.", "The reason groups are my own, made with LIKE patterns, and a few edge cases could be grouped differently.", "This covers coal, lignite and nuclear units only, and plant outages are not the same as power cuts for consumers."],
+    links: [["GitHub repo", repo("india-power-plant-outages-sql")], ["Write-up (PDF)", file("india-power-plant-outages-sql", "power_outages_report.pdf")]]
+  },
+  {
+    slug: "india-epfo-payroll-excel",
+    short: ["In which states are people joining formal payroll, how old are they, and how has that changed since 2018-19?", "Net additions peaked at 1.39 crore in 2022-23 and were 1.30 crore in 2024-25, and the 18-25 share fell from 67.3% to 49.1%.", "Five states account for most of the additions, and 26 of 32 states and UTs added fewer members than at the 2022-23 peak."],
+    title: "EPFO Payroll by State and Age",
+    question: "Who is joining India's formal payroll?",
+    type: "Excel dashboard",
+    stat: "49.1%",
+    statLabel: "of net EPF additions in 2024-25 were aged 18 to 25, down from 67.3% in 2018-19",
+    tools: ["Excel", "Power Query", "XLOOKUP", "PivotTables"],
+    data: "EPFO payroll data release of September 2025: state tables from a 24-page PDF, 2,304 rows",
+    cover: epfoCover,
+    size: [1400, 1609],
+    shots: [[epfoCover, [1400, 1609], "The Excel dashboard for a chosen state, year and age group"]],
+    intro: "Every month EPFO publishes how many people joined the Employees' Provident Fund, the savings scheme that comes with most formal jobs in India. I wanted to see in which states people are joining, how old they are and how that changed from 2018-19 to 2024-25. The data only comes as a PDF, so I pulled the state tables out with Power Query and built the analysis and dashboard in Excel.",
+    numbers: [["1.39 crore", "net additions at the 2022-23 peak, 1.30 crore in 2024-25"], ["58.3%", "from five states: Maharashtra, Tamil Nadu, Karnataka, Gujarat and Haryana"], ["26 of 32", "states and UTs added fewer members in 2024-25 than in 2022-23"]],
+    findings: ["Net payroll here means new EPF members, minus members who left, plus members who came back. It counts EPF accounts, not jobs.", "Net additions went from 61.1 lakh in 2018-19 to a peak of 1.39 crore in 2022-23 and were 1.30 crore in 2024-25, 6.3% below the peak. The big jump was 2021-22, up 58.7% after Covid.", "The people joining are getting older. In 2018-19, 67.3% of net additions were aged 18 to 25 and by 2024-25 it was 49.1%. The group aged 26 and over grew from 19.0 lakh to 65.4 lakh and is now the bigger one.", "Maharashtra, Tamil Nadu, Karnataka, Gujarat and Haryana had 58.3% of net additions in 2024-25. Maharashtra's share fell from 25.8% to 22.1% because other states grew faster, such as Odisha at 6.4 times its 2018-19 figure.", "The age mix differs a lot by state: about 60% of 2024-25 additions in Karnataka and Bihar were aged 18 to 25, against 38.9% in Odisha and 24.6% in Jharkhand."],
+    limits: ["Net payroll is not the number of new jobs. It counts EPF accounts, includes temporary workers, and EPFO revises it every month.", "The state is where the employer's EPF account is, not where the person lives or works. Four small states and UTs are not in the state tables.", "I only used the state tables. The industry tables in the same PDF show only the top 10 industries per age group and one has a wrong header, so I left them out."],
+    links: [["GitHub repo", repo("india-epfo-payroll-excel")], ["Dashboard (PDF)", file("india-epfo-payroll-excel", "dashboard.pdf")], ["Excel workbook", file("india-epfo-payroll-excel", "epfo_payroll.xlsx")]]
+  }
+]
+
 export const otherProjects = [
-  { title: "India's GST collections by state", description: 'Power BI dashboard of state-wise GST collections, 2017 to 2026', tools: 'Power BI, DAX, Power Query', image: gstImg, size: [900, 507], github: repo('india-gst-dashboard') },
-  { title: 'Is city air in India getting cleaner?', description: '11 years of CPCB daily AQI bulletins: most cities improved, Delhi barely moved', tools: 'Python, pandas, matplotlib', image: airQualityImg, size: [900, 386], github: repo('india-city-air-quality-python') },
-  { title: "Why are India's power plants out of service?", description: 'Three years of CEA daily outage reports for coal and nuclear units, in MySQL', tools: 'MySQL, Python', image: outagesImg, size: [900, 489], github: repo('india-power-plant-outages-sql') },
-  { title: "Who is joining India's formal payroll", description: 'Excel dashboard of EPFO net payroll by state and age, built from a PDF', tools: 'Excel, Power Query', image: epfoImg, size: [900, 1034], github: repo('india-epfo-payroll-excel') },
+  { title: "India's GST collections by state", description: 'Power BI dashboard of state-wise GST collections, 2017 to 2026', tools: 'Power BI, DAX, Power Query', slug: "india-gst-dashboard", image: gstImg, size: [900, 507], github: repo('india-gst-dashboard') },
+  { title: 'Is city air in India getting cleaner?', description: '11 years of CPCB daily AQI bulletins: most cities improved, Delhi barely moved', tools: 'Python, pandas, matplotlib', slug: "india-city-air-quality-python", image: airQualityImg, size: [900, 386], github: repo('india-city-air-quality-python') },
+  { title: "Why are India's power plants out of service?", description: 'Three years of CEA daily outage reports for coal and nuclear units, in MySQL', tools: 'MySQL, Python', slug: "india-power-plant-outages-sql", image: outagesImg, size: [900, 489], github: repo('india-power-plant-outages-sql') },
+  { title: "Who is joining India's formal payroll", description: 'Excel dashboard of EPFO net payroll by state and age, built from a PDF', tools: 'Excel, Power Query', slug: "india-epfo-payroll-excel", image: epfoImg, size: [900, 1034], github: repo('india-epfo-payroll-excel') },
   { title: 'Hero Cycles Pricing Tool', description: 'Pick parts and a date, get the total price split by component', tools: 'Python, FastAPI, JavaScript', image: heroCycles, size: [900, 675], github: repo('hero-cycles-pricing'), live: 'https://hero-cycles-pricing.netlify.app' },
   { title: 'This portfolio', description: 'The site you are on', tools: 'React, GSAP, Tailwind CSS', image: portfolio, size: [900, 457], github: repo('koushik-maity-portfolio') }
 ]

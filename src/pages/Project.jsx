@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 import { GoLink } from '../components/Transition'
 import NotFound from './NotFound'
 import LineChart from '../components/LineChart'
-import { projects } from '../data'
+import { projects, moreProjects } from '../data'
 import { upiMonthly } from '../upi'
 import { useInView, useReveal } from '../hooks'
 import { gsap, reduced, stopScroll } from '../motion'
@@ -54,9 +54,10 @@ const Section = ({ title, children }) => (
 
 const Project = () => {
   const { slug } = useParams()
-  const index = projects.findIndex(p => p.slug === slug)
-  const p = projects[index]
-  const next = projects[(index + 1) % projects.length]
+  const group = moreProjects.some(x => x.slug === slug) ? moreProjects : projects
+  const index = group.findIndex(p => p.slug === slug)
+  const p = group[index]
+  const next = group[(index + 1) % group.length]
   const root = useRef(null)
   const [zoom, setZoom] = useState(null)
   useReveal(slug)

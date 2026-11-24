@@ -147,12 +147,22 @@ const Work = () => {
             <li key={p.title} className='other-row group relative border-b border-line py-8 sm:py-12 flex items-center gap-5 sm:gap-10'>
               <img src={p.image} width={p.size[0]} height={p.size[1]} alt='' loading='lazy' className='w-24 sm:w-40 lg:w-48 aspect-[4/3] shrink-0 rounded-lg object-cover object-top border border-line transition-transform duration-500 group-hover:scale-[1.03]' />
               <div className='flex-1 min-w-0 transition-colors duration-300 group-hover:text-accent'>
-                <a href={p.github} target='_blank' rel='noreferrer' className='font-display text-2xl sm:text-5xl font-semibold tracking-tight after:absolute after:inset-0'>{p.title}</a>
+                {p.live
+                  ? <a href={p.live} target='_blank' rel='noreferrer' className='font-display text-2xl sm:text-5xl font-semibold tracking-tight after:absolute after:inset-0'>{p.title}</a>
+                  : p.slug
+                    ? <GoLink to={`/work/${p.slug}`} label={p.title} className='font-display text-2xl sm:text-5xl font-semibold tracking-tight after:absolute after:inset-0'>{p.title}</GoLink>
+                    : <a href={p.github} target='_blank' rel='noreferrer' className='font-display text-2xl sm:text-5xl font-semibold tracking-tight after:absolute after:inset-0'>{p.title}</a>}
                 <p className='mt-2 text-muted'>{p.description}</p>
-                {p.live && <a href={p.live} target='_blank' rel='noreferrer' className='relative z-10 mt-3 inline-flex sm:hidden tag'>Live site <FiArrowUpRight /></a>}
+                <div className='relative z-10 mt-3 flex gap-2 sm:hidden'>
+                  {p.live && <a href={p.live} target='_blank' rel='noreferrer' className='tag'>Live site <FiArrowUpRight /></a>}
+                  <a href={p.github} target='_blank' rel='noreferrer' className='tag'>GitHub <FiArrowUpRight /></a>
+                </div>
               </div>
               <span className='hidden md:block text-muted'>{p.tools}</span>
-              {p.live && <a href={p.live} target='_blank' rel='noreferrer' className='relative z-10 hidden sm:inline-flex tag hover:bg-accent hover:text-ink hover:border-accent transition-colors'>Live site <FiArrowUpRight /></a>}
+              <div className='relative z-10 hidden sm:flex gap-2'>
+                {p.live && <a href={p.live} target='_blank' rel='noreferrer' className='tag hover:bg-accent hover:text-ink hover:border-accent transition-colors'>Live site <FiArrowUpRight /></a>}
+                <a href={p.github} target='_blank' rel='noreferrer' className='tag hover:bg-accent hover:text-ink hover:border-accent transition-colors'>GitHub <FiArrowUpRight /></a>
+              </div>
             </li>
           ))}
         </ul>
