@@ -20,6 +20,10 @@ import ximLogo from './img/logos/xim.webp'
 import groceryReorder from './projects_img/grocery-reorder.webp'
 import heroCycles from './projects_img/hero-cycles.webp'
 import portfolio from './projects_img/portfolio.webp'
+import gstImg from './projects_img/gst.webp'
+import airQualityImg from './projects_img/air.webp'
+import outagesImg from './projects_img/outages.webp'
+import epfoImg from './projects_img/epfo.webp'
 import googleCert from './certificate/google-data-analytics.webp'
 import sqlCert from './certificate/mysql.webp'
 
@@ -192,7 +196,7 @@ export const projects = [
   },
   {
     slug: 'india-millets-dashboard',
-    short: ['What happened to millet farming in India over the last 25 years?', 'Millet area fell 40% between 1998-2000 and 2020-22, mostly jowar in Maharashtra and Karnataka, but production held steady because yields rose 73%.', "Millet programmes have more room in the Deccan states that gave up jowar than in Rajasthan, which already grows 38% of the country's millets."],
+    short: ['What happened to millet farming in India over the last 25 years?', 'Millet area fell 40% between 1998-2000 and 2020-22, mostly jowar in Maharashtra and Karnataka, but production held steady because yields rose 73%.', "Most of the lost millet land is in Maharashtra and Karnataka, while Rajasthan, which already has 38% of the country's millet area, grew slightly."],
     title: 'India Millets Dashboard',
     question: "Where did India's millets go?",
     type: 'Tableau dashboard',
@@ -202,7 +206,7 @@ export const projects = [
     data: 'Ministry of Agriculture (DES) district crop statistics, 1997-98 to 2022-23, 743 districts and 8 cereal crops',
     cover: milletsOverview,
     size: [1188, 798],
-    shots: [[milletsOverview, [1188, 798], 'Dashboard 1: millets at a glance'], [milletsStates, [1188, 798], 'Dashboard 2: which states gave up millets']],
+    shots: [[milletsOverview, [1188, 798], 'Overview: millet area, output and yield, 1998-2000 vs 2020-22'], [milletsStates, [1188, 798], 'States: change in millet area by state, 1998-2000 to 2020-22']],
     intro: "2023 was the International Year of Millets, and jowar, bajra and ragi were suddenly everywhere. I wanted to know what had actually happened to millet farming in India before that, so I built a Tableau dashboard from the Ministry of Agriculture's district-level crop statistics.",
     numbers: [['-40%', 'millet area, 22.3 to 13.3 million hectares'], ['+73%', 'millet yield, 0.81 to 1.40 tonnes per hectare'], ['65%', 'of the lost millet area was in Maharashtra and Karnataka']],
     findings: [
@@ -215,7 +219,7 @@ export const projects = [
     ],
     recommendations: [
       'Millet programmes aimed at growing area should look at Maharashtra and Karnataka first. That is where most of the land was lost.',
-      'Rajasthan already grows bajra at scale, so the gain there is more likely to come from yield and from buying and processing what is grown than from adding land.',
+      'Rajasthan did not lose millet land, so it is not where the area decline needs to be explained. Its bajra output gain came mostly from yield.',
       'Treat jowar and bajra separately. Bajra kept growing in output while jowar fell in both area and production, so one plan for all millets will miss what is happening to each crop.'
     ],
     limits: [
@@ -229,6 +233,10 @@ export const projects = [
 ]
 
 export const otherProjects = [
+  { title: "India's GST collections by state", description: 'Power BI dashboard of state-wise GST collections, 2017 to 2026', tools: 'Power BI, DAX, Power Query', image: gstImg, size: [900, 507], github: repo('india-gst-dashboard') },
+  { title: 'Is city air in India getting cleaner?', description: '11 years of CPCB daily AQI bulletins: most cities improved, Delhi barely moved', tools: 'Python, pandas, matplotlib', image: airQualityImg, size: [900, 386], github: repo('india-city-air-quality-python') },
+  { title: "Why are India's power plants out of service?", description: 'Three years of CEA daily outage reports for coal and nuclear units, in MySQL', tools: 'MySQL, Python', image: outagesImg, size: [900, 489], github: repo('india-power-plant-outages-sql') },
+  { title: "Who is joining India's formal payroll", description: 'Excel dashboard of EPFO net payroll by state and age, built from a PDF', tools: 'Excel, Power Query', image: epfoImg, size: [900, 1034], github: repo('india-epfo-payroll-excel') },
   { title: 'Hero Cycles Pricing Tool', description: 'Pick parts and a date, get the total price split by component', tools: 'Python, FastAPI, JavaScript', image: heroCycles, size: [900, 675], github: repo('hero-cycles-pricing'), live: 'https://hero-cycles-pricing.netlify.app' },
   { title: 'This portfolio', description: 'The site you are on', tools: 'React, GSAP, Tailwind CSS', image: portfolio, size: [900, 457], github: repo('koushik-maity-portfolio') }
 ]

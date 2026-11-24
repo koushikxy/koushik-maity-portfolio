@@ -132,7 +132,7 @@ const Work = () => {
             <span className='word-mask'><span>work<span className='text-accent'>.</span></span></span>
           </h2>
         </div>
-        <p className='max-w-sm text-lg text-muted'>Four end-to-end analyses on real public data. Scroll through the main finding of each, then open the full case study.</p>
+        <p className='max-w-sm text-lg text-muted'>Five end-to-end analyses on real public data. Scroll through the main finding of each, then open the full case study.</p>
       </div>
 
       <Story />
@@ -140,7 +140,7 @@ const Work = () => {
       <div className='mt-36 sm:mt-48'>
         <div className='flex items-end justify-between gap-6 mb-8'>
           <h3 className='font-display text-3xl sm:text-5xl font-semibold tracking-tight'>Other things I've built</h3>
-          <span className='hidden sm:block label'>Python and web</span>
+          <span className='hidden sm:block label'>More projects</span>
         </div>
         <ul className='other-list border-t border-line'>
           {otherProjects.map(p => (
